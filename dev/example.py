@@ -48,23 +48,25 @@ project_root = os.path.abspath(os.path.join(here, "../.."))
 
 # Extend the system path to include the project root and import the env files
 sys.path.insert(0, project_root)
-import env_lab      # noqa
-import env_user     # noqa
+import env_lab  # noqa
+import env_user  # noqa
 
 
 spark = ciscosparkapi.CiscoSparkAPI(access_token=env_user.SPARK_ACCESS_TOKEN)
 
 
-print("""
+print(
+    """
 My Lab Environment:
     DNA Center Host: {dnac_host}
     DNA Center Username: {dnac_user}
     DNA Center Password: {dnac_pass}
 """.format(
-    dnac_host=env_lab.DNA_CENTER["host"],
-    dnac_user=env_lab.DNA_CENTER["username"],
-    dnac_pass=env_lab.DNA_CENTER["password"],
-))
+        dnac_host=env_lab.DNA_CENTER["host"],
+        dnac_user=env_lab.DNA_CENTER["username"],
+        dnac_pass=env_lab.DNA_CENTER["password"],
+    )
+)
 
 
 print("Oh yeah... I'm also connected to Cisco Spark as:")
