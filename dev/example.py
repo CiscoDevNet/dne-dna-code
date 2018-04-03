@@ -4,12 +4,6 @@
 Multi-line description of your script (make sure you include the copyright and
 license notice).
 
-Script Dependencies:
-    requests
-
-Depencency Installation:
-    $ pip install requests
-
 
 Copyright (c) 2018 Cisco and/or its affiliates.
 
