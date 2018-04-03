@@ -1,8 +1,12 @@
 #!/usr/bin/env python
-"""One-line summary of your script.
+"""DNAC Center North-Bound API Mission - Sample Solution
 
-Multi-line description of your script (make sure you include the copyright and
-license notice).
+This is a sample solution for the DNAC Center North-Bound API Mission. The
+script
+ - retrieves network devices and modules from DNA Cener,
+ - puts them into a ptyhon JSON object
+ - writes a JavaScript representation into a .js file which is formatted
+   to be use with the NeXt UI Toolkit for visualization
 
 Script Dependencies:
     requests
@@ -67,6 +71,10 @@ dnac_headers={'content-type': 'application/json'}
 next_data_file='next-data.js'
 next_data_file_header='/*DO NOT EDIT - NeXt Topology file generated from DNA Center Device and Module Inventory*/\n\nvar topologyData = \n'
 next_data_file_footer='\n/*DO NOT EDIT - EOF*/\n'
+next_data = {}
+next_data['nodes'] = []
+next_data['links'] = []
+next_icon = {'Switches and Hubs':'switch', 'Routers':'router'}
 
 # create spark session object
 spark = ciscosparkapi.CiscoSparkAPI(access_token=env_user.SPARK_ACCESS_TOKEN)
@@ -141,7 +149,6 @@ def dnac_get_modules(dnac_session, dnac_host, dnac_headers, device_id):
 
 
 
-
 with requests.Session() as dnac_session:
     r = dnac_open_session(dnac_session, dnac_host, dnac_headers, dnac_user, dnac_pass)
 
@@ -151,39 +158,37 @@ with requests.Session() as dnac_session:
     c = dnac_get_host_count(dnac_session, dnac_host, dnac_headers)
     print('DNAC Host Count: ' + str(c))
 
-    # Getting DNAC Network devices with modules
+    # Put DNAC Network devices with modules into a JSON object
     devices = dnac_get_devices(dnac_session, dnac_host, dnac_headers)
-    next_data = {}
-    next_data['nodes'] = []
-    next_data['links'] = []
     i = 0
     for d in devices:
         c = dnac_get_module_count(dnac_session, dnac_host, dnac_headers, d['id'])
         if c > 1:
-            i += 1
             print('Device ' + d['id'] + ' with NeXt ID '+str(i)+' has '+str(c)+' modules')
+
             next_data['nodes'].append({'id ': i,
                              'x': (i*20),
                              'y': 80,
                              'name': d['hostname'],
-                             'icon':'router'})
+                             'platform': d['platformId'],
+                             'serial': d['serialNumber'],
+                             'icon':next_icon[d['family']]})
             di = i
-            print('o Module ID'+str(i))
-            print('o Device ID'+str(di))
+            i += 1
             modules=dnac_get_modules(dnac_session, dnac_host, dnac_headers, d['id'])
             for m in modules:
-                i += 1
-                print('i Module ID'+str(i))
-                print('i Device ID'+str(di))
                 next_data['nodes'].append({'id ': i,
                                  'x': (i*20),
                                  'y': 20*(i-di+1),
                                  'name': m['partNumber'],
-                                 'icon':'module'})
+                                 'serial': d['serialNumber'],
+                                 'icon':'server'})
                 next_data['links'].append({'source': di, 'target': i})
+                i += 1
 
     pprint(json.dumps(next_data))
 
+    # writing JavaScript representation into NeXt data file
     with open(next_data_file, 'w', encoding="utf-8") as outfile:
         print('Writing NeXt UI Topology Data File')
         outfile.write(next_data_file_header)
