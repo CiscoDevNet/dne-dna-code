@@ -48,15 +48,11 @@ except:
 from requests.auth import HTTPBasicAuth
 import sys
 
-import ciscosparkapi
-
-
 # Get the absolute path for the directory where this file is located "here"
 here = os.path.abspath(os.path.dirname(__file__))
 
 # Get the absolute path for the project / repository root
 project_root = os.path.abspath(os.path.join(here, "../.."))
-
 
 # Extend the system path to include the project root and import the env files
 sys.path.insert(0, project_root)
@@ -76,31 +72,20 @@ next_data['nodes'] = []
 next_data['links'] = []
 next_icon = {'Switches and Hubs':'switch', 'Routers':'router'}
 
-# create spark session object
-spark = ciscosparkapi.CiscoSparkAPI(access_token=env_user.SPARK_ACCESS_TOKEN)
-print("Oh yeah... I'm also connected to Cisco Spark as:")
-print(spark.people.me())
-print("...and I'm posting things to the following Spark Room:")
-print(spark.rooms.get(env_user.SPARK_ROOM_ID))
-
 def dnac_open_session(dnac_session, dnac_host, dnac_headers, dnac_username, dnac_password):
-
-    # DNAC Login request to obtain session cookie
+    """DNA Center login and adding cookie to session"""
     print('DNAC Login to ' + dnac_host + ' as ' + dnac_username + ' ...')
     dnac_auth_api='https://%s/api/system/v1/auth/login' % dnac_host
     r = dnac_session.get(dnac_auth_api, verify=False, headers=dnac_headers, auth=HTTPBasicAuth(dnac_username, dnac_password))
     r.raise_for_status()
-    print('DNAC Login: Response Headers: ' + str(r.headers))
-    print('DNAC Login: Response Body: ' + r.text)
+    # print('DNAC Login: Response Headers: ' + str(r.headers))
+    # print('DNAC Login: Response Body: ' + r.text)
 
-    # extract cookie from login response headers and add to session object
     session_token_val = ((r.headers['Set-Cookie']).split('=')[1]).split(';')[0]
     # session_token_val = r.json()["Token"]
-
     cookies = { "X-JWT-ACCESS-TOKEN" : session_token_val }
     dnac_session.cookies.update(cookies)
     print('DNAC Login: Session Cookie : ' + str(cookies))
-
     return r
 
 def dnac_get_device_count(dnac_session, dnac_host, dnac_headers):
@@ -165,7 +150,6 @@ with requests.Session() as dnac_session:
         c = dnac_get_module_count(dnac_session, dnac_host, dnac_headers, d['id'])
         if c > 1:
             print('Device ' + d['id'] + ' with NeXt ID '+str(i)+' has '+str(c)+' modules')
-
             next_data['nodes'].append({'id ': i,
                              'x': (i*20),
                              'y': 80,
@@ -186,6 +170,7 @@ with requests.Session() as dnac_session:
                 next_data['links'].append({'source': di, 'target': i})
                 i += 1
 
+    # printing JSON representation to stdout
     pprint(json.dumps(next_data))
 
     # writing JavaScript representation into NeXt data file
@@ -194,3 +179,6 @@ with requests.Session() as dnac_session:
         outfile.write(next_data_file_header)
         outfile.write(json.dumps(next_data))
         outfile.write(next_data_file_footer)
+
+    print('\n\nNetwork Devices and Modules from DNA Center have been written to '+next_data_file)
+    print('Open next-topology.html in Chrome Browser, so see the result')
