@@ -1,11 +1,11 @@
 #!/usr/bin/env python
-"""DNAC Center North-Bound API Mission - Sample Solution
+"""DNAC Center North-Bound API Mission - edit this file
 
-This is a sample solution for the DNAC Center North-Bound API Mission. The
-script
- - retrieves network devices and modules from DNA Cener,
- - puts them into a ptyhon JSON object
- - writes a JavaScript representation into a .js file which is formatted
+This is your starting point for the DNAC Center North-Bound API Mission.
+Edit this file (search for lines below a MISSION comment) to
+ - retrieve network devices and modules from DNA Cener,
+ - put them into a ptyhon JSON object
+ - write a JavaScript representation into a .js file which is formatted
    to be use with the NeXt UI Toolkit for visualization
 
 Script Dependencies:
@@ -59,13 +59,15 @@ import env_lab      # noqa
 import env_user     # noqa
 
 spark = ciscosparkapi.CiscoSparkAPI(access_token=env_user.SPARK_ACCESS_TOKEN)
+spark.messages.create(env_user.SPARK_ROOM_ID,
+                      text='MISSION: DNA Center accepted - working on it ...')
 
 dnac_host = env_lab.DNA_CENTER['host']
 dnac_user = env_lab.DNA_CENTER['username']
 dnac_pass = env_lab.DNA_CENTER['password']
 dnac_headers = {'content-type': 'application/json'}
 
-next_data_file = 'next-data-solution.js'
+next_data_file = 'next-data-mission.js'
 next_data_file_header = '/*DO NOT EDIT - NeXt Topology file generated from DNA Center Device and Module Inventory*/\n\nvar topologyData = \n'
 next_data_file_footer = '\n/*DO NOT EDIT - EOF*/\n'
 next_data = {}
@@ -213,10 +215,11 @@ with requests.Session() as dnac_session:
         outfile.write(json.dumps(next_data, indent=4, sort_keys=True))
         outfile.write(next_data_file_footer)
 
-    message = spark.messages.create(env_user.SPARK_ROOM_ID,
-              files=[next_data_file],
-              text='MISSION: DNA Center - having a look at the sample solution')
-    print(message)
+    # MISSION : TBD once you're done, uncomment the 4 lines below to share
+    # message = spark.messages.create(env_user.SPARK_ROOM_ID,
+    #           files=[next_data_file],
+    #           text='MISSION: DNA Center accepted - here\'s my solution')
+    # print(message)
 
     print('\n\n')
     print('Network Devices and Modules from DNA Center have been written to ' +
