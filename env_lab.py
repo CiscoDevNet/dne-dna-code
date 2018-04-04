@@ -53,9 +53,71 @@ if ENVIRONMENT_IN_USE == "sandbox":
         "password": "Cisco123!"
     }
 
+    # Values for the Always On IOS XE Sandbox
+    IOS_XE_1 = {
+        "host": "ios-xe-mgmt.cisco.com",
+        "username": "root",
+        "password": "D_Vay!_10&"
+        "netconf_port": 10000,
+        "restconf_port": 9443,
+        "ssh_port": 8181
+    }
+
+    # Values for the Reservable IOS XE Sandbox
+    IOS_XE_2 = {
+        "host": "10.10.20.48",
+        "username": "cisco",
+        "password": "cisco_1234!"
+        "netconf_port": 830,
+        "restconf_port": 443,
+        "ssh_port": 22
+    }
+
+    # Values for the Always On NX-OS Sandbox
+    NXOS_1 = {
+        "host": "sbx-nxos-mgmt.cisco.com",
+        "username": "admin",
+        "password": "Admin_1234!"
+        "netconf_port": 10000,
+        "restconf_port": 443,
+        "nxapi_port": 80,
+        "ssh_port": 8181
+    }
+
 elif ENVIRONMENT_IN_USE == "express":
     DNA_CENTER = {
         "host": "sandboxdnac.cisco.com",
         "username": "devnetuser",
         "password": "Cisco123!"
+    }
+
+    # Values for the CSR1 from the dCloud Pod
+    IOS_XE_1 = {
+        "host": "198.18.134.11",
+        "username": "admin",
+        "password": "C1sco12345"
+        "netconf_port": 830,
+        "restconf_port": 443,
+        "ssh_port": 22
+    }
+
+    # Values for the CSR2 from the dCloud Pod
+    IOS_XE_2 = {
+        "host": "198.18.134.12",
+        "username": "admin",
+        "password": "C1sco12345"
+        "netconf_port": 830,
+        "restconf_port": 443,
+        "ssh_port": 22
+    }
+
+    # Values for the Always On NX-OS Sandbox
+    NXOS_1 = {
+        "host": "sbx-nxos-mgmt.cisco.com",
+        "username": "admin",
+        "password": "Admin_1234!"
+        "netconf_port": 10000,
+        "restconf_port": 443,
+        "nxapi_port": 80,
+        "ssh_port": 8181
     }
