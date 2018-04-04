@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+
+  merakireceiver:
+    build: ./locationscanningreceiver
+    restart: on-failure
+    container_name: merakireceiver
+    ports:
+     - "5001:5001"
+    volumes:
+     - .:/locationscanningreceiver
+
+  merakisimulator:
+    build: ./locationscanningsimulator
+    restart: on-failure
+    container_name: merakisimulator
+    ports:
+     - "5002:5002"
+    volumes:
+     - .:/locationscanningsimulator
