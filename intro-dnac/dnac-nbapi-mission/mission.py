@@ -2,11 +2,16 @@
 """DNAC Center North-Bound API Mission - edit this file
 
 This is your starting point for the DNAC Center North-Bound API Mission.
-Edit this file (search for lines below a MISSION comment) to
+Edit this file to
  - retrieve network devices and modules from DNA Cener,
  - put them into a ptyhon JSON object
  - write a JavaScript representation into a .js file which is formatted
    to be use with the NeXt UI Toolkit for visualization
+
+There are a few places to edit (search for MISSION comments)
+ 1 Complete putting module data into a python JSON object
+ 2 Create a JavaScript String representation of the above
+ 3 And finally, once you're happy with the result, share it via spark
 
 Script Dependencies:
     requests
@@ -196,30 +201,37 @@ with requests.Session() as dnac_session:
                                        dnac_headers,
                                        d['id'])
             for m in modules:
-                next_data['nodes'].append({'id ': i,
-                                           'x': (i*20),
-                                           'y': 20*(i-di+1),
-                                           'name': m['partNumber'],
-                                           'serial': d['serialNumber'],
-                                           'icon': 'server'})
-                next_data['links'].append({'source': di, 'target': i})
+                # MISSION TODO 1: Map device module data from DNA Center to
+                #                node attributes for NeXt UIin next_data.
+                #                Calculate a position on the map and choose
+                #                'server' as the icon type.
+                #                Bonus: can you link modules to parent device?
+
+
+                # END MISSION SECTION 1
                 i += 1
 
+    # MISSION TODO 2: Create a JavaScript String representation of the next_data
+    # Object in python to be used in the NeXt UI data .js file
+    next_json = "MISSION TODO"
+    # END MISSION SECTION 2
+
     # printing JSON representation to stdout
-    print(json.dumps(next_data, indent=4, sort_keys=True))
+    print(next_json)
 
     # writing JavaScript representation into NeXt data file
     with open(next_data_file, 'w', encoding="utf-8") as outfile:
         print('Writing NeXt UI Topology Data File')
         outfile.write(next_data_file_header)
-        outfile.write(json.dumps(next_data, indent=4, sort_keys=True))
+        outfile.write(next_json)
         outfile.write(next_data_file_footer)
 
-    # MISSION : TBD once you're done, uncomment the 4 lines below to share
+    # MISSION TODO 3: Once you're done, uncomment the 4 lines below to share
     # message = spark.messages.create(env_user.SPARK_ROOM_ID,
     #           files=[next_data_file],
     #           text='MISSION: DNA Center accepted - here\'s my solution')
     # print(message)
+    # END MISSION SECTION 3
 
     print('\n\n')
     print('Network Devices and Modules from DNA Center have been written to ' +
