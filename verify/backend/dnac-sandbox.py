@@ -110,11 +110,14 @@ def verify() -> bool:
             c = dnac_get_device_count(dnac_session, dnac_host, dnac_headers)
             h = dnac_get_host_count(dnac_session, dnac_host, dnac_headers)
         except:
-            print('FAILED: No host or device invetory in DNA Center')
+            print('FAILED: No host and device invetory in DNA Center')
             return False
         else:
             print('DNA Center Network Device Count: ' + str(c))
             print('DNA Center Host Count: ' + str(h))
+            if c <= 0 or h <=0:
+                print('FAILED: No host and device invetory in DNA Center')
+                return False
 
     return True
 
