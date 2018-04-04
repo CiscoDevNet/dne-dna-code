@@ -57,7 +57,7 @@ if ENVIRONMENT_IN_USE == "sandbox":
     IOS_XE_1 = {
         "host": "ios-xe-mgmt.cisco.com",
         "username": "root",
-        "password": "D_Vay!_10&"
+        "password": "D_Vay!_10&",
         "netconf_port": 10000,
         "restconf_port": 9443,
         "ssh_port": 8181
@@ -67,7 +67,7 @@ if ENVIRONMENT_IN_USE == "sandbox":
     IOS_XE_2 = {
         "host": "10.10.20.48",
         "username": "cisco",
-        "password": "cisco_1234!"
+        "password": "cisco_1234!",
         "netconf_port": 830,
         "restconf_port": 443,
         "ssh_port": 22
@@ -77,7 +77,7 @@ if ENVIRONMENT_IN_USE == "sandbox":
     NXOS_1 = {
         "host": "sbx-nxos-mgmt.cisco.com",
         "username": "admin",
-        "password": "Admin_1234!"
+        "password": "Admin_1234!",
         "netconf_port": 10000,
         "restconf_port": 443,
         "nxapi_port": 80,
@@ -95,7 +95,7 @@ elif ENVIRONMENT_IN_USE == "express":
     IOS_XE_1 = {
         "host": "198.18.134.11",
         "username": "admin",
-        "password": "C1sco12345"
+        "password": "C1sco12345",
         "netconf_port": 830,
         "restconf_port": 443,
         "ssh_port": 22
@@ -105,7 +105,7 @@ elif ENVIRONMENT_IN_USE == "express":
     IOS_XE_2 = {
         "host": "198.18.134.12",
         "username": "admin",
-        "password": "C1sco12345"
+        "password": "C1sco12345",
         "netconf_port": 830,
         "restconf_port": 443,
         "ssh_port": 22
@@ -115,7 +115,7 @@ elif ENVIRONMENT_IN_USE == "express":
     NXOS_1 = {
         "host": "sbx-nxos-mgmt.cisco.com",
         "username": "admin",
-        "password": "Admin_1234!"
+        "password": "Admin_1234!",
         "netconf_port": 10000,
         "restconf_port": 443,
         "nxapi_port": 80,
