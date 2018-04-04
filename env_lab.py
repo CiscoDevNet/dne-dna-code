@@ -39,7 +39,7 @@ ENVIRONMENT_IN_USE = "sandbox"
 DNA_CENTER = {
     "host": "",
     "username": "",
-    "password": "",
+    "password": ""
 }
 
 # End User Input
@@ -48,14 +48,14 @@ DNA_CENTER = {
 # Set the 'Environment Variables' based on the lab environment in use
 if ENVIRONMENT_IN_USE == "sandbox":
     DNA_CENTER = {
-        "host": "",
-        "username": "",
-        "password": "",
+        "host": "sandboxdnac.cisco.com",
+        "username": "devnetuser",
+        "password": "Cisco123!"
     }
 
 elif ENVIRONMENT_IN_USE == "express":
     DNA_CENTER = {
-        "host": "",
-        "username": "",
-        "password": "",
+        "host": "sandboxdnac.cisco.com",
+        "username": "devnetuser",
+        "password": "Cisco123!"
     }
