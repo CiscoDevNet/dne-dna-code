@@ -1,2 +1,5 @@
 requests
 ciscosparkapi
+netmiko
+ncclient
+requests
