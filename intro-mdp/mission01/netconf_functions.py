@@ -32,13 +32,13 @@ def check_ip(device):
     # MISSION TODO 1: Provide the proper type of NETCONF object needed
     # Create an XML filter for targeted NETCONF queries
     netconf_filter = """
-    <MISSION>
+    <filter>
       <interfaces xmlns="http://openconfig.net/yang/interfaces">
         <interface>
             <name>GigabitEthernet2</name>
         </interface>
       </interface>
-    </MISSION>"""
+    </filter>"""
     # END MISSION SECTION
 
     # print("Opening NETCONF Connection to {}".format(device["conn"]["host"]))
@@ -55,7 +55,7 @@ def check_ip(device):
         # MISSION TODO 2: Provide the appropriate Manager Method Name
         # print("Sending a <get-config> operation to the device.\n")
         # Make a NETCONF <get-config> query using the filter
-        netconf_reply = m.MISSION(source="running", filter=netconf_filter)
+        netconf_reply = m.get_config(source="running", filter=netconf_filter)
     # END MISSION SECTION
 
     # Uncomment the below lines to print the raw XML body
@@ -96,7 +96,7 @@ def set_ip(device):
     # Create an XML configuration template for openconfig-interfaces
     netconf_interface_template = """
     <config>
-        <interfaces MISSION="http://openconfig.net/yang/interfaces">
+        <interfaces xmlns="http://openconfig.net/yang/interfaces">
             <interface>
                 <name>{name}</name>
                 <config>
@@ -135,7 +135,7 @@ def set_ip(device):
 
     # Create NETCONF Payload for device
     # MISSION TODO 4: What String method is used to fill in a template?
-    netconf_data = netconf_interface_template.MISSION(
+    netconf_data = netconf_interface_template.format(
         name="GigabitEthernet2",
         status="true",
         ip_address=device["ip"],
@@ -183,7 +183,7 @@ def clear_ip(device):
                     <subinterface>
                         <index>0</index>
                         <ipv4 xmlns="http://openconfig.net/yang/interfaces/ip"
-                            operation="MISSION" />
+                            operation="delete" />
                         </ipv4>
                     </subinterface>
                 </subinterfaces>
@@ -201,7 +201,7 @@ def clear_ip(device):
 
     # MISSION TODO 6: What Manager method is used to start a session?
     # Open a connection to the network device using ncclient
-    with manager.MISSION(
+    with manager.connect(
         host=device["conn"]["host"],
         port=device["conn"]["netconf_port"],
         username=device["conn"]["username"],
