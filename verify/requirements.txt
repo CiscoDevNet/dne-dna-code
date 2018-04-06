@@ -1,0 +1,5 @@
+ciscosparkapi==0.9.2
+ncclient==0.5.3
+netmiko==1.4.2
+requests==2.18.4
+urllib3==1.22
