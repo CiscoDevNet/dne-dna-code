@@ -32,13 +32,21 @@ def check_ip(device):
     # MISSION TODO 1: Provide the proper type of NETCONF object needed
     # Create an XML filter for targeted NETCONF queries
     netconf_filter = """
+<<<<<<< HEAD
     <MISSION>
+=======
+    <filter>
+>>>>>>> c1818aee21243d06fee6117e55e4a0976e704970
       <interfaces xmlns="http://openconfig.net/yang/interfaces">
         <interface>
             <name>GigabitEthernet2</name>
         </interface>
       </interface>
+<<<<<<< HEAD
     </MISSION>"""
+=======
+    </filter>"""
+>>>>>>> c1818aee21243d06fee6117e55e4a0976e704970
     # END MISSION SECTION
 
     # print("Opening NETCONF Connection to {}".format(device["conn"]["host"]))
@@ -55,7 +63,11 @@ def check_ip(device):
         # MISSION TODO 2: Provide the appropriate Manager Method Name
         # print("Sending a <get-config> operation to the device.\n")
         # Make a NETCONF <get-config> query using the filter
+<<<<<<< HEAD
         netconf_reply = m.MISSION(source="running", filter=netconf_filter)
+=======
+        netconf_reply = m.get_config(source="running", filter=netconf_filter)
+>>>>>>> c1818aee21243d06fee6117e55e4a0976e704970
     # END MISSION SECTION
 
     # Uncomment the below lines to print the raw XML body
@@ -96,7 +108,11 @@ def set_ip(device):
     # Create an XML configuration template for openconfig-interfaces
     netconf_interface_template = """
     <config>
+<<<<<<< HEAD
         <interfaces MISSION="http://openconfig.net/yang/interfaces">
+=======
+        <interfaces xmlns="http://openconfig.net/yang/interfaces">
+>>>>>>> c1818aee21243d06fee6117e55e4a0976e704970
             <interface>
                 <name>{name}</name>
                 <config>
@@ -135,7 +151,11 @@ def set_ip(device):
 
     # Create NETCONF Payload for device
     # MISSION TODO 4: What String method is used to fill in a template?
+<<<<<<< HEAD
     netconf_data = netconf_interface_template.MISSION(
+=======
+    netconf_data = netconf_interface_template.format(
+>>>>>>> c1818aee21243d06fee6117e55e4a0976e704970
         name="GigabitEthernet2",
         status="true",
         ip_address=device["ip"],
@@ -183,7 +203,11 @@ def clear_ip(device):
                     <subinterface>
                         <index>0</index>
                         <ipv4 xmlns="http://openconfig.net/yang/interfaces/ip"
+<<<<<<< HEAD
                             operation="MISSION" />
+=======
+                            operation="delete" />
+>>>>>>> c1818aee21243d06fee6117e55e4a0976e704970
                         </ipv4>
                     </subinterface>
                 </subinterfaces>
@@ -201,7 +225,11 @@ def clear_ip(device):
 
     # MISSION TODO 6: What Manager method is used to start a session?
     # Open a connection to the network device using ncclient
+<<<<<<< HEAD
     with manager.MISSION(
+=======
+    with manager.connect(
+>>>>>>> c1818aee21243d06fee6117e55e4a0976e704970
         host=device["conn"]["host"],
         port=device["conn"]["netconf_port"],
         username=device["conn"]["username"],
