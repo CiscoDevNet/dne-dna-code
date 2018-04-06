@@ -1,0 +1,76 @@
+{
+  "id": "8b40e26d-9fc7-ea6a-64d5-9cb232e3838c",
+  "name": "dnac-nbapi-hello-network-env",
+  "values": [
+    {
+      "enabled": true,
+      "key": "dnac",
+      "value": "sandboxdnac.cisco.com",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "username",
+      "value": "devnetuser",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "password",
+      "value": "Cisco123!",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "token",
+      "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YTU4Y2QzN2UwNWJiYTAwOGVmNjJiOTIiLCJhdXRoU291cmNlIjoiaW50ZXJuYWwiLCJ0ZW5hbnROYW1lIjoiVE5UMCIsInJvbGVzIjpbIjVhMzE1MTYwOTA5MGZiYTY5OGIyZjViNyJdLCJ0ZW5hbnRJZCI6IjVhMzE1MTlkZTA1YmJhMDA4ZWY2MWYwYSIsImV4cCI6MTUxNjk1MjIyNCwidXNlcm5hbWUiOiJkZXZuZXR1c2VyIn0.hu_vfX1OtqHhOHdh_NARWDpGvvI9d9Cpv6mfN1HaQV0",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "port",
+      "value": "443",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "deviceId",
+      "value": "74b69532-5dc3-45a1-a0dd-6d1d10051f27",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "tagId",
+      "value": "63088baa-d1fe-419f-862c-044ccb18c99a",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "taskId",
+      "value": "f5759d3c-f619-4927-b5b6-5bb371f20635",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "pathId",
+      "value": "729ad4c6-fe30-4ad4-916d-ba0a56223fbf",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "GLOBALtime",
+      "value": "1516866600000",
+      "type": "text"
+    },
+    {
+      "enabled": true,
+      "key": "CLIENTtime",
+      "value": "1516866600000",
+      "type": "text"
+    }
+  ],
+  "timestamp": 1516948636125,
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2018-01-26T09:35:18.649Z",
+  "_postman_exported_using": "Postman/5.5.0"
+}

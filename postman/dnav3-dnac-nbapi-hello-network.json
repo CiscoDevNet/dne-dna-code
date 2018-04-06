@@ -1,0 +1,115 @@
+{
+	"info": {
+		"name": "dnav3-dnac-nbapi-hello-network",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [{
+			"name": "1.Ticket",
+			"description": "",
+			"item": [{
+				"name": "https://{{dnac}}/api/system/v1/auth/token",
+				"event": [{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"token\", data.Token);"
+						]
+					}
+				}],
+				"request": {
+					"auth": {
+						"type": "basic",
+						"basic": [{
+								"key": "username",
+								"value": "{{username}}",
+								"type": "string"
+							},
+							{
+								"key": "password",
+								"value": "{{password}}",
+								"type": "string"
+							},
+							{
+								"key": "saveHelperData",
+								"value": true,
+								"type": "boolean"
+							},
+							{
+								"key": "showPassword",
+								"value": false,
+								"type": "boolean"
+							}
+						]
+					},
+					"method": "POST",
+					"header": [{
+							"key": "content-type",
+							"value": "application/json",
+							"disabled": true
+						},
+						{
+							"key": "Authorization",
+							"value": "Basic YWRtaW46R3JhcGV2aW5lMQ=="
+						}
+					],
+					"body": {
+						"mode": "raw",
+						"raw": ""
+					},
+					"url": {
+						"raw": "https://{{dnac}}:{{port}}/api/system/v1/auth/token",
+						"protocol": "https",
+						"host": [
+							"{{dnac}}"
+						],
+						"port": "{{port}}",
+						"path": [
+							"api",
+							"system",
+							"v1",
+							"auth",
+							"token"
+						]
+					},
+					"description": ""
+				},
+				"response": []
+			}]
+		},
+		{
+			"name": "2.Network Device",
+			"description": "",
+			"item": [{
+				"name": "https://{{dnac}}:{{port}}/api/v1/network-device/1/14",
+				"request": {
+					"method": "GET",
+					"header": [{
+						"key": "x-auth-token",
+						"value": "{{token}}"
+					}],
+					"body": {},
+					"url": {
+						"raw": "https://{{dnac}}:{{port}}/api/v1/network-device/1/14",
+						"protocol": "https",
+						"host": [
+							"{{dnac}}"
+						],
+						"port": "{{port}}",
+						"path": [
+							"api",
+							"v1",
+							"network-device",
+							"1",
+							"14"
+						]
+					},
+					"description": "This request uses the \"token\" variable generated from the POST request to get first 14 network-devices"
+				},
+				"response": []
+			}]
+		}
+	]
+}
