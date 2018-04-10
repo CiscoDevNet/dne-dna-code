@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "e15f88fe-57c8-ff09-d177-678f6254a145",
+		"name": "Deckofcards",
+		"description": "The Deck of Cards API provides a programmatic way to make requests for cards in a standard deck or to shuffle cards in a deck. Multiple decks can be shuffled or drawn from. See https://deckofcardsapi.com for more information. No authorization is needed.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Draw three cards",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://deckofcardsapi.com/api/deck/{{deck_id}}/draw/?count=3",
+					"protocol": "https",
+					"host": [
+						"deckofcardsapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"deck",
+						"{{deck_id}}",
+						"draw",
+						""
+					],
+					"query": [
+						{
+							"key": "count",
+							"value": "3"
+						}
+					]
+				},
+				"description": "deckofcardsapi.com "
+			},
+			"response": []
+		},
+		{
+			"name": "Shuffle single deck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1",
+					"protocol": "https",
+					"host": [
+						"deckofcardsapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"deck",
+						"new",
+						"shuffle",
+						""
+					],
+					"query": [
+						{
+							"key": "deck_count",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Shuffle the cards in a single deck"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "8357713b-c0fc-4ff4-94cd-691c1dbb2d16",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "63700483-f301-47b3-97c3-0a794eb389be",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

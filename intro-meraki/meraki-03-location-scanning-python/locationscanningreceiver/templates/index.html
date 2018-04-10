@@ -1,0 +1,34 @@
+{% block body %}
+<html>
+  <head>
+    <title>Meraki Location Scanning Python Flask Server demo app</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='sample.css')}}">
+    <script>TypekitConfig={kitId:"hum1oye",scriptTimeout:1.5e3},function(){var a=document.getElementsByTagName("html")[0];a.className+=" wf-loading";var b=setTimeout(function(){a.className=a.className.replace(/(\s|^)wf-loading(\s|$)/g,""),a.className+=" wf-inactive"},TypekitConfig.scriptTimeout),c=document.createElement("script");c.src="//use.typekit.com/"+TypekitConfig.kitId+".js",c.type="text/javascript",c.async="true",c.onload=c.onreadystatechange=function(){var a=this.readyState;if(!a||a=="complete"||a=="loaded"){clearTimeout(b);try{Typekit.load(TypekitConfig)}catch(c){}}};var d=document.getElementsByTagName("script")[0];d.parentNode.insertBefore(c,d)}()</script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzUqopXwWqKX_TMOFrW7Cxv60ywogA8vM&v=3.exp&sensor=false&libraries=places"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='sample.js')}}"></script>
+  </head>
+  <body>
+    <div id="masthead">
+      <div id="masthead-content">
+        <img src="https://meraki.cisco.com/img/cisco-meraki.png"/>
+      </div>
+    </div>
+    <div id="content">
+      <h1>Meraki Location Scanning Demo</h1>
+      <div id="mac-address">
+        <input id="mac-field" type="text" placeholder="Enter MAC address" />&nbsp;
+        <button id="track">Follow</button>&nbsp;
+        <button id="all">View All</button>
+      </div>
+      <div id="last-mac"></div>
+      <div class="small"><span class="bold">Clients in the wrong place?</span> Make sure your APs are placed properly in Dashboard.</div>
+      <div id="map-wrapper">
+        <div id="map-canvas"></div>
+      </div>
+    </div>
+  </body>
+</html>
+{% endblock %}
