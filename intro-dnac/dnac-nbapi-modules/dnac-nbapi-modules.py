@@ -28,22 +28,16 @@ SOFTWARE.
 import sys
 import requests
 import json
-import ciscosparkapi
 from requests.auth import HTTPBasicAuth
 
 requests.packages.urllib3.disable_warnings()
 
 import env_lab      # noqa
-import env_user     # noqa
 
 DNAC = env_lab.DNA_CENTER['host']
 DNAC_USER = env_lab.DNA_CENTER['username']
 DNAC_PASSWORD = env_lab.DNA_CENTER['password']
 DNAC_PORT = env_lab.DNA_CENTER['port']
-
-data_file = 'modules.json'
-
-spark = ciscosparkapi.CiscoSparkAPI(access_token=env_user.SPARK_ACCESS_TOKEN)
 
 # -------------------------------------------------------------------
 # Helper functions
@@ -104,12 +98,5 @@ if __name__ == "__main__":
 
         print_info(modules)
 
-        with open(data_file, 'w', encoding="utf-8") as outfile:
-            print('Writing Modules to Data File')
-            outfile.write(json.dumps(modules, indent=4, sort_keys=True))
-
-        message = spark.messages.create(env_user.SPARK_ROOM_ID,
-            files=[data_file],
-            text='DNAC Modules Learning Lab completed')
     else:
         print("Usage: %s device_ip" % sys.argv[0])
