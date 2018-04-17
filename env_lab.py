@@ -50,7 +50,8 @@ if ENVIRONMENT_IN_USE == "sandbox":
     DNA_CENTER = {
         "host": "sandboxdnac.cisco.com",
         "username": "devnetuser",
-        "password": "Cisco123!"
+        "password": "Cisco123!",
+	"port": 443
     }
 
     # Values for the Always On IOS XE Sandbox
