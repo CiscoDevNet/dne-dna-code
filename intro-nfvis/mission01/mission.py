@@ -65,6 +65,8 @@ def nfv_get_image_configuration(s, url):
 
     return r_image_configuration
 
+# END MISSION SECTION
+
 # MISSION TODO 2: Provide the header for content data
 
 def nfv_verify_device_deployment(s, url):
@@ -82,6 +84,8 @@ def nfv_verify_device_deployment(s, url):
         # Set headers back to default
         s.headers = ({'MISSION': 'application/vnd.yang.data+json', 'Accept': 'application/vnd.yang.data+json'})     
         return r_nfv_deployment_page
+
+# END MISSION SECTION
 
 def nfv_get_count_of_vm_deployments(s, url):
     u = url + '/api/config/vm_lifecycle/tenants/tenant/admin/deployments'
@@ -103,6 +107,8 @@ def nfv_create_newbridge(s, url, new_bridge):
     else:
         return r_create_bridge
 
+# END MISSION SECTION
+
 def nfv_create_new_network(s, url, new_network, new_bridge):
     u = url + "/api/config/networks"
     createnet_payload = '{ "network": {"name": "%s" , "bridge": "%s" }}' % (new_network, new_bridge)
@@ -120,6 +126,8 @@ def nfv_deploy_vm(s, url, data):
         return True
     else:
         return False
+
+# END MISSION SECTION
 
 def nfv_delete_vm(s, url, data):
 	u = url + "/api/config/vm_lifecycle/tenants/tenant/admin/deployments/deployment/" + data
@@ -157,6 +165,8 @@ if __name__ == '__main__':
     images = nfv_get_image_configuration(s,url)
     for image in images['vmlc:images']['MISSION']:
         print (image['name'])
+
+# END MISSION SECTION
 
     print ("STEP 3.1 - Create bridge")
     r_create_lanbridge = nfv_create_newbridge(s, url, new_bridge)
