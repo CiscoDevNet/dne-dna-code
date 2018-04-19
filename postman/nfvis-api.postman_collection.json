@@ -1,0 +1,415 @@
+{
+	"info": {
+		"_postman_id": "25f5fdbd-61d1-4204-951a-d818862a07d3",
+		"name": "nfvis-api",
+		"description": "These are the REST APIs you will use as part of DevNetExpress3 for running against NFVIS.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "01-01 Get System Settings",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "8310754e-33ca-43e8-a7e1-d3e63338dd25",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "{{Content-Type}}"
+					},
+					{
+						"key": "Accept",
+						"value": "{{Accept}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://198.18.134.46/api/config/system/settings",
+					"protocol": "https",
+					"host": [
+						"198",
+						"18",
+						"134",
+						"46"
+					],
+					"path": [
+						"api",
+						"config",
+						"system",
+						"settings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "01-02 Get Images",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "8310754e-33ca-43e8-a7e1-d3e63338dd25",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "{{Content-Type}}"
+					},
+					{
+						"key": "Accept",
+						"value": "{{Accept}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://198.18.134.46/api/config/vm_lifecycle/images",
+					"protocol": "https",
+					"host": [
+						"198",
+						"18",
+						"134",
+						"46"
+					],
+					"path": [
+						"api",
+						"config",
+						"vm_lifecycle",
+						"images"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "02-01 Get Running VNFs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c812d0df-81b0-42d6-9a22-386ccdd68b1c",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"name\", jsonData[\"vmlc:deployments\"][\"deployment\"][0][\"name\"]);"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "{{Content-Type}}"
+					},
+					{
+						"key": "Accept",
+						"value": "{{Accept}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://198.18.134.46/api/config/vm_lifecycle/tenants/tenant/admin/deployments",
+					"protocol": "https",
+					"host": [
+						"198",
+						"18",
+						"134",
+						"46"
+					],
+					"path": [
+						"api",
+						"config",
+						"vm_lifecycle",
+						"tenants",
+						"tenant",
+						"admin",
+						"deployments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "02-02 Get Running VNFs Detailed",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "{{Content-Type}}"
+					},
+					{
+						"key": "Accept",
+						"value": "{{Accept}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://198.18.134.46/api/config/vm_lifecycle/tenants/tenant/admin/deployments?deep",
+					"protocol": "https",
+					"host": [
+						"198",
+						"18",
+						"134",
+						"46"
+					],
+					"path": [
+						"api",
+						"config",
+						"vm_lifecycle",
+						"tenants",
+						"tenant",
+						"admin",
+						"deployments"
+					],
+					"query": [
+						{
+							"key": "deep",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "03-01 Delete Running VNF",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "{{Content-Type}}"
+					},
+					{
+						"key": "Accept",
+						"value": "{{Accept}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://198.18.134.46/api/config/vm_lifecycle/tenants/tenant/admin/deployments/deployment/{{name}}",
+					"protocol": "https",
+					"host": [
+						"198",
+						"18",
+						"134",
+						"46"
+					],
+					"path": [
+						"api",
+						"config",
+						"vm_lifecycle",
+						"tenants",
+						"tenant",
+						"admin",
+						"deployments",
+						"deployment",
+						"{{name}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "04-01 Get Networks",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "{{Content-Type}}"
+					},
+					{
+						"key": "Accept",
+						"value": "{{Accept}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://198.18.134.46/api/config/networks?deep",
+					"protocol": "https",
+					"host": [
+						"198",
+						"18",
+						"134",
+						"46"
+					],
+					"path": [
+						"api",
+						"config",
+						"networks"
+					],
+					"query": [
+						{
+							"key": "deep",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "05-01 Deploy ISRv",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{Authorization}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "{{Content-Type}}"
+					},
+					{
+						"key": "Accept",
+						"value": "{{Accept}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"deployment\": {\r\n        \"name\": \"ISRv\",\r\n\t\t\"vm_group\": {\r\n\t\t\t\"name\": \"ROUTER\",\r\n\t\t\t\"image\": \"isrv-universalk9.16.06.02.tar.gz\",\r\n\t\t\t\"flavor\": \"ISRv-small\",\r\n\t\t\t\"bootup_time\": 600,\r\n\t\t\t\"recovery_wait_time\": 0,\r\n\t\t\t\"interfaces\": {\r\n\t\t\t\t\"interface\": [{\r\n\t\t\t\t\t\"nicid\": 0,\r\n\t\t\t\t\t\"network\": \"int-mgmt-net\"\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\"nicid\": 1,\r\n\t\t\t\t\t\"network\": \"wan-net\"\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\"nicid\": 2,\r\n\t\t\t\t\t\"network\": \"lan-net\"\r\n\t\t\t\t\t}\r\n\t\t\t\t]\r\n\t\t\t},\r\n\t\t\t\"kpi_data\": {\r\n\t\t\t\t\"kpi\": {\r\n\t\t\t\t\t\"event_name\": \"VM_ALIVE\",\r\n\t\t\t\t\t\"metric_value\": \"1\",\r\n\t\t\t\t\t\"metric_cond\": \"GT\",\r\n\t\t\t\t\t\"metric_type\": \"UINT32\",\r\n\t\t\t\t\t\"metric_collector\": {\r\n\t\t\t\t\t\t\"type\": \"ICMPPing\",\r\n\t\t\t\t\t\t\"nicid\": 0,\r\n\t\t\t\t\t\t\"poll_frequency\": 3,\r\n\t\t\t\t\t\t\"polling_unit\": \"seconds\",\r\n\t\t\t\t\t\t\"continuous_alarm\": false\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t},\r\n\t\t\t\"rules\": {\r\n\t\t\t\t\"admin_rules\": {\r\n\t\t\t\t\t\"rule\": {\r\n\t\t\t\t\t\t\"event_name\": \"VM_ALIVE\",\r\n\t\t\t\t\t\t\"action\": [\r\n\t\t\t\t\t\t\t\"ALWAYS log\",\r\n\t\t\t\t\t\t\t\"FALSE recover autohealing\",\r\n\t\t\t\t\t\t\t\"TRUE servicebooted.sh\"\r\n\t\t\t\t\t\t]\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t},\r\n\t\t\t\"config_data\": {\r\n\t\t\t\t\"configuration\": {\r\n\t\t\t\t\t\"dst\": \"bootstrap_config\",\r\n\t\t\t\t\t\"variable\": [{\r\n\t\t\t\t\t\t\"name\": \"TECH_PACKAGE\",\r\n\t\t\t\t\t\t\"val\": \"ax\"\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t]\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n}\t\t\t\t\t\t\t"
+				},
+				"url": {
+					"raw": "https://198.18.134.46/api/config/vm_lifecycle/tenants/tenant/admin/deployments",
+					"protocol": "https",
+					"host": [
+						"198",
+						"18",
+						"134",
+						"46"
+					],
+					"path": [
+						"api",
+						"config",
+						"vm_lifecycle",
+						"tenants",
+						"tenant",
+						"admin",
+						"deployments"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "C1sco12345_",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "560b1a3a-dd5f-4efe-9af5-846779abfae7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "7e1df55e-9132-419c-8526-eaa77b604d87",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "1573cc71-5126-43db-ae8c-f669d293f666",
+			"key": "Content-Type",
+			"value": "application/vnd.yang.data+json",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "55fcc5c0-9f7b-4eb9-93e5-7083c9c605cf",
+			"key": "Accept",
+			"value": "application/vnd.yang.data+json",
+			"type": "string",
+			"description": ""
+		}
+	]
+}
