@@ -26,12 +26,23 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+
+import os
 import sys
 import json
 import requests
 from requests.auth import HTTPBasicAuth
 requests.packages.urllib3.disable_warnings()
 
+# Get the absolute path for the directory where this file is located "here"
+here = os.path.abspath(os.path.dirname(__file__))
+
+# Get the absolute path for the project / repository root
+project_root = os.path.abspath(os.path.join(here, "../.."))
+
+
+# Extend the system path to include the project root and import the env files
+sys.path.insert(0, project_root)
 import env_lab      # noqa
 #import env_user     # noqa
 
