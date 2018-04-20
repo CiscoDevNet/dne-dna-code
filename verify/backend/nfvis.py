@@ -78,7 +78,7 @@ def verify() -> bool:
     else:
         pingstatus = "Ping Failed"
         print("  " + pingstatus)
-            return False
+        return False
     
     # Test: Is the REST API running
     r = nfv_get_networks_configuration(s, url)
