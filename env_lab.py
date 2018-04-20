@@ -93,6 +93,13 @@ elif ENVIRONMENT_IN_USE == "express":
         "password": "Cisco123!"
     }
 
+    NFVIS_SERVER = {
+        "host": "198.18.134.46",
+        "port": 443,
+        "username": "admin",
+        "password": "C1sco12345_"
+    }
+
     # Values for the CSR1 from the dCloud Pod
     IOS_XE_1 = {
         "host": "198.18.134.11",

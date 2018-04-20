@@ -31,9 +31,20 @@ SOFTWARE.
 import requests
 import json
 import os
+import sys
 import nfvis_payload
 import time
 import ciscosparkapi
+
+# Get the absolute path for the directory where this file is located "here"
+here = os.path.abspath(os.path.dirname(__file__))
+
+# Get the absolute path for the project / repository root
+project_root = os.path.abspath(os.path.join(here, "../.."))
+
+
+# Extend the system path to include the project root and import the env files
+sys.path.insert(0, project_root)
 
 import env_lab
 import env_user
@@ -77,12 +88,12 @@ def nfv_verify_device_deployment(s, url):
 
     if nfv_deployment_page.status_code != 200:
         # Set headers back to default
-        s.headers = ({'MISSION': 'application/vnd.yang.data+json', 'Accept': 'application/vnd.yang.data+json'}) 
+        s.headers = ({'MISSION': 'application/vnd.yang.data+json', 'Accept': 'application/vnd.yang.data+json'})
         return False
     else:
         r_nfv_deployment_page = json.loads(nfv_deployment_page.content)
         # Set headers back to default
-        s.headers = ({'MISSION': 'application/vnd.yang.data+json', 'Accept': 'application/vnd.yang.data+json'})     
+        s.headers = ({'MISSION': 'application/vnd.yang.data+json', 'Accept': 'application/vnd.yang.data+json'})
         return r_nfv_deployment_page
 
 # END MISSION SECTION
@@ -119,7 +130,7 @@ def nfv_create_new_network(s, url, new_network, new_bridge):
 
 def nfv_deploy_vm(s, url, data):
     u = url + "/api/config/vm_lifecycle/tenants/tenant/admin/deployments"
-    
+
     deployed_vm_page = s.post(u, data=data)
     r_deployed_vm_page = str(deployed_vm_page)
     if "MISSION" in r_deployed_vm_page:
@@ -158,7 +169,7 @@ if __name__ == '__main__':
             nfv_delete_vm(s, url, delete_deployment)
             time.sleep(10)
 
-# MISSION TODO 5: Specify the correct parameter to parse and extract from the 
+# MISSION TODO 5: Specify the correct parameter to parse and extract from the
 # output below
 
     print ("STEP 2 - Verify images exist")
