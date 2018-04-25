@@ -49,6 +49,7 @@ DNA_CENTER = {
 if ENVIRONMENT_IN_USE == "sandbox":
     DNA_CENTER = {
         "host": "sandboxdnac.cisco.com",
+        "port": 443,
         "username": "devnetuser",
         "password": "Cisco123!"
     }
@@ -87,8 +88,16 @@ if ENVIRONMENT_IN_USE == "sandbox":
 elif ENVIRONMENT_IN_USE == "express":
     DNA_CENTER = {
         "host": "sandboxdnac.cisco.com",
+        "port": 443,
         "username": "devnetuser",
         "password": "Cisco123!"
+    }
+
+    NFVIS_SERVER = {
+        "host": "198.18.134.46",
+        "port": 443,
+        "username": "admin",
+        "password": "C1sco12345_"
     }
 
     # Values for the CSR1 from the dCloud Pod
