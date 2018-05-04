@@ -151,8 +151,12 @@ def dnac_get_module_count(dnac_session, dnac_host, dnac_headers, device_id):
 
 def dnac_get_modules(dnac_session, dnac_host, dnac_headers, device_id):
     """DNAC Modules of a Network Device"""
-    tmp_url = 'https://%s/api/v1/network-device/module' % dnac_host
-    tmp_params = {'deviceId': device_id}
+    # MISSION TODO 1: Complete the DNA Center API call below to
+    #                 get a list of modules for the specific
+    #                 network device referenced by device_id
+    tmp_url = 'https://%s/api/v1/MISSION' % dnac_host
+    tmp_params = {MISSION}
+    # END MISSION SECTION 1
 
     r = dnac_session.get(tmp_url,
                          verify=False,
@@ -201,14 +205,13 @@ with requests.Session() as dnac_session:
                                        dnac_headers,
                                        d['id'])
             for m in modules:
-                # MISSION TODO 1: Map device module data from DNA Center to
-                #                node attributes for NeXt UIin next_data.
-                #                Calculate a position on the map and choose
-                #                'server' as the icon type.
-                #                Bonus: can you link modules to parent device?
-
-
-                # END MISSION SECTION 1
+                next_data['nodes'].append({'id ': i,
+                                           'x': (i*20),
+                                           'y': 20*(i-di+1),
+                                           'name': m['partNumber'],
+                                           'serial': d['serialNumber'],
+                                           'icon': 'server'})
+                next_data['links'].append({'source': di, 'target': i})
                 i += 1
 
     # MISSION TODO 2: Create a JavaScript String representation of the next_data
