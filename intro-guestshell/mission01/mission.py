@@ -1,8 +1,8 @@
 #!/usr/bin/env python
-"""Sends configuration difference to Spark.
+"""Sends configuration difference to Webex Teams, formerly Spark.
 
 Compares the current running configuration and the saved running
-configuration, creates diff and sends it to Spark
+configuration, creates diff and sends it to a Webex Teams room.
 Should be invoked after every configuration change by EEM.
 
 
