@@ -76,7 +76,7 @@ dnac_pass = env_lab.DNA_CENTER['password']
 dnac_headers = {'content-type': 'application/json'}
 
 # Details for the NEXT UI File
-next_data_file = 'next-data-solution.js'
+next_data_file = 'next-data-mission.js'
 next_data_file_header = '/*DO NOT EDIT - NeXt Topology file generated from DNA Center Device and Module Inventory*/\n\nvar topologyData = \n'
 next_data_file_footer = '\n/*DO NOT EDIT - EOF*/\n'
 next_data = {}
