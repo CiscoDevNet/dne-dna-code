@@ -9,9 +9,10 @@ Edit this file to
    to be use with the NeXt UI Toolkit for visualization
 
 There are a few places to edit (search for MISSION comments)
- 1 Complete putting module data into a python JSON object
- 2 Create a JavaScript String representation of the above
- 3 And finally, once you're happy with the result, share it via spark
+ 1 Provide the HTTP method type to retrieve information
+ 2 Complete the URL to retrieve network devices
+ 3 Complete the URL to retrieve device modules
+ 4 Complete the URL to retrive a count of modules
 
 Script Dependencies:
     requests
@@ -63,16 +64,19 @@ sys.path.insert(0, project_root)
 import env_lab      # noqa
 import env_user     # noqa
 
-spark = ciscosparkapi.CiscoSparkAPI(access_token=env_user.SPARK_ACCESS_TOKEN)
-spark.messages.create(env_user.SPARK_ROOM_ID,
-                      text='MISSION: DNA Center accepted - working on it ...')
 
+# Create a Cisco Spark object
+spark = ciscosparkapi.CiscoSparkAPI(access_token=env_user.SPARK_ACCESS_TOKEN)
+
+
+# Details for DNA Center Platform API calls
 dnac_host = env_lab.DNA_CENTER['host']
 dnac_user = env_lab.DNA_CENTER['username']
 dnac_pass = env_lab.DNA_CENTER['password']
 dnac_headers = {'content-type': 'application/json'}
 
-next_data_file = 'next-data-mission.js'
+# Details for the NEXT UI File
+next_data_file = 'next-data-solution.js'
 next_data_file_header = '/*DO NOT EDIT - NeXt Topology file generated from DNA Center Device and Module Inventory*/\n\nvar topologyData = \n'
 next_data_file_footer = '\n/*DO NOT EDIT - EOF*/\n'
 next_data = {}
@@ -108,22 +112,27 @@ def dnac_open_session(dnac_session,
     return r
 
 
+# MISSION TODO 1: What type of HTTP method is used to retrieve information
+#                 from DNA Center Platform?
 def dnac_get_device_count(dnac_session, dnac_host, dnac_headers):
     """DNAC Network Device Count"""
     tmp_url = 'https://%s/api/v1/network-device/count' % dnac_host
-    r = dnac_session.get(tmp_url, verify=False, headers=dnac_headers)
+    r = dnac_session.MISSION(tmp_url, verify=False, headers=dnac_headers)
     r.raise_for_status()
     # print('DNAC Response Body: ' + r.text)
     return r.json()['response']
+# END MISSION SECTION
 
 
+# MISSION TODO 2: Complete the URL to retrieve the Network Devices
 def dnac_get_devices(dnac_session, dnac_host, dnac_headers):
     """DNAC Network Devices"""
-    tmp_url = 'https://%s/api/v1/network-device' % dnac_host
+    tmp_url = 'https://%s/api/v1/MISSION' % dnac_host
     r = dnac_session.get(tmp_url, verify=False, headers=dnac_headers)
     r.raise_for_status()
     # print('DNAC Response Body: ' + r.text)
     return r.json()['response']
+# END MISSION SECTION
 
 
 def dnac_get_host_count(dnac_session, dnac_host, dnac_headers):
@@ -135,23 +144,27 @@ def dnac_get_host_count(dnac_session, dnac_host, dnac_headers):
     return r.json()['response']
 
 
-def dnac_get_module_count(dnac_session, dnac_host, dnac_headers, device_id):
-    """DNAC Module Count of a Network Device"""
-    tmp_url = 'https://%s/api/v1/network-device/module/count' % dnac_host
-    tmp_params = {'deviceId': device_id}
-
-    r = dnac_session.get(tmp_url,
-                         verify=False,
-                         headers=dnac_headers,
-                         params=tmp_params)
-    r.raise_for_status()
-    # print('DNAC Response Body: ' + r.text)
-    return r.json()['response']
-
-
+# MISSION TODO 3: Complete the URL to retrieve the Modules about a device
 def dnac_get_modules(dnac_session, dnac_host, dnac_headers, device_id):
     """DNAC Modules of a Network Device"""
-    tmp_url = 'https://%s/api/v1/network-device/module' % dnac_host
+    tmp_url = 'https://%s/api/v1/' % dnac_host
+    tmp_url = tmp_url + 'network-device/MISSION?MISSION=%s' % device_id
+
+    r = dnac_session.get(tmp_url,
+                         verify=False,
+                         headers=dnac_headers
+                         )
+    r.raise_for_status()
+    # print('DNAC Response Body: ' + r.text)
+    return r.json()['response']
+# END MISSION SECTION
+
+
+# MISSION TODO 4: Complete the URL to retrieve the number (or count) of
+#                 modules for a device
+def dnac_get_module_count(dnac_session, dnac_host, dnac_headers, device_id):
+    """DNAC Module Count of a Network Device"""
+    tmp_url = 'https://%s/api/v1/network-device/module/MISSION' % dnac_host
     tmp_params = {'deviceId': device_id}
 
     r = dnac_session.get(tmp_url,
@@ -161,6 +174,7 @@ def dnac_get_modules(dnac_session, dnac_host, dnac_headers, device_id):
     r.raise_for_status()
     # print('DNAC Response Body: ' + r.text)
     return r.json()['response']
+# END MISSION SECTION
 
 
 with requests.Session() as dnac_session:
@@ -201,37 +215,29 @@ with requests.Session() as dnac_session:
                                        dnac_headers,
                                        d['id'])
             for m in modules:
-                # MISSION TODO 1: Map device module data from DNA Center to
-                #                node attributes for NeXt UIin next_data.
-                #                Calculate a position on the map and choose
-                #                'server' as the icon type.
-                #                Bonus: can you link modules to parent device?
-
-
-                # END MISSION SECTION 1
+                next_data['nodes'].append({'id ': i,
+                                           'x': (i*20),
+                                           'y': 20*(i-di+1),
+                                           'name': m['partNumber'],
+                                           'serial': d['serialNumber'],
+                                           'icon': 'server'})
+                next_data['links'].append({'source': di, 'target': i})
                 i += 1
 
-    # MISSION TODO 2: Create a JavaScript String representation of the next_data
-    # Object in python to be used in the NeXt UI data .js file
-    next_json = "MISSION TODO"
-    # END MISSION SECTION 2
-
     # printing JSON representation to stdout
-    print(next_json)
+    print(json.dumps(next_data, indent=4, sort_keys=True))
 
     # writing JavaScript representation into NeXt data file
     with open(next_data_file, 'w', encoding="utf-8") as outfile:
         print('Writing NeXt UI Topology Data File')
         outfile.write(next_data_file_header)
-        outfile.write(next_json)
+        outfile.write(json.dumps(next_data, indent=4, sort_keys=True))
         outfile.write(next_data_file_footer)
 
-    # MISSION TODO 3: Once you're done, uncomment the 4 lines below to share
-    # message = spark.messages.create(env_user.SPARK_ROOM_ID,
-    #           files=[next_data_file],
-    #           text='MISSION: DNA Center accepted - here\'s my solution')
-    # print(message)
-    # END MISSION SECTION 3
+    message = spark.messages.create(env_user.SPARK_ROOM_ID,
+              files=[next_data_file],
+              text='MISSION: DNA Center - I have completed the mission!')
+    print(message)
 
     print('\n\n')
     print('Network Devices and Modules from DNA Center have been written to ' +
