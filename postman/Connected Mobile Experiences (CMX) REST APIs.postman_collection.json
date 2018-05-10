@@ -1,0 +1,394 @@
+{
+	"info": {
+		"_postman_id": "c254885b-4f9a-46d8-9813-94922a037a62",
+		"name": "Connected Mobile Experiences (CMX) REST APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All Map Data",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/config/v1/maps",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"config",
+						"v1",
+						"maps"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Individual Map Data",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/config/v1/maps/info/{{campus}}/{{building}}/{{floor}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"config",
+						"v1",
+						"maps",
+						"info",
+						"{{campus}}",
+						"{{building}}",
+						"{{floor}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Map Image",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/config/v1/maps/imagesource/{{imagesource}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"config",
+						"v1",
+						"maps",
+						"imagesource",
+						"{{imagesource}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Tracked Clients Count",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/location/v3/clients/count",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"location",
+						"v3",
+						"clients",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Tracked Clients",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/location/v3/clients",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"location",
+						"v3",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Active Clients",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/location/v3/clients/active",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"location",
+						"v3",
+						"clients",
+						"active"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Client History by MAC and Date",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/location/v1/history/clients/{{clientmac}}?date={{historydate}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"location",
+						"v1",
+						"history",
+						"clients",
+						"{{clientmac}}"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "{{historydate}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Notification Subscriptions",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"name\": \"{{initials}}LocationUpdate\",\n        \"userId\": \"{{username}}\",\n        \"rules\": [\n            {\n                \"conditions\": []\n            }\n        ],\n        \"subscribers\": [\n            {\n                \"receivers\": [\n                    {\n                        \"uri\": \"http://{{initials}}cmxlisten.ngrok.io:80\",\n                        \"messageFormat\": \"JSON\",\n                        \"headers\": null,\n                        \"qos\": \"AT_MOST_ONCE\"\n                    }\n                ]\n            }\n        ],\n        \"enabled\": true,\n        \"internal\": false,\n        \"cloud\": false,\n        \"enableMacScrambling\": true,\n        \"macScramblingSalt\": \"{{password}}\",\n        \"notificationType\": \"LocationUpdate\"\n    }\n"
+				},
+				"url": {
+					"raw": "{{url}}/api/config/v1/notification",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"config",
+						"v1",
+						"notification"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Notification Subscription",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/config/v1/notifications",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"config",
+						"v1",
+						"notifications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Notification Subscription",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/config/v1/notifications/{{initials}}LocationUpdate",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"config",
+						"v1",
+						"notifications",
+						"{{initials}}LocationUpdate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

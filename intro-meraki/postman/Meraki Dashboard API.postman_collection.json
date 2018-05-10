@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "41685c4c-16a8-44bb-aeba-9aeeba76880c",
+		"_postman_id": "8eac4436-95ed-4fdf-91fb-6e07134a8709",
 		"name": "Meraki Dashboard API",
 		"description": "This collection of API calls provides an easy way to interact with a Cisco Meraki network. Update your environment variables to efficiently use the collection.\n\n**Common Variables**\n* X-Cisco-Meraki-API-Key\n* organizationId\n* networkId\n\nA template has been provided that can be used to quickly import the variable names. You will still be responsible for filling in the values and missing variables as needed.\n\n\n# What's New?\n** Mar 2018 **\n- MX cellular firewall rules\n\t* Return cellular firewall rules\n\t* Update cellular firewall rules\n\n** Feb 2018 **\n- Clone Network\n  * Use the **Create a Network** endpoint with the `copyFromNetworkId` parameter to create a new network with the same settings as the source network.\n\n** Nov 2017 **\n- MX VPN Firewall Rules\n  * Return the firewall rules for an org\n  * Upate the firewall rules of an org\n\n** Oct 2017. **\n- Group Policy support\n  * Bind a client to a Group Policy\n  * List Group Policies for a Network\n- MX L3 Firewalls\n  * Return L3 Firewall Rules\n  * Update L3 Firewall Rules\n- Bluetooth Settings\n  * Return Bluetooth Settings\n  * Update Bluetooth Settings\n- Splash authorization\n  * Return Splash Authorization status\n  * Update Splash Authorization status\n- Update the SNMP settings for an organization\n- Phone Assignments\n  * List all phones in a network and their contact assignment\n  * Return a phone's contact assignment\n  * Assign a contact and number(s) to a phone\n  * Remove a phone assignment (unprovision a phone)\n\n## Documentation and Resources\nhttps://dashboard.meraki.com/api_docs\nhttp://developers.meraki.com/\n\n## Troubleshooting:\n- Check your profile permissions. If you can't do it in Dashboard, you won't be able to in the API.\n\n- Some calls seem to work better if you use the shard number instead of \"dashboard\" because of a required redirect. Just update the shard that matches when you login to the web Dashboard. It will be in the URL.\n\n**Original**\n\n```\n- https://dashboard.meraki.com/api/v0/networks/{{networkId}}/ssids/{{ssidNum}}?name=viaAPI345&number={{ssidNum}}\n```\n**With shard number**\n\n```\n- https://n123.meraki.com/api/v0/networks/{{networkId}}/ssids/{{ssidNum}}?name=viaAPI345&number={{ssidNum}}\n```",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -8,7 +8,7 @@
 	"item": [
 		{
 			"name": "Admins",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Admins - List the dashboard administrators",
@@ -171,7 +171,7 @@
 		},
 		{
 			"name": "Clients",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Clients - List the clients of a device, up to 1 month",
@@ -277,7 +277,7 @@
 					},
 					"response": [
 						{
-							"id": "196cadfd-0512-4ebd-aed4-341b8097f209",
+							"id": "20000f2e-63d4-4e51-8eb9-f6e6697c45be",
 							"name": "Clients - Return the group policy that is assigned to a device in the network",
 							"originalRequest": {
 								"method": "GET",
@@ -485,7 +485,7 @@
 					},
 					"response": [
 						{
-							"id": "f29afb6c-1bcf-44e4-aa47-82b60cf135ae",
+							"id": "d08f70a8-4e8d-4cb5-8d4f-28172815150d",
 							"name": "Clients - Update the group policy assigned to a device in the network",
 							"originalRequest": {
 								"method": "PUT",
@@ -727,7 +727,7 @@
 					},
 					"response": [
 						{
-							"id": "12417ca6-ff61-4fb5-ac7c-6ae3cb6064e6",
+							"id": "49279125-3931-41da-8af5-61621c32ea6b",
 							"name": "Clients - Update a client's splash authorization",
 							"originalRequest": {
 								"method": "PUT",
@@ -880,7 +880,7 @@
 		},
 		{
 			"name": "Config Templates",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Config Templates - List the config templates for this org",
@@ -966,7 +966,7 @@
 		},
 		{
 			"name": "Devices",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Devices - List the devices in a network",
@@ -1008,7 +1008,7 @@
 					},
 					"response": [
 						{
-							"id": "ba8ee937-cc25-47a8-afec-d81c02c1d655",
+							"id": "9cefad57-1070-43f0-b352-27e7ea1f2423",
 							"name": "get Devices List",
 							"originalRequest": {
 								"method": "GET",
@@ -1198,7 +1198,7 @@
 					},
 					"response": [
 						{
-							"id": "af5ae4af-efb6-44fd-b10a-24b5d5b94b97",
+							"id": "16c11563-1eee-41d5-bac5-2f9a4b5a910b",
 							"name": "get Single Device",
 							"originalRequest": {
 								"method": "GET",
@@ -1390,7 +1390,7 @@
 					},
 					"response": [
 						{
-							"id": "5a60b8d9-55fd-4588-a15c-ab473b0c9184",
+							"id": "349110e7-6035-4b04-ba33-76c9ed06ba37",
 							"name": "Return the performance score for a single device (MX)",
 							"originalRequest": {
 								"method": "GET",
@@ -1622,7 +1622,7 @@
 					},
 					"response": [
 						{
-							"id": "6a40d956-c7c6-43dc-9276-b3380d1fdad6",
+							"id": "eb561906-0caa-4988-bfda-ed1166e1a82e",
 							"name": "get Single Device - failed",
 							"originalRequest": {
 								"method": "GET",
@@ -1812,7 +1812,7 @@
 					},
 					"response": [
 						{
-							"id": "a9c1f59d-2ca7-4dc0-ba2d-42248e40ac10",
+							"id": "3154e57d-06c8-4212-9e0e-15e7b3f907e3",
 							"name": "claim",
 							"originalRequest": {
 								"method": "POST",
@@ -1972,7 +1972,7 @@
 		},
 		{
 			"name": "Group Policies",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "GP - List the Group Policies",
@@ -2014,7 +2014,7 @@
 					},
 					"response": [
 						{
-							"id": "ee7b2d24-c5d0-4c43-b216-cadef291135d",
+							"id": "d47d6b45-1e5a-4f6f-9342-1472058bed55",
 							"name": "GP - List the Group Policies",
 							"originalRequest": {
 								"method": "GET",
@@ -2167,7 +2167,7 @@
 		},
 		{
 			"name": "MR L3 Firewall Rules",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "L3 Firewall Rules for an SSID",
@@ -2211,7 +2211,7 @@
 					},
 					"response": [
 						{
-							"id": "ff92dbe3-89c9-497a-8d76-e20c9c44f35d",
+							"id": "ed38dcd9-7dad-46d2-84e3-74fb51f942e2",
 							"name": "get L3 Firewall Rules",
 							"originalRequest": {
 								"method": "GET",
@@ -2407,7 +2407,7 @@
 		},
 		{
 			"name": "MX VPN Firewall Rules",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Return the firewall rules for an organization's site-to-site VPN",
@@ -2449,7 +2449,7 @@
 					},
 					"response": [
 						{
-							"id": "afaabcff-3c62-4a37-a6fe-e75eae91542e",
+							"id": "3d35e30f-8d27-4d89-bb9e-7ea81ddefc6f",
 							"name": "Return the firewall rules for an organization's site-to-site VPN",
 							"originalRequest": {
 								"method": "GET",
@@ -2636,7 +2636,7 @@
 					},
 					"response": [
 						{
-							"id": "d3b48bbc-7cf8-4911-9908-6405a61ab31f",
+							"id": "0497a68e-91c1-4924-9ad3-6609f7b8eab7",
 							"name": "Update firewall rules of an organization's site-to-site VPN",
 							"originalRequest": {
 								"method": "PUT",
@@ -2787,7 +2787,7 @@
 		},
 		{
 			"name": "MX L3 Firewall Rules",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "MX - Return L3 Firewall Rules",
@@ -2829,7 +2829,7 @@
 					},
 					"response": [
 						{
-							"id": "f3f19b8d-2745-4be5-a99c-cc67fc2b8c67",
+							"id": "eb7dacd8-8194-43eb-8eec-aa077263c9ca",
 							"name": "MX - Return L3 Firewall Rules",
 							"originalRequest": {
 								"method": "GET",
@@ -3021,7 +3021,7 @@
 		},
 		{
 			"name": "MX cellular Firewall Rules",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "MX - Return cellular Firewall Rules",
@@ -3105,7 +3105,7 @@
 		},
 		{
 			"name": "Networks",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Networks - List networks in org",
@@ -3147,7 +3147,7 @@
 					},
 					"response": [
 						{
-							"id": "c81b575a-02bd-40ba-91aa-17ffdb0dbab7",
+							"id": "6fa19eb5-ae45-4fb4-8f79-9c883a9b0952",
 							"name": "get Networks List - Meraki Dev Sandbox",
 							"originalRequest": {
 								"method": "GET",
@@ -3353,7 +3353,7 @@
 					},
 					"response": [
 						{
-							"id": "d1904d5f-956f-4baf-833c-f5c65fc1ccec",
+							"id": "b37ef52f-0c7b-4b82-bb0c-ffa4ce925d56",
 							"name": "get Network - Sandbox 2 - Las Vegas USA",
 							"originalRequest": {
 								"method": "GET",
@@ -3589,7 +3589,7 @@
 					},
 					"response": [
 						{
-							"id": "60c57b93-b5bb-44e9-80f8-939e98d7292a",
+							"id": "5d9bf5d3-f3a5-4c1f-b884-99b0baadcf10",
 							"name": "Networks -  Create a network",
 							"originalRequest": {
 								"method": "POST",
@@ -3795,7 +3795,7 @@
 					},
 					"response": [
 						{
-							"id": "404231e5-e147-460c-9a95-dea92cb2f9b6",
+							"id": "d4e9bbb6-c041-4fca-87cf-2b62e4cae541",
 							"name": "Networks - Bind to template",
 							"originalRequest": {
 								"method": "POST",
@@ -4020,7 +4020,7 @@
 					},
 					"response": [
 						{
-							"id": "a38d4502-ba02-4be2-ba43-65c36dc7fca9",
+							"id": "ba2f6cc1-7db7-4a4e-9570-41c8b5c23777",
 							"name": "get VPN - none",
 							"originalRequest": {
 								"method": "GET",
@@ -4253,7 +4253,7 @@
 					},
 					"response": [
 						{
-							"id": "0fe97b03-73a1-45b2-8754-be0105d5cb6f",
+							"id": "757cb1df-075e-492c-8816-affaae21a4f4",
 							"name": "get Traffic Analysis",
 							"originalRequest": {
 								"method": "GET",
@@ -4488,7 +4488,7 @@
 					},
 					"response": [
 						{
-							"id": "21a308cc-6c87-4451-9d0f-a67d8dd7d347",
+							"id": "b057eb7d-e10e-4a25-b4eb-cf28216d27ff",
 							"name": "Networks - Return the Bluetooth settings (MR)",
 							"originalRequest": {
 								"method": "GET",
@@ -4721,7 +4721,7 @@
 					},
 					"response": [
 						{
-							"id": "cfa50df7-12fe-4f8c-beda-1de162ddc242",
+							"id": "027556e9-45ff-475c-8505-b83d3b3824c1",
 							"name": "get Air Marshal results",
 							"originalRequest": {
 								"method": "GET",
@@ -4880,7 +4880,7 @@
 		},
 		{
 			"name": "Organizations",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Organizations - List organizations this user has access to",
@@ -4920,7 +4920,7 @@
 					},
 					"response": [
 						{
-							"id": "deac056e-f04f-4b80-8b5f-4030f1f7855c",
+							"id": "8d9e38d4-15e6-4274-ad92-9629940266ec",
 							"name": "get Org List",
 							"originalRequest": {
 								"method": "GET",
@@ -5106,7 +5106,7 @@
 					},
 					"response": [
 						{
-							"id": "9032a561-3276-49a2-9304-17f9e2d1229e",
+							"id": "703f7ea4-ca8a-459b-a25f-d9e8a7031ecd",
 							"name": "get Org - Meraki Live Sandbox",
 							"originalRequest": {
 								"method": "GET",
@@ -5443,7 +5443,7 @@
 					},
 					"response": [
 						{
-							"id": "ba3bca4e-d442-4f7f-8d9c-f0849d36b221",
+							"id": "00eabee3-0986-44af-b6a0-2408347d3b90",
 							"name": "get Org License state",
 							"originalRequest": {
 								"method": "GET",
@@ -5653,155 +5653,7 @@
 					},
 					"response": [
 						{
-							"id": "637b4d4e-3887-4710-bf51-913ea9d4c925",
-							"name": "Organizations - Return the inventory",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "X-Cisco-Meraki-API-Key",
-										"value": "{{X-Cisco-Meraki-API-Key}}"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "order",
-											"value": "234234234",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "https://dashboard.meraki.com/api/v0/organizations/{{organizationId}}/inventory",
-									"protocol": "https",
-									"host": [
-										"dashboard",
-										"meraki",
-										"com"
-									],
-									"path": [
-										"api",
-										"v0",
-										"organizations",
-										"{{organizationId}}",
-										"inventory"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, no-store, max-age=0, must-revalidate",
-									"name": "Cache-Control",
-									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive",
-									"name": "Connection",
-									"description": "Options that are desired for the connection"
-								},
-								{
-									"key": "Content-Encoding",
-									"value": "gzip",
-									"name": "Content-Encoding",
-									"description": "The type of encoding used on the data."
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8",
-									"name": "Content-Type",
-									"description": "The mime type of this content"
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 27 Mar 2018 21:06:12 GMT",
-									"name": "Date",
-									"description": "The date and time that the message was sent"
-								},
-								{
-									"key": "Expires",
-									"value": "Fri, 01 Jan 1990 00:00:00 GMT",
-									"name": "Expires",
-									"description": "Gives the date/time after which the response is considered stale"
-								},
-								{
-									"key": "Pragma",
-									"value": "no-cache",
-									"name": "Pragma",
-									"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-								},
-								{
-									"key": "Public-Key-Pins-Report-Only",
-									"value": "max-age=1200; pin-sha256=\"2V5tfxXMLkn2kVg/Iv8FqL4JHcNVGEUFK27oSMYhHEU=\"; pin-sha256=\"8Rw90Ej3Ttt8RRkrg+WYDS9n7IS03bk5bjP/UXPtaY8=\"; pin-sha256=\"3YQf+D42t1/pQJhWTwYLRnFVnbBNXf9W5S6dmwq2+3g=\"; pin-sha256=\"klO23nT2ehFDXCfx3eHTDRESMz3asj1muO+4aIdjiuY=\"; pin-sha256=\"fake+hpkp+key+for+testing+report+only+QWERT=\"; includeSubDomains; report-uri=\"https://therealmerakidashboard.report-uri.io/r/default/hpkp/reportOnly\"",
-									"name": "Public-Key-Pins-Report-Only",
-									"description": "Custom header"
-								},
-								{
-									"key": "Server",
-									"value": "nginx",
-									"name": "Server",
-									"description": "A name for the server"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; includeSubDomains",
-									"name": "Strict-Transport-Security",
-									"description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked",
-									"name": "Transfer-Encoding",
-									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
-								},
-								{
-									"key": "Vary",
-									"value": "Accept-Encoding",
-									"name": "Vary",
-									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "sameorigin",
-									"name": "X-Frame-Options",
-									"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-								},
-								{
-									"key": "X-Rack-Cache",
-									"value": "miss",
-									"name": "X-Rack-Cache",
-									"description": "Custom header"
-								},
-								{
-									"key": "X-Request-Id",
-									"value": "ce1bb6986863eedb2176d59d0caf9767",
-									"name": "X-Request-Id",
-									"description": "Custom header"
-								},
-								{
-									"key": "X-Runtime",
-									"value": "0.090395",
-									"name": "X-Runtime",
-									"description": "Custom header"
-								},
-								{
-									"key": "X-UA-Compatible",
-									"value": "IE=Edge,chrome=1",
-									"name": "X-UA-Compatible",
-									"description": "Custom header"
-								}
-							],
-							"cookie": [],
-							"body": "[{\"mac\":\"00:18:0a:04:77:b4\",\"serial\":\"Q2CK-MT78-3A2Z\",\"networkId\":\"N_646829496481143630\",\"model\":\"MR66\",\"claimedAt\":\"1521566896.83194\",\"publicIp\":\"70.77.156.115\"},{\"mac\":\"00:18:0a:12:2d:da\",\"serial\":\"Q2AT-Z8Q8-7TPH\",\"networkId\":\"L_646829496481098130\",\"model\":\"MC74\",\"claimedAt\":\"1483748363.47231\",\"publicIp\":null},{\"mac\":\"0c:8d:db:65:89:27\",\"serial\":\"Q2PD-GP6W-ZGBC\",\"networkId\":\"N_646829496481143742\",\"model\":\"MR33\",\"claimedAt\":\"1520699762.05315\",\"publicIp\":null},{\"mac\":\"0c:8d:db:67:01:86\",\"serial\":\"Q2RD-6YRX-3EJV\",\"networkId\":\"L_646829496481098885\",\"model\":\"MR30H\",\"claimedAt\":\"1518472646.51629\",\"publicIp\":null},{\"mac\":\"0c:8d:db:b2:86:9c\",\"serial\":\"Q2LD-98WJ-743V\",\"networkId\":\"L_646829496481098885\",\"model\":\"MR52\",\"claimedAt\":\"1520579126.10708\",\"publicIp\":null},{\"mac\":\"88:15:44:50:09:e4\",\"serial\":\"Q2LD-LREJ-RRZT\",\"networkId\":\"L_646829496481098885\",\"model\":\"MR52\",\"claimedAt\":\"1498690077.71515\",\"publicIp\":null},{\"mac\":\"88:15:44:60:20:a8\",\"serial\":\"Q2MD-9PJD-E9L7\",\"networkId\":\"L_646829496481092083\",\"model\":\"MR53\",\"claimedAt\":\"1495638330.95502\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"88:15:44:60:21:10\",\"serial\":\"Q2MD-BHHS-5FDL\",\"networkId\":\"L_646829496481095588\",\"model\":\"MR53\",\"claimedAt\":\"1495638330.96262\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"88:15:44:60:2b:2a\",\"serial\":\"Q2MD-L9M8-Y8U5\",\"networkId\":\"L_646829496481098716\",\"model\":\"MR53\",\"claimedAt\":\"1495221641.00449\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"88:15:44:a6:ea:80\",\"serial\":\"Q2JD-SHNA-Z4EQ\",\"networkId\":\"L_646829496481098885\",\"model\":\"MR32\",\"claimedAt\":\"1518472646.57449\",\"publicIp\":null},{\"mac\":\"88:15:44:ab:ac:99\",\"serial\":\"Q2KD-VUCZ-2RUY\",\"networkId\":\"N_646829496481143399\",\"model\":\"MR42\",\"claimedAt\":\"1520836678.20982\",\"publicIp\":\"173.38.220.60\"},{\"mac\":\"88:15:44:ad:2d:a0\",\"serial\":\"Q2JD-V3G3-JHA3\",\"networkId\":\"L_646829496481098885\",\"model\":\"MR32\",\"claimedAt\":\"1518472646.56816\",\"publicIp\":null},{\"mac\":\"88:15:44:ad:97:c0\",\"serial\":\"Q2JD-YWZ2-KVUR\",\"networkId\":\"L_646829496481098885\",\"model\":\"MR32\",\"claimedAt\":\"1518472646.59405\",\"publicIp\":null},{\"mac\":\"88:15:44:df:76:d1\",\"serial\":\"Q2HP-AJ22-UG72\",\"networkId\":\"L_646829496481095933\",\"model\":\"MS220-8P\",\"claimedAt\":\"1465400894.75595\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"88:15:44:df:f3:af\",\"serial\":\"Q2HP-F5K5-R88R\",\"networkId\":\"L_646829496481098130\",\"model\":\"MS220-8P\",\"claimedAt\":\"1484581291.29723\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"88:15:44:df:fe:8e\",\"serial\":\"Q2HP-WH5E-MK7H\",\"networkId\":\"L_646829496481092083\",\"model\":\"MS220-8P\",\"claimedAt\":\"1484581608.27062\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"88:15:44:f4:f3:c0\",\"serial\":\"Q2FD-X82Q-6SFQ\",\"networkId\":\"L_646829496481098885\",\"model\":\"MR34\",\"claimedAt\":\"1498692225.011\",\"publicIp\":null},{\"mac\":\"e0:55:3d:10:21:f0\",\"serial\":\"Q2EK-SARE-UUBY\",\"networkId\":\"L_646829496481098716\",\"model\":\"MR84\",\"claimedAt\":\"1495638330.92721\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:10:42:8a\",\"serial\":\"Q2EK-S3AA-BXFW\",\"networkId\":\"L_646829496481092083\",\"model\":\"MR84\",\"claimedAt\":\"1495221640.98715\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:10:42:a6\",\"serial\":\"Q2EK-SMY9-FSWW\",\"networkId\":\"L_646829496481095588\",\"model\":\"MR84\",\"claimedAt\":\"1495638330.93389\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:17:c6:87\",\"serial\":\"Q2QN-WVV9-W4KK\",\"networkId\":\"L_646829496481095933\",\"model\":\"MX65\",\"claimedAt\":\"1465400894.72988\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:17:d4:23\",\"serial\":\"Q2QN-9J8L-SLPD\",\"networkId\":\"L_646829496481098130\",\"model\":\"MX65\",\"claimedAt\":\"1519658520.55085\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:17:d5:1a\",\"serial\":\"Q2QN-WPR6-UJPL\",\"networkId\":\"L_646829496481092083\",\"model\":\"MX65\",\"claimedAt\":\"1465400894.71852\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:1f:a7:10\",\"serial\":\"Q2JD-CAF3-Y6G2\",\"networkId\":\"L_646829496481095933\",\"model\":\"MR32\",\"claimedAt\":\"1465400894.76165\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"e0:55:3d:21:26:60\",\"serial\":\"Q2JD-N9K5-3QRB\",\"networkId\":\"L_646829496481092083\",\"model\":\"MR32\",\"claimedAt\":\"1465400894.77255\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:4e:bc:75\",\"serial\":\"Q2AT-DA5E-TRUS\",\"networkId\":\"L_646829496481095933\",\"model\":\"MC74\",\"claimedAt\":\"1476804978.12889\",\"publicIp\":null},{\"mac\":\"e0:55:3d:4f:31:a2\",\"serial\":\"Q2AT-8L46-5E9H\",\"networkId\":\"L_646829496481095588\",\"model\":\"MC74\",\"claimedAt\":\"1495223197.14465\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"e0:55:3d:4f:33:8b\",\"serial\":\"Q2AT-85YQ-XEEC\",\"networkId\":\"L_646829496481095660\",\"model\":\"MC74\",\"claimedAt\":\"1495223197.13592\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:4f:3c:3d\",\"serial\":\"Q2AT-6YBM-LFF2\",\"networkId\":\"L_646829496481098716\",\"model\":\"MC74\",\"claimedAt\":\"1495223197.10989\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:50:74:0a\",\"serial\":\"Q2AT-U95F-NHKM\",\"networkId\":\"L_646829496481098796\",\"model\":\"MC74\",\"claimedAt\":\"1520514541.18679\",\"publicIp\":\"68.60.18.108\"},{\"mac\":\"e0:55:3d:70:a4:d7\",\"serial\":\"Q2QN-XPL2-2MPN\",\"networkId\":\"L_646829496481095660\",\"model\":\"MX65\",\"claimedAt\":\"1495638330.98129\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:70:a6:c5\",\"serial\":\"Q2QN-F2KR-YVC3\",\"networkId\":\"L_646829496481095588\",\"model\":\"MX65\",\"claimedAt\":\"1495638330.97017\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:70:ad:86\",\"serial\":\"Q2QN-WS5Y-DN8E\",\"networkId\":\"L_646829496481098716\",\"model\":\"MX65\",\"claimedAt\":\"1495221641.01274\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:84:a3:65\",\"serial\":\"Q2BV-NZ63-KCSW\",\"networkId\":\"L_646829496481095660\",\"model\":\"MV21\",\"claimedAt\":\"1495638330.9217\",\"publicIp\":null},{\"mac\":\"e0:55:3d:84:a3:67\",\"serial\":\"Q2BV-NJY8-P6KV\",\"networkId\":\"L_646829496481098885\",\"model\":\"MV21\",\"claimedAt\":\"1495638330.85746\",\"publicIp\":null},{\"mac\":\"e0:55:3d:84:a3:7e\",\"serial\":\"Q2BV-5YPE-R9YV\",\"networkId\":\"L_646829496481098130\",\"model\":\"MV21\",\"claimedAt\":\"1495221640.96068\",\"publicIp\":null},{\"mac\":\"e0:55:3d:d1:a9:b1\",\"serial\":\"Q2HP-TQPZ-M5LP\",\"networkId\":\"L_646829496481095660\",\"model\":\"MS220-8P\",\"claimedAt\":\"1495638330.94768\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:d1:be:67\",\"serial\":\"Q2HP-DT5F-KMJE\",\"networkId\":\"L_646829496481095588\",\"model\":\"MS220-8P\",\"claimedAt\":\"1495638330.94028\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:d2:e6:cd\",\"serial\":\"Q2HP-Q9S8-BVHB\",\"networkId\":\"L_646829496481098716\",\"model\":\"MS220-8P\",\"claimedAt\":\"1495221640.99721\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:ee:de:34\",\"serial\":\"Q2RD-PPCW-Z5SX\",\"networkId\":\"L_646829496481098885\",\"model\":\"MR30H\",\"claimedAt\":\"1518472646.53897\",\"publicIp\":null},{\"mac\":\"e0:55:3d:ee:df:1a\",\"serial\":\"Q2RD-PS95-N2WJ\",\"networkId\":\"L_646829496481098885\",\"model\":\"MR30H\",\"claimedAt\":\"1518472646.54439\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:45:81\",\"serial\":\"Q2PD-JJRT-RY66\",\"networkId\":\"L_646829496481098716\",\"model\":\"MR33\",\"claimedAt\":\"1487508996.33636\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:47:3f\",\"serial\":\"Q2PD-K8FC-NBLU\",\"networkId\":\"L_646829496481098130\",\"model\":\"MR33\",\"claimedAt\":\"1487508996.36261\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:47:a5\",\"serial\":\"Q2PD-KDUF-FFV6\",\"networkId\":\"L_646829496481098130\",\"model\":\"MR33\",\"claimedAt\":\"1487508996.38314\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:47:b3\",\"serial\":\"Q2PD-KEUZ-FM28\",\"networkId\":\"L_646829496481098130\",\"model\":\"MR33\",\"claimedAt\":\"1487508996.39588\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:4b:0e\",\"serial\":\"Q2PD-LVHH-AJGZ\",\"networkId\":\"L_646829496481098130\",\"model\":\"MR33\",\"claimedAt\":\"1487508996.42748\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:4d:cb\",\"serial\":\"Q2PD-N2AH-5Y7E\",\"networkId\":\"L_646829496481098130\",\"model\":\"MR33\",\"claimedAt\":\"1487508996.45135\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:53:14\",\"serial\":\"Q2PD-Q4WV-LTCD\",\"networkId\":\"L_646829496481098130\",\"model\":\"MR33\",\"claimedAt\":\"1487508996.49962\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:53:29\",\"serial\":\"Q2PD-Q62G-DZW5\",\"networkId\":\"L_646829496481098130\",\"model\":\"MR33\",\"claimedAt\":\"1487508996.50611\",\"publicIp\":\"92.233.37.201\"},{\"mac\":\"e0:55:3d:f4:39:17\",\"serial\":\"Q2RD-4YLL-CSUN\",\"networkId\":\"L_646829496481098716\",\"model\":\"MR30H\",\"claimedAt\":\"1495221641.02015\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:f4:39:3a\",\"serial\":\"Q2RD-4ZSU-DLC6\",\"networkId\":\"L_646829496481092083\",\"model\":\"MR30H\",\"claimedAt\":\"1495638330.98885\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:f4:98:99\",\"serial\":\"Q2RD-WZ4L-U8Y2\",\"networkId\":\"L_646829496481095588\",\"model\":\"MR30H\",\"claimedAt\":\"1495638330.99664\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:cb:bc:30:c6:5e\",\"serial\":\"Q2PD-2U3F-N4Y9\",\"networkId\":\"L_646829496481098845\",\"model\":\"MR33\",\"claimedAt\":\"1521227421.64893\",\"publicIp\":\"189.216.92.55\"},{\"mac\":\"e0:cb:bc:31:82:df\",\"serial\":\"Q2PD-Y4LF-CDX3\",\"networkId\":\"L_646829496481098796\",\"model\":\"MR33\",\"claimedAt\":\"1520514541.21736\",\"publicIp\":\"68.60.18.108\"}]"
-						},
-						{
-							"id": "f6552b47-6e3b-43cf-ba4a-5aec5be201a4",
+							"id": "93dd7966-03a5-45cc-8b15-58d9c50143d6",
 							"name": "get Org Inventory",
 							"originalRequest": {
 								"method": "GET",
@@ -5947,6 +5799,154 @@
 							],
 							"cookie": [],
 							"body": "[{\"mac\":\"00:18:0a:12:2d:da\",\"serial\":\"Q2AT-Z8Q8-7TPH\",\"networkId\":\"L_646829496481095660\",\"model\":\"MC74\",\"claimedAt\":\"1483748363.47231\",\"publicIp\":\"198.27.198.2\"},{\"mac\":\"00:18:0a:12:31:d0\",\"serial\":\"Q2AT-YECB-HSLC\",\"networkId\":\"L_646829496481095933\",\"model\":\"MC74\",\"claimedAt\":\"1468033969.97221\",\"publicIp\":null},{\"mac\":\"0c:8d:db:66:45:6d\",\"serial\":\"Q2PD-QG4J-JT9F\",\"networkId\":\"L_646829496481095933\",\"model\":\"MR33\",\"claimedAt\":\"1498497156.332\",\"publicIp\":\"63.231.221.69\"},{\"mac\":\"0c:8d:db:84:52:f6\",\"serial\":\"Q2PD-GUE6-S5HU\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.20498\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:54:34\",\"serial\":\"Q2PD-HB6E-PMYE\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.21191\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:59:65\",\"serial\":\"Q2PD-KAMH-9CYE\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.22549\",\"publicIp\":\"63.231.218.203\"},{\"mac\":\"0c:8d:db:84:5d:b0\",\"serial\":\"Q2PD-LXCG-6PVG\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.23199\",\"publicIp\":\"63.231.218.202\"},{\"mac\":\"0c:8d:db:84:60:d5\",\"serial\":\"Q2PD-N52G-EKBD\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.23868\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:64:9b\",\"serial\":\"Q2PD-PKP6-M6F8\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.24495\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:64:bb\",\"serial\":\"Q2PD-PMLM-MD56\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.25156\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:68:6d\",\"serial\":\"Q2PD-R3W6-NU8L\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.25925\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:7f:05\",\"serial\":\"Q2PD-ZVW6-WHJQ\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.26851\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:82:16\",\"serial\":\"Q2PD-34F7-T95T\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.0618\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:85:9f\",\"serial\":\"Q2PD-4MBN-62BF\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.08404\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:86:53\",\"serial\":\"Q2PD-4WW7-44CG\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.09218\",\"publicIp\":null},{\"mac\":\"0c:8d:db:84:8a:20\",\"serial\":\"Q2PD-6HQY-N35A\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.09865\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:8d:07\",\"serial\":\"Q2PD-7PB7-QPU5\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.10437\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:8d:4b\",\"serial\":\"Q2PD-7SDW-WCPS\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.11078\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:8d:a6\",\"serial\":\"Q2PD-7X8D-6FF5\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.11673\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:8d:bc\",\"serial\":\"Q2PD-7Y3X-SZ4K\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.12354\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:8d:da\",\"serial\":\"Q2PD-7ZD7-BNQF\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.13112\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:8e:3b\",\"serial\":\"Q2PD-85YZ-G7WV\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.13887\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:8f:5c\",\"serial\":\"Q2PD-8LYP-JBA2\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.1454\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:90:1a\",\"serial\":\"Q2PD-8XBP-8K8H\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.15127\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:90:34\",\"serial\":\"Q2PD-8YMR-HF7M\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.15687\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:91:83\",\"serial\":\"Q2PD-9H9D-CXCK\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.16295\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:91:9d\",\"serial\":\"Q2PD-9JQQ-2TA2\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.16851\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:91:e5\",\"serial\":\"Q2PD-9MXD-BNAM\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.17435\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:98:09\",\"serial\":\"Q2PD-C5NP-62GH\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.18\",\"publicIp\":\"63.231.218.202\"},{\"mac\":\"0c:8d:db:84:9b:81\",\"serial\":\"Q2PD-DMQZ-LFUL\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.18587\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:9b:d6\",\"serial\":\"Q2PD-DRT3-SLEL\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.19206\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:a1:35\",\"serial\":\"Q2PD-FXQD-4QL6\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.19884\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"0c:8d:db:84:a4:8d\",\"serial\":\"Q2PD-HDNE-45QA\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR33\",\"claimedAt\":\"1498262975.21859\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"88:15:44:50:09:e4\",\"serial\":\"Q2LD-LREJ-RRZT\",\"networkId\":\"N_646829496481132993\",\"model\":\"MR52\",\"claimedAt\":\"1498690077.71515\",\"publicIp\":\"184.23.135.132\"},{\"mac\":\"88:15:44:60:20:a8\",\"serial\":\"Q2MD-9PJD-E9L7\",\"networkId\":\"L_646829496481095660\",\"model\":\"MR53\",\"claimedAt\":\"1495638330.95502\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"88:15:44:60:21:10\",\"serial\":\"Q2MD-BHHS-5FDL\",\"networkId\":\"L_646829496481095659\",\"model\":\"MR53\",\"claimedAt\":\"1495638330.96262\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"88:15:44:60:2b:2a\",\"serial\":\"Q2MD-L9M8-Y8U5\",\"networkId\":\"L_646829496481095588\",\"model\":\"MR53\",\"claimedAt\":\"1495221641.00449\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"88:15:44:60:b3:ae\",\"serial\":\"Q2MD-85QJ-JNA5\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR53\",\"claimedAt\":\"1498262775.76501\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"88:15:44:60:b5:70\",\"serial\":\"Q2MD-F75S-D9RV\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR53\",\"claimedAt\":\"1498262775.78791\",\"publicIp\":null},{\"mac\":\"88:15:44:60:b6:18\",\"serial\":\"Q2MD-J766-XT5Y\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR53\",\"claimedAt\":\"1498262775.79424\",\"publicIp\":\"63.231.218.201\"},{\"mac\":\"88:15:44:60:b8:74\",\"serial\":\"Q2MD-URFB-BDBJ\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR53\",\"claimedAt\":\"1498262775.80039\",\"publicIp\":null},{\"mac\":\"88:15:44:60:b9:80\",\"serial\":\"Q2MD-YV3P-U4HQ\",\"networkId\":\"L_646829496481095937\",\"model\":\"MR53\",\"claimedAt\":\"1498262775.8065\",\"publicIp\":null},{\"mac\":\"88:15:44:83:8f:90\",\"serial\":\"Q2MN-JDE5-T5CE\",\"networkId\":\"L_646829496481095937\",\"model\":\"MX64W\",\"claimedAt\":\"1479803363.46676\",\"publicIp\":null},{\"mac\":\"88:15:44:df:76:d1\",\"serial\":\"Q2HP-AJ22-UG72\",\"networkId\":\"L_646829496481092083\",\"model\":\"MS220-8P\",\"claimedAt\":\"1465400894.75595\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"88:15:44:df:fe:8e\",\"serial\":\"Q2HP-WH5E-MK7H\",\"networkId\":\"L_646829496481095584\",\"model\":\"MS220-8P\",\"claimedAt\":\"1484581608.27062\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"88:15:44:f4:f3:c0\",\"serial\":\"Q2FD-X82Q-6SFQ\",\"networkId\":\"N_646829496481132993\",\"model\":\"MR34\",\"claimedAt\":\"1498692225.011\",\"publicIp\":\"184.23.135.132\"},{\"mac\":\"e0:55:3d:10:21:f0\",\"serial\":\"Q2EK-SARE-UUBY\",\"networkId\":\"L_646829496481095660\",\"model\":\"MR84\",\"claimedAt\":\"1495638330.92721\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"e0:55:3d:10:42:8a\",\"serial\":\"Q2EK-S3AA-BXFW\",\"networkId\":\"L_646829496481095588\",\"model\":\"MR84\",\"claimedAt\":\"1495221640.98715\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"e0:55:3d:10:42:a6\",\"serial\":\"Q2EK-SMY9-FSWW\",\"networkId\":\"L_646829496481095659\",\"model\":\"MR84\",\"claimedAt\":\"1495638330.93389\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"e0:55:3d:17:d5:1a\",\"serial\":\"Q2QN-WPR6-UJPL\",\"networkId\":\"L_646829496481095584\",\"model\":\"MX65\",\"claimedAt\":\"1465400894.71852\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"e0:55:3d:1c:c8:80\",\"serial\":\"Q2JD-RQGL-JPGK\",\"networkId\":\"L_646829496481092083\",\"model\":\"MR32\",\"claimedAt\":\"1465400894.76732\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"e0:55:3d:21:26:60\",\"serial\":\"Q2JD-N9K5-3QRB\",\"networkId\":\"L_646829496481092083\",\"model\":\"MR32\",\"claimedAt\":\"1465400894.77255\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"e0:55:3d:4e:bc:75\",\"serial\":\"Q2AT-DA5E-TRUS\",\"networkId\":\"L_646829496481095933\",\"model\":\"MC74\",\"claimedAt\":\"1476804978.12889\",\"publicIp\":null},{\"mac\":\"e0:55:3d:4f:31:a2\",\"serial\":\"Q2AT-8L46-5E9H\",\"networkId\":\"L_646829496481095588\",\"model\":\"MC74\",\"claimedAt\":\"1495223197.14465\",\"publicIp\":null},{\"mac\":\"e0:55:3d:4f:33:8b\",\"serial\":\"Q2AT-85YQ-XEEC\",\"networkId\":\"L_646829496481092083\",\"model\":\"MC74\",\"claimedAt\":\"1495223197.13592\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"e0:55:3d:4f:3c:3d\",\"serial\":\"Q2AT-6YBM-LFF2\",\"networkId\":\"L_646829496481095584\",\"model\":\"MC74\",\"claimedAt\":\"1495223197.10989\",\"publicIp\":null},{\"mac\":\"e0:55:3d:4f:45:a9\",\"serial\":\"Q2AT-6CLF-RQFE\",\"networkId\":\"L_646829496481095659\",\"model\":\"MC74\",\"claimedAt\":\"1495638797.65993\",\"publicIp\":null},{\"mac\":\"e0:55:3d:70:a4:d7\",\"serial\":\"Q2QN-XPL2-2MPN\",\"networkId\":\"L_646829496481095660\",\"model\":\"MX65\",\"claimedAt\":\"1495638330.98129\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"e0:55:3d:70:a6:c5\",\"serial\":\"Q2QN-F2KR-YVC3\",\"networkId\":\"L_646829496481095659\",\"model\":\"MX65\",\"claimedAt\":\"1495638330.97017\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"e0:55:3d:70:ad:86\",\"serial\":\"Q2QN-WS5Y-DN8E\",\"networkId\":\"L_646829496481095588\",\"model\":\"MX65\",\"claimedAt\":\"1495221641.01274\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"e0:55:3d:83:04:03\",\"serial\":\"Q2BV-KL9U-GPAD\",\"networkId\":\"L_646829496481095584\",\"model\":\"MV21\",\"claimedAt\":\"1491618555.20938\",\"publicIp\":null},{\"mac\":\"e0:55:3d:84:a3:65\",\"serial\":\"Q2BV-NZ63-KCSW\",\"networkId\":\"L_646829496481095660\",\"model\":\"MV21\",\"claimedAt\":\"1495638330.9217\",\"publicIp\":null},{\"mac\":\"e0:55:3d:84:a3:67\",\"serial\":\"Q2BV-NJY8-P6KV\",\"networkId\":\"L_646829496481095659\",\"model\":\"MV21\",\"claimedAt\":\"1495638330.85746\",\"publicIp\":null},{\"mac\":\"e0:55:3d:84:a3:7e\",\"serial\":\"Q2BV-5YPE-R9YV\",\"networkId\":\"L_646829496481095588\",\"model\":\"MV21\",\"claimedAt\":\"1495221640.96068\",\"publicIp\":null},{\"mac\":\"e0:55:3d:d1:a9:b1\",\"serial\":\"Q2HP-TQPZ-M5LP\",\"networkId\":\"L_646829496481095660\",\"model\":\"MS220-8P\",\"claimedAt\":\"1495638330.94768\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"e0:55:3d:d1:be:67\",\"serial\":\"Q2HP-DT5F-KMJE\",\"networkId\":\"L_646829496481095659\",\"model\":\"MS220-8P\",\"claimedAt\":\"1495638330.94028\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"e0:55:3d:d2:e6:cd\",\"serial\":\"Q2HP-Q9S8-BVHB\",\"networkId\":\"L_646829496481095588\",\"model\":\"MS220-8P\",\"claimedAt\":\"1495221640.99721\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"e0:55:3d:ee:25:c5\",\"serial\":\"Q2RD-4SE4-53A9\",\"networkId\":\"L_646829496481095584\",\"model\":\"MR30H\",\"claimedAt\":\"1488866559.95942\",\"publicIp\":null},{\"mac\":\"e0:55:3d:ee:57:70\",\"serial\":\"Q2RD-9R8X-VHE8\",\"networkId\":\"L_646829496481095933\",\"model\":\"MR30H\",\"claimedAt\":\"1495725849.40213\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:5d:29\",\"serial\":\"Q2PD-UC8L-R2J5\",\"networkId\":\"N_646829496481132993\",\"model\":\"MR33\",\"claimedAt\":\"1498235944.27236\",\"publicIp\":\"62.255.244.66\"},{\"mac\":\"e0:55:3d:f4:39:17\",\"serial\":\"Q2RD-4YLL-CSUN\",\"networkId\":\"L_646829496481095588\",\"model\":\"MR30H\",\"claimedAt\":\"1495221641.02015\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"e0:55:3d:f4:39:3a\",\"serial\":\"Q2RD-4ZSU-DLC6\",\"networkId\":\"L_646829496481095660\",\"model\":\"MR30H\",\"claimedAt\":\"1495638330.98885\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"e0:55:3d:f4:98:99\",\"serial\":\"Q2RD-WZ4L-U8Y2\",\"networkId\":\"L_646829496481095659\",\"model\":\"MR30H\",\"claimedAt\":\"1495638330.99664\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"00:18:0a:21:f9:c9\",\"serial\":\"Q2CD-MJ68-SYFF\",\"networkId\":null,\"model\":\"MR12\",\"claimedAt\":\"1481344734.79564\",\"publicIp\":null},{\"mac\":\"00:18:0a:29:1b:a0\",\"serial\":\"Q2JD-3CDA-RS8B\",\"networkId\":null,\"model\":\"MR32\",\"claimedAt\":\"1495578211.09412\",\"publicIp\":null},{\"mac\":\"00:18:0a:50:f0:39\",\"serial\":\"Q2AA-FBAL-8DAB\",\"networkId\":null,\"model\":\"Outdoor\",\"claimedAt\":\"1489157337.99845\",\"publicIp\":null},{\"mac\":\"00:18:0a:84:d3:4b\",\"serial\":\"Q2GD-6YDF-AQS9\",\"networkId\":null,\"model\":\"MR18\",\"claimedAt\":\"1483990508.6547\",\"publicIp\":null},{\"mac\":\"88:15:44:07:3f:40\",\"serial\":\"Q2KN-QF8C-46D7\",\"networkId\":null,\"model\":\"MX64\",\"claimedAt\":\"1473720291.26513\",\"publicIp\":null},{\"mac\":\"88:15:44:60:10:48\",\"serial\":\"Q2MD-3BLY-39UY\",\"networkId\":null,\"model\":\"MR53\",\"claimedAt\":\"1484205606.10212\",\"publicIp\":null},{\"mac\":\"88:15:44:60:17:0e\",\"serial\":\"Q2MD-K8KC-KHN5\",\"networkId\":null,\"model\":\"MR53\",\"claimedAt\":\"1484206371.50937\",\"publicIp\":null},{\"mac\":\"88:15:44:60:44:54\",\"serial\":\"Q2MD-TU9Q-KY26\",\"networkId\":null,\"model\":\"MR53\",\"claimedAt\":\"1484206371.58339\",\"publicIp\":null},{\"mac\":\"88:15:44:60:46:66\",\"serial\":\"Q2MD-42G6-QXTM\",\"networkId\":null,\"model\":\"MR53\",\"claimedAt\":\"1484206371.48333\",\"publicIp\":null},{\"mac\":\"88:15:44:60:49:c0\",\"serial\":\"Q2MD-J8AQ-NWFY\",\"networkId\":null,\"model\":\"MR53\",\"claimedAt\":\"1484206371.50417\",\"publicIp\":null},{\"mac\":\"88:15:44:60:4b:0a\",\"serial\":\"Q2MD-Q3FB-56XA\",\"networkId\":null,\"model\":\"MR53\",\"claimedAt\":\"1484206371.57334\",\"publicIp\":null},{\"mac\":\"88:15:44:60:54:30\",\"serial\":\"Q2MD-TSB8-X36T\",\"networkId\":null,\"model\":\"MR53\",\"claimedAt\":\"1484206371.57833\",\"publicIp\":null},{\"mac\":\"88:15:44:60:54:f2\",\"serial\":\"Q2MD-X5JS-4JGT\",\"networkId\":null,\"model\":\"MR53\",\"claimedAt\":\"1484206371.58835\",\"publicIp\":null},{\"mac\":\"88:15:44:aa:39:58\",\"serial\":\"Q2KD-GHTM-7DLT\",\"networkId\":null,\"model\":\"MR42\",\"claimedAt\":\"1479803363.4459\",\"publicIp\":null},{\"mac\":\"88:15:44:df:40:29\",\"serial\":\"Q2HP-EFEC-36WT\",\"networkId\":null,\"model\":\"MS220-8P\",\"claimedAt\":\"1473720291.23734\",\"publicIp\":null},{\"mac\":\"88:15:44:df:f3:af\",\"serial\":\"Q2HP-F5K5-R88R\",\"networkId\":null,\"model\":\"MS220-8P\",\"claimedAt\":\"1484581291.29723\",\"publicIp\":null},{\"mac\":\"e0:55:3d:02:fe:e8\",\"serial\":\"Q2HN-CP5J-QAWZ\",\"networkId\":null,\"model\":\"Z1\",\"claimedAt\":\"1473720291.19157\",\"publicIp\":null},{\"mac\":\"e0:55:3d:17:c6:87\",\"serial\":\"Q2QN-WVV9-W4KK\",\"networkId\":null,\"model\":\"MX65\",\"claimedAt\":\"1465400894.72988\",\"publicIp\":null},{\"mac\":\"e0:55:3d:17:d4:23\",\"serial\":\"Q2QN-9J8L-SLPD\",\"networkId\":null,\"model\":\"MX65\",\"claimedAt\":\"1465400894.73515\",\"publicIp\":null},{\"mac\":\"e0:55:3d:1f:a7:10\",\"serial\":\"Q2JD-CAF3-Y6G2\",\"networkId\":null,\"model\":\"MR32\",\"claimedAt\":\"1465400894.76165\",\"publicIp\":null},{\"mac\":\"e0:55:3d:43:91:20\",\"serial\":\"Q2JD-W28X-FNEN\",\"networkId\":null,\"model\":\"MR32\",\"claimedAt\":\"1468348225.34578\",\"publicIp\":null},{\"mac\":\"e0:55:3d:63:aa:d0\",\"serial\":\"Q2JD-UYMB-JBKW\",\"networkId\":null,\"model\":\"MR32\",\"claimedAt\":\"1475084449.98524\",\"publicIp\":null},{\"mac\":\"e0:55:3d:aa:ed:20\",\"serial\":\"Q2JD-BMZV-UXZW\",\"networkId\":null,\"model\":\"MR32\",\"claimedAt\":\"1481047113.16544\",\"publicIp\":null},{\"mac\":\"e0:55:3d:ac:c5:10\",\"serial\":\"Q2JD-PSWN-378H\",\"networkId\":null,\"model\":\"MR32\",\"claimedAt\":\"1474124636.47263\",\"publicIp\":null},{\"mac\":\"e0:55:3d:b1:0a:c0\",\"serial\":\"Q2JD-KVEK-RQAA\",\"networkId\":null,\"model\":\"MR32\",\"claimedAt\":\"1487526686.3224\",\"publicIp\":null},{\"mac\":\"e0:55:3d:b9:e5:f0\",\"serial\":\"Q2JD-GQMG-RDZE\",\"networkId\":null,\"model\":\"MR32\",\"claimedAt\":\"1482201806.28282\",\"publicIp\":null},{\"mac\":\"e0:55:3d:d0:87:a7\",\"serial\":\"Q2HP-KXX7-8ZVP\",\"networkId\":null,\"model\":\"MS220-8P\",\"claimedAt\":\"1488866559.94023\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:32:3d\",\"serial\":\"Q2PD-ALLF-NQ7M\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.24031\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:36:8b\",\"serial\":\"Q2PD-CDE7-PWKW\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.27334\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:38:b0\",\"serial\":\"Q2PD-D83J-244C\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.27977\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:39:cd\",\"serial\":\"Q2PD-DM8M-KVBG\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.28565\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:40:ab\",\"serial\":\"Q2PD-GEC9-FHAL\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.29172\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:41:43\",\"serial\":\"Q2PD-GNJH-YTX9\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.29769\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:42:06\",\"serial\":\"Q2PD-GZLE-SN4D\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.30322\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:42:e5\",\"serial\":\"Q2PD-HD47-D9H5\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.30919\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:43:4f\",\"serial\":\"Q2PD-HJQP-FYQD\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.31716\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:43:55\",\"serial\":\"Q2PD-HK7U-DZ2Y\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.32456\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:45:81\",\"serial\":\"Q2PD-JJRT-RY66\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.33636\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:46:34\",\"serial\":\"Q2PD-JTFD-Q5QL\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.34344\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:46:6f\",\"serial\":\"Q2PD-JWC7-4SVZ\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.35003\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:46:bc\",\"serial\":\"Q2PD-K2LZ-WJBS\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.35592\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:47:3f\",\"serial\":\"Q2PD-K8FC-NBLU\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.36261\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:47:a5\",\"serial\":\"Q2PD-KDUF-FFV6\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.38314\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:47:ae\",\"serial\":\"Q2PD-KEGN-42GP\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.38923\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:47:b3\",\"serial\":\"Q2PD-KEUZ-FM28\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.39588\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:47:b4\",\"serial\":\"Q2PD-KEW5-2XCL\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.40209\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:47:b5\",\"serial\":\"Q2PD-KEWH-HB4S\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.40876\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:47:b8\",\"serial\":\"Q2PD-KEY8-XZ7E\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.41496\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:4b:0e\",\"serial\":\"Q2PD-LVHH-AJGZ\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.42748\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:4b:d4\",\"serial\":\"Q2PD-M8NW-F337\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.4334\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:4d:5e\",\"serial\":\"Q2PD-MV9L-BP33\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.43967\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:4d:cb\",\"serial\":\"Q2PD-N2AH-5Y7E\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.45135\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:4e:36\",\"serial\":\"Q2PD-N7M8-6ND5\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.45718\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:4e:83\",\"serial\":\"Q2PD-NBV2-PPL6\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.46315\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:4f:e7\",\"serial\":\"Q2PD-NVEL-PL7D\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.47495\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:50:00\",\"serial\":\"Q2PD-NWDN-Z8F6\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.48084\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:52:d5\",\"serial\":\"Q2PD-Q2AZ-SCAX\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.48684\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:53:04\",\"serial\":\"Q2PD-Q47T-GVZY\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.49334\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:53:14\",\"serial\":\"Q2PD-Q4WV-LTCD\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.49962\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:53:29\",\"serial\":\"Q2PD-Q62G-DZW5\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.50611\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:53:bb\",\"serial\":\"Q2PD-QDN9-YM9W\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1487508996.51234\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:c1:68\",\"serial\":\"Q2PD-6S2J-42NM\",\"networkId\":null,\"model\":\"MR33\",\"claimedAt\":\"1486430276.96915\",\"publicIp\":null}]"
+						},
+						{
+							"id": "15243456-47d4-4e3f-9fb1-925f617c7dd1",
+							"name": "Organizations - Return the inventory",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Cisco-Meraki-API-Key",
+										"value": "{{X-Cisco-Meraki-API-Key}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "order",
+											"value": "234234234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://dashboard.meraki.com/api/v0/organizations/{{organizationId}}/inventory",
+									"protocol": "https",
+									"host": [
+										"dashboard",
+										"meraki",
+										"com"
+									],
+									"path": [
+										"api",
+										"v0",
+										"organizations",
+										"{{organizationId}}",
+										"inventory"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"name": "Content-Encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 27 Mar 2018 21:06:12 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Expires",
+									"value": "Fri, 01 Jan 1990 00:00:00 GMT",
+									"name": "Expires",
+									"description": "Gives the date/time after which the response is considered stale"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache",
+									"name": "Pragma",
+									"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+								},
+								{
+									"key": "Public-Key-Pins-Report-Only",
+									"value": "max-age=1200; pin-sha256=\"2V5tfxXMLkn2kVg/Iv8FqL4JHcNVGEUFK27oSMYhHEU=\"; pin-sha256=\"8Rw90Ej3Ttt8RRkrg+WYDS9n7IS03bk5bjP/UXPtaY8=\"; pin-sha256=\"3YQf+D42t1/pQJhWTwYLRnFVnbBNXf9W5S6dmwq2+3g=\"; pin-sha256=\"klO23nT2ehFDXCfx3eHTDRESMz3asj1muO+4aIdjiuY=\"; pin-sha256=\"fake+hpkp+key+for+testing+report+only+QWERT=\"; includeSubDomains; report-uri=\"https://therealmerakidashboard.report-uri.io/r/default/hpkp/reportOnly\"",
+									"name": "Public-Key-Pins-Report-Only",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "nginx",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"name": "Strict-Transport-Security",
+									"description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "sameorigin",
+									"name": "X-Frame-Options",
+									"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+								},
+								{
+									"key": "X-Rack-Cache",
+									"value": "miss",
+									"name": "X-Rack-Cache",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "ce1bb6986863eedb2176d59d0caf9767",
+									"name": "X-Request-Id",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.090395",
+									"name": "X-Runtime",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge,chrome=1",
+									"name": "X-UA-Compatible",
+									"description": "Custom header"
+								}
+							],
+							"cookie": [],
+							"body": "[{\"mac\":\"00:18:0a:04:77:b4\",\"serial\":\"Q2CK-MT78-3A2Z\",\"networkId\":\"N_646829496481143630\",\"model\":\"MR66\",\"claimedAt\":\"1521566896.83194\",\"publicIp\":\"70.77.156.115\"},{\"mac\":\"00:18:0a:12:2d:da\",\"serial\":\"Q2AT-Z8Q8-7TPH\",\"networkId\":\"L_646829496481098130\",\"model\":\"MC74\",\"claimedAt\":\"1483748363.47231\",\"publicIp\":null},{\"mac\":\"0c:8d:db:65:89:27\",\"serial\":\"Q2PD-GP6W-ZGBC\",\"networkId\":\"N_646829496481143742\",\"model\":\"MR33\",\"claimedAt\":\"1520699762.05315\",\"publicIp\":null},{\"mac\":\"0c:8d:db:67:01:86\",\"serial\":\"Q2RD-6YRX-3EJV\",\"networkId\":\"L_646829496481098885\",\"model\":\"MR30H\",\"claimedAt\":\"1518472646.51629\",\"publicIp\":null},{\"mac\":\"0c:8d:db:b2:86:9c\",\"serial\":\"Q2LD-98WJ-743V\",\"networkId\":\"L_646829496481098885\",\"model\":\"MR52\",\"claimedAt\":\"1520579126.10708\",\"publicIp\":null},{\"mac\":\"88:15:44:50:09:e4\",\"serial\":\"Q2LD-LREJ-RRZT\",\"networkId\":\"L_646829496481098885\",\"model\":\"MR52\",\"claimedAt\":\"1498690077.71515\",\"publicIp\":null},{\"mac\":\"88:15:44:60:20:a8\",\"serial\":\"Q2MD-9PJD-E9L7\",\"networkId\":\"L_646829496481092083\",\"model\":\"MR53\",\"claimedAt\":\"1495638330.95502\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"88:15:44:60:21:10\",\"serial\":\"Q2MD-BHHS-5FDL\",\"networkId\":\"L_646829496481095588\",\"model\":\"MR53\",\"claimedAt\":\"1495638330.96262\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"88:15:44:60:2b:2a\",\"serial\":\"Q2MD-L9M8-Y8U5\",\"networkId\":\"L_646829496481098716\",\"model\":\"MR53\",\"claimedAt\":\"1495221641.00449\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"88:15:44:a6:ea:80\",\"serial\":\"Q2JD-SHNA-Z4EQ\",\"networkId\":\"L_646829496481098885\",\"model\":\"MR32\",\"claimedAt\":\"1518472646.57449\",\"publicIp\":null},{\"mac\":\"88:15:44:ab:ac:99\",\"serial\":\"Q2KD-VUCZ-2RUY\",\"networkId\":\"N_646829496481143399\",\"model\":\"MR42\",\"claimedAt\":\"1520836678.20982\",\"publicIp\":\"173.38.220.60\"},{\"mac\":\"88:15:44:ad:2d:a0\",\"serial\":\"Q2JD-V3G3-JHA3\",\"networkId\":\"L_646829496481098885\",\"model\":\"MR32\",\"claimedAt\":\"1518472646.56816\",\"publicIp\":null},{\"mac\":\"88:15:44:ad:97:c0\",\"serial\":\"Q2JD-YWZ2-KVUR\",\"networkId\":\"L_646829496481098885\",\"model\":\"MR32\",\"claimedAt\":\"1518472646.59405\",\"publicIp\":null},{\"mac\":\"88:15:44:df:76:d1\",\"serial\":\"Q2HP-AJ22-UG72\",\"networkId\":\"L_646829496481095933\",\"model\":\"MS220-8P\",\"claimedAt\":\"1465400894.75595\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"88:15:44:df:f3:af\",\"serial\":\"Q2HP-F5K5-R88R\",\"networkId\":\"L_646829496481098130\",\"model\":\"MS220-8P\",\"claimedAt\":\"1484581291.29723\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"88:15:44:df:fe:8e\",\"serial\":\"Q2HP-WH5E-MK7H\",\"networkId\":\"L_646829496481092083\",\"model\":\"MS220-8P\",\"claimedAt\":\"1484581608.27062\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"88:15:44:f4:f3:c0\",\"serial\":\"Q2FD-X82Q-6SFQ\",\"networkId\":\"L_646829496481098885\",\"model\":\"MR34\",\"claimedAt\":\"1498692225.011\",\"publicIp\":null},{\"mac\":\"e0:55:3d:10:21:f0\",\"serial\":\"Q2EK-SARE-UUBY\",\"networkId\":\"L_646829496481098716\",\"model\":\"MR84\",\"claimedAt\":\"1495638330.92721\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:10:42:8a\",\"serial\":\"Q2EK-S3AA-BXFW\",\"networkId\":\"L_646829496481092083\",\"model\":\"MR84\",\"claimedAt\":\"1495221640.98715\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:10:42:a6\",\"serial\":\"Q2EK-SMY9-FSWW\",\"networkId\":\"L_646829496481095588\",\"model\":\"MR84\",\"claimedAt\":\"1495638330.93389\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:17:c6:87\",\"serial\":\"Q2QN-WVV9-W4KK\",\"networkId\":\"L_646829496481095933\",\"model\":\"MX65\",\"claimedAt\":\"1465400894.72988\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:17:d4:23\",\"serial\":\"Q2QN-9J8L-SLPD\",\"networkId\":\"L_646829496481098130\",\"model\":\"MX65\",\"claimedAt\":\"1519658520.55085\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:17:d5:1a\",\"serial\":\"Q2QN-WPR6-UJPL\",\"networkId\":\"L_646829496481092083\",\"model\":\"MX65\",\"claimedAt\":\"1465400894.71852\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:1f:a7:10\",\"serial\":\"Q2JD-CAF3-Y6G2\",\"networkId\":\"L_646829496481095933\",\"model\":\"MR32\",\"claimedAt\":\"1465400894.76165\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"e0:55:3d:21:26:60\",\"serial\":\"Q2JD-N9K5-3QRB\",\"networkId\":\"L_646829496481092083\",\"model\":\"MR32\",\"claimedAt\":\"1465400894.77255\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:4e:bc:75\",\"serial\":\"Q2AT-DA5E-TRUS\",\"networkId\":\"L_646829496481095933\",\"model\":\"MC74\",\"claimedAt\":\"1476804978.12889\",\"publicIp\":null},{\"mac\":\"e0:55:3d:4f:31:a2\",\"serial\":\"Q2AT-8L46-5E9H\",\"networkId\":\"L_646829496481095588\",\"model\":\"MC74\",\"claimedAt\":\"1495223197.14465\",\"publicIp\":\"64.103.26.57\"},{\"mac\":\"e0:55:3d:4f:33:8b\",\"serial\":\"Q2AT-85YQ-XEEC\",\"networkId\":\"L_646829496481095660\",\"model\":\"MC74\",\"claimedAt\":\"1495223197.13592\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:4f:3c:3d\",\"serial\":\"Q2AT-6YBM-LFF2\",\"networkId\":\"L_646829496481098716\",\"model\":\"MC74\",\"claimedAt\":\"1495223197.10989\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:50:74:0a\",\"serial\":\"Q2AT-U95F-NHKM\",\"networkId\":\"L_646829496481098796\",\"model\":\"MC74\",\"claimedAt\":\"1520514541.18679\",\"publicIp\":\"68.60.18.108\"},{\"mac\":\"e0:55:3d:70:a4:d7\",\"serial\":\"Q2QN-XPL2-2MPN\",\"networkId\":\"L_646829496481095660\",\"model\":\"MX65\",\"claimedAt\":\"1495638330.98129\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:70:a6:c5\",\"serial\":\"Q2QN-F2KR-YVC3\",\"networkId\":\"L_646829496481095588\",\"model\":\"MX65\",\"claimedAt\":\"1495638330.97017\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:70:ad:86\",\"serial\":\"Q2QN-WS5Y-DN8E\",\"networkId\":\"L_646829496481098716\",\"model\":\"MX65\",\"claimedAt\":\"1495221641.01274\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:84:a3:65\",\"serial\":\"Q2BV-NZ63-KCSW\",\"networkId\":\"L_646829496481095660\",\"model\":\"MV21\",\"claimedAt\":\"1495638330.9217\",\"publicIp\":null},{\"mac\":\"e0:55:3d:84:a3:67\",\"serial\":\"Q2BV-NJY8-P6KV\",\"networkId\":\"L_646829496481098885\",\"model\":\"MV21\",\"claimedAt\":\"1495638330.85746\",\"publicIp\":null},{\"mac\":\"e0:55:3d:84:a3:7e\",\"serial\":\"Q2BV-5YPE-R9YV\",\"networkId\":\"L_646829496481098130\",\"model\":\"MV21\",\"claimedAt\":\"1495221640.96068\",\"publicIp\":null},{\"mac\":\"e0:55:3d:d1:a9:b1\",\"serial\":\"Q2HP-TQPZ-M5LP\",\"networkId\":\"L_646829496481095660\",\"model\":\"MS220-8P\",\"claimedAt\":\"1495638330.94768\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:d1:be:67\",\"serial\":\"Q2HP-DT5F-KMJE\",\"networkId\":\"L_646829496481095588\",\"model\":\"MS220-8P\",\"claimedAt\":\"1495638330.94028\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:d2:e6:cd\",\"serial\":\"Q2HP-Q9S8-BVHB\",\"networkId\":\"L_646829496481098716\",\"model\":\"MS220-8P\",\"claimedAt\":\"1495221640.99721\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:ee:de:34\",\"serial\":\"Q2RD-PPCW-Z5SX\",\"networkId\":\"L_646829496481098885\",\"model\":\"MR30H\",\"claimedAt\":\"1518472646.53897\",\"publicIp\":null},{\"mac\":\"e0:55:3d:ee:df:1a\",\"serial\":\"Q2RD-PS95-N2WJ\",\"networkId\":\"L_646829496481098885\",\"model\":\"MR30H\",\"claimedAt\":\"1518472646.54439\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:45:81\",\"serial\":\"Q2PD-JJRT-RY66\",\"networkId\":\"L_646829496481098716\",\"model\":\"MR33\",\"claimedAt\":\"1487508996.33636\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:47:3f\",\"serial\":\"Q2PD-K8FC-NBLU\",\"networkId\":\"L_646829496481098130\",\"model\":\"MR33\",\"claimedAt\":\"1487508996.36261\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:47:a5\",\"serial\":\"Q2PD-KDUF-FFV6\",\"networkId\":\"L_646829496481098130\",\"model\":\"MR33\",\"claimedAt\":\"1487508996.38314\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:47:b3\",\"serial\":\"Q2PD-KEUZ-FM28\",\"networkId\":\"L_646829496481098130\",\"model\":\"MR33\",\"claimedAt\":\"1487508996.39588\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:4b:0e\",\"serial\":\"Q2PD-LVHH-AJGZ\",\"networkId\":\"L_646829496481098130\",\"model\":\"MR33\",\"claimedAt\":\"1487508996.42748\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:4d:cb\",\"serial\":\"Q2PD-N2AH-5Y7E\",\"networkId\":\"L_646829496481098130\",\"model\":\"MR33\",\"claimedAt\":\"1487508996.45135\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:53:14\",\"serial\":\"Q2PD-Q4WV-LTCD\",\"networkId\":\"L_646829496481098130\",\"model\":\"MR33\",\"claimedAt\":\"1487508996.49962\",\"publicIp\":null},{\"mac\":\"e0:55:3d:f3:53:29\",\"serial\":\"Q2PD-Q62G-DZW5\",\"networkId\":\"L_646829496481098130\",\"model\":\"MR33\",\"claimedAt\":\"1487508996.50611\",\"publicIp\":\"92.233.37.201\"},{\"mac\":\"e0:55:3d:f4:39:17\",\"serial\":\"Q2RD-4YLL-CSUN\",\"networkId\":\"L_646829496481098716\",\"model\":\"MR30H\",\"claimedAt\":\"1495221641.02015\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:f4:39:3a\",\"serial\":\"Q2RD-4ZSU-DLC6\",\"networkId\":\"L_646829496481092083\",\"model\":\"MR30H\",\"claimedAt\":\"1495638330.98885\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:55:3d:f4:98:99\",\"serial\":\"Q2RD-WZ4L-U8Y2\",\"networkId\":\"L_646829496481095588\",\"model\":\"MR30H\",\"claimedAt\":\"1495638330.99664\",\"publicIp\":\"64.103.26.54\"},{\"mac\":\"e0:cb:bc:30:c6:5e\",\"serial\":\"Q2PD-2U3F-N4Y9\",\"networkId\":\"L_646829496481098845\",\"model\":\"MR33\",\"claimedAt\":\"1521227421.64893\",\"publicIp\":\"189.216.92.55\"},{\"mac\":\"e0:cb:bc:31:82:df\",\"serial\":\"Q2PD-Y4LF-CDX3\",\"networkId\":\"L_646829496481098796\",\"model\":\"MR33\",\"claimedAt\":\"1520514541.21736\",\"publicIp\":\"68.60.18.108\"}]"
 						}
 					]
 				},
@@ -5990,7 +5990,7 @@
 					},
 					"response": [
 						{
-							"id": "95947137-a356-497a-8693-3df526626576",
+							"id": "3b129de5-3650-4005-af3b-3ad9f16d5f8f",
 							"name": "get SNMP - Meraki Dev Sandbox",
 							"originalRequest": {
 								"method": "GET",
@@ -6177,7 +6177,7 @@
 					},
 					"response": [
 						{
-							"id": "ea96b1a9-b912-4ea4-b568-eba3c444ba8f",
+							"id": "a7178fb7-1f94-4397-8a09-a14c61ea2450",
 							"name": "Organizations - Update the SNMP settings",
 							"originalRequest": {
 								"method": "PUT",
@@ -6407,7 +6407,7 @@
 		},
 		{
 			"name": "Phone callgroups",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "List all call groups in a network",
@@ -6443,7 +6443,7 @@
 					},
 					"response": [
 						{
-							"id": "4879b64c-4a7e-4f72-b6b3-2667bca7f824",
+							"id": "66d38608-d68f-4888-b0f0-2a3aab0cc68b",
 							"name": "List all call groups in a network",
 							"originalRequest": {
 								"method": "GET",
@@ -6621,7 +6621,7 @@
 					},
 					"response": [
 						{
-							"id": "03dfcb20-3f3a-4dc5-b54f-f54c8b02d951",
+							"id": "b62c86aa-1077-45d3-bbcf-d2c0aa8c0242",
 							"name": "error",
 							"originalRequest": {
 								"method": "GET",
@@ -6758,7 +6758,7 @@
 							"body": "{\"error\":\"Callgroup not found\"}"
 						},
 						{
-							"id": "35f1331b-c98e-423b-9d5e-db2d28cabcc4",
+							"id": "3a28c43c-8b68-4ab1-9ea4-0cd643f3a261",
 							"name": "Show a call group's details",
 							"originalRequest": {
 								"method": "GET",
@@ -6935,7 +6935,7 @@
 					},
 					"response": [
 						{
-							"id": "e988510a-dbfa-4337-941f-51b186c917d8",
+							"id": "4d6ea908-62d5-4330-be85-8662b7af10f6",
 							"name": "Create a new call group",
 							"originalRequest": {
 								"method": "POST",
@@ -7104,7 +7104,7 @@
 					},
 					"response": [
 						{
-							"id": "9cb6900d-f16a-446d-aeae-0bde21440a38",
+							"id": "9d1e575f-c737-4e98-902d-4c046e66b3f6",
 							"name": "Update a call group",
 							"originalRequest": {
 								"method": "PUT",
@@ -7188,7 +7188,7 @@
 					},
 					"response": [
 						{
-							"id": "7b76e9b0-03db-4e1d-b4d0-2a94e3de2494",
+							"id": "02c4f972-e5b3-45cf-80ac-91fc4bc92550",
 							"name": "Delete a call group",
 							"originalRequest": {
 								"method": "DELETE",
@@ -7237,7 +7237,7 @@
 		},
 		{
 			"name": "Phone contacts",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Phone contacts - List the phone contacts in a network",
@@ -7389,7 +7389,7 @@
 		},
 		{
 			"name": "Phone Assignments",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "List all phones in a network and their contact assignment",
@@ -7425,7 +7425,7 @@
 					},
 					"response": [
 						{
-							"id": "a9f63ab0-fef2-4d8f-87bb-8898e8866676",
+							"id": "5a5ffcfc-ff1a-44fc-8426-6bf76d4a5d2f",
 							"name": "List all phones in a network and their contact assignment",
 							"originalRequest": {
 								"method": "GET",
@@ -7603,149 +7603,7 @@
 					},
 					"response": [
 						{
-							"id": "cf07c110-9781-4be3-a162-1606ecf68696",
-							"name": "List all phones in a network and their contact assignment",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "X-Cisco-Meraki-API-Key",
-										"value": "{{X-Cisco-Meraki-API-Key}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "https://dashboard.meraki.com/api/v0/networks/{{networkId}}/phoneAssignments",
-									"protocol": "https",
-									"host": [
-										"dashboard",
-										"meraki",
-										"com"
-									],
-									"path": [
-										"api",
-										"v0",
-										"networks",
-										"{{networkId}}",
-										"phoneAssignments"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, no-store, max-age=0, must-revalidate",
-									"name": "Cache-Control",
-									"description": ""
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive",
-									"name": "Connection",
-									"description": ""
-								},
-								{
-									"key": "Content-Encoding",
-									"value": "gzip",
-									"name": "Content-Encoding",
-									"description": ""
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8",
-									"name": "Content-Type",
-									"description": ""
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 12 Oct 2017 14:09:19 GMT",
-									"name": "Date",
-									"description": ""
-								},
-								{
-									"key": "Expires",
-									"value": "Fri, 01 Jan 1990 00:00:00 GMT",
-									"name": "Expires",
-									"description": ""
-								},
-								{
-									"key": "Pragma",
-									"value": "no-cache",
-									"name": "Pragma",
-									"description": ""
-								},
-								{
-									"key": "Public-Key-Pins-Report-Only",
-									"value": "max-age=1200; pin-sha256=\"2V5tfxXMLkn2kVg/Iv8FqL4JHcNVGEUFK27oSMYhHEU=\"; pin-sha256=\"8Rw90Ej3Ttt8RRkrg+WYDS9n7IS03bk5bjP/UXPtaY8=\"; pin-sha256=\"3YQf+D42t1/pQJhWTwYLRnFVnbBNXf9W5S6dmwq2+3g=\"; pin-sha256=\"klO23nT2ehFDXCfx3eHTDRESMz3asj1muO+4aIdjiuY=\"; pin-sha256=\"fake+hpkp+key+for+testing+report+only+QWERT=\"; includeSubDomains; report-uri=\"https://therealmerakidashboard.report-uri.io/r/default/hpkp/reportOnly\"",
-									"name": "Public-Key-Pins-Report-Only",
-									"description": ""
-								},
-								{
-									"key": "Server",
-									"value": "nginx",
-									"name": "Server",
-									"description": ""
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=15552000; includeSubDomains",
-									"name": "Strict-Transport-Security",
-									"description": ""
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked",
-									"name": "Transfer-Encoding",
-									"description": ""
-								},
-								{
-									"key": "Vary",
-									"value": "Accept-Encoding",
-									"name": "Vary",
-									"description": ""
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "sameorigin",
-									"name": "X-Frame-Options",
-									"description": ""
-								},
-								{
-									"key": "X-Rack-Cache",
-									"value": "miss",
-									"name": "X-Rack-Cache",
-									"description": ""
-								},
-								{
-									"key": "X-Request-Id",
-									"value": "90eade44c04129aafe2caf278e8e5a94",
-									"name": "X-Request-Id",
-									"description": ""
-								},
-								{
-									"key": "X-Runtime",
-									"value": "0.296816",
-									"name": "X-Runtime",
-									"description": ""
-								},
-								{
-									"key": "X-UA-Compatible",
-									"value": "IE=Edge,chrome=1",
-									"name": "X-UA-Compatible",
-									"description": ""
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"serial\": \"Q2AT-DEMO-LFF2\",\n        \"contactId\": null,\n        \"contactType\": \"unassigned\",\n        \"publicNumber\": [],\n        \"ext\": null\n    },\n    {\n        \"serial\": \"Q2AT-DEMO-XEEC\",\n        \"contactId\": null,\n        \"contactType\": \"unassigned\",\n        \"publicNumber\": [],\n        \"ext\": null\n    }\n]"
-						},
-						{
-							"id": "adf2f91f-d866-4cdf-910d-386163575ee5",
+							"id": "13e7b50f-eb47-4974-8a9a-f4c704888ade",
 							"name": "Return a phone in a network and their contact assignment",
 							"originalRequest": {
 								"method": "GET",
@@ -7886,49 +7744,9 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"serial\": \"Q2AT-DEMO-XEEC\",\n    \"contactId\": null,\n    \"contactType\": \"unassigned\",\n    \"publicNumber\": [],\n    \"ext\": null\n}"
-						}
-					]
-				},
-				{
-					"name": "Assign a contact and number(s) to a phone",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "X-Cisco-Meraki-API-Key",
-								"value": "{{X-Cisco-Meraki-API-Key}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"contactId\":\"823\",\n\t\"contactType\":\"Google\",\n\t\"publicNumber\":[\"+15555555555\"],\n\t\"ext\":\"1234\"\n}"
 						},
-						"url": {
-							"raw": "https://{{shard}}.meraki.com/api/v0/networks/{{networkId}}/phoneAssignments/{{serial}}",
-							"protocol": "https",
-							"host": [
-								"{{shard}}",
-								"meraki",
-								"com"
-							],
-							"path": [
-								"api",
-								"v0",
-								"networks",
-								"{{networkId}}",
-								"phoneAssignments",
-								"{{serial}}"
-							]
-						},
-						"description": "## HTTP REQUEST\n```\nPUT /networks/[networkId]/phoneAssignments/[serial]\n```\n## PARAMETERS\nname|info\n----|----\ncontactId|The ID of the contact (obtained from 'Phone Contacts' API)\ncontactType|The type of contact to bind: 'Dashboard' or 'Google' (obtained from 'Phone Contacts' API)\npublicNumber|The public number(s) in E.164 format (obtained from 'Phone Numbers' API) as an array of strings. Multiple numbers per phone are allowed. Omitting this paramater will remove the public number assignment(s).\next|The 4-6 digit extension. Extension cannot be in use. Omitting this parameter will remove the extension assignment.\n\n## SAMPLE REQUEST\n```\ncurl -L -H 'X-Cisco-Meraki-API-Key: <key>' -H 'Content-Type: application/json' -X PUT --data-binary '{\"contactId\":\"823\",\"contactType\":\"Google\",\"publicNumber\":[\"+15555555555\"],\"ext\":\"1234\"}' 'https://dashboard.meraki.com/api/v0/networks/[networkId]/phoneAssignments/[serial]'\n```\n## SAMPLE RESPONSE\n```\nSuccessful HTTP Status: 200\n{\n  \"serial\": \"Q2XX-XXXX-XXXX\",\n  \"contactId\": \"823\",\n  \"contactType\": \"Dashboard\",\n  \"publicNumber\": [\n    \"+15555555555\"\n  ],\n  \"ext\": \"1234\"\n}\n```"
-					},
-					"response": [
 						{
-							"id": "5a3e3598-e15c-42b9-9fc8-bd0257f0f4b4",
+							"id": "b87681ff-ffa8-4740-9d4b-18431e853989",
 							"name": "List all phones in a network and their contact assignment",
 							"originalRequest": {
 								"method": "GET",
@@ -8068,9 +7886,192 @@
 							],
 							"cookie": [],
 							"body": "[\n    {\n        \"serial\": \"Q2AT-DEMO-LFF2\",\n        \"contactId\": null,\n        \"contactType\": \"unassigned\",\n        \"publicNumber\": [],\n        \"ext\": null\n    },\n    {\n        \"serial\": \"Q2AT-DEMO-XEEC\",\n        \"contactId\": null,\n        \"contactType\": \"unassigned\",\n        \"publicNumber\": [],\n        \"ext\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Assign a contact and number(s) to a phone",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Cisco-Meraki-API-Key",
+								"value": "{{X-Cisco-Meraki-API-Key}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"contactId\":\"823\",\n\t\"contactType\":\"Google\",\n\t\"publicNumber\":[\"+15555555555\"],\n\t\"ext\":\"1234\"\n}"
+						},
+						"url": {
+							"raw": "https://{{shard}}.meraki.com/api/v0/networks/{{networkId}}/phoneAssignments/{{serial}}",
+							"protocol": "https",
+							"host": [
+								"{{shard}}",
+								"meraki",
+								"com"
+							],
+							"path": [
+								"api",
+								"v0",
+								"networks",
+								"{{networkId}}",
+								"phoneAssignments",
+								"{{serial}}"
+							]
+						},
+						"description": "## HTTP REQUEST\n```\nPUT /networks/[networkId]/phoneAssignments/[serial]\n```\n## PARAMETERS\nname|info\n----|----\ncontactId|The ID of the contact (obtained from 'Phone Contacts' API)\ncontactType|The type of contact to bind: 'Dashboard' or 'Google' (obtained from 'Phone Contacts' API)\npublicNumber|The public number(s) in E.164 format (obtained from 'Phone Numbers' API) as an array of strings. Multiple numbers per phone are allowed. Omitting this paramater will remove the public number assignment(s).\next|The 4-6 digit extension. Extension cannot be in use. Omitting this parameter will remove the extension assignment.\n\n## SAMPLE REQUEST\n```\ncurl -L -H 'X-Cisco-Meraki-API-Key: <key>' -H 'Content-Type: application/json' -X PUT --data-binary '{\"contactId\":\"823\",\"contactType\":\"Google\",\"publicNumber\":[\"+15555555555\"],\"ext\":\"1234\"}' 'https://dashboard.meraki.com/api/v0/networks/[networkId]/phoneAssignments/[serial]'\n```\n## SAMPLE RESPONSE\n```\nSuccessful HTTP Status: 200\n{\n  \"serial\": \"Q2XX-XXXX-XXXX\",\n  \"contactId\": \"823\",\n  \"contactType\": \"Dashboard\",\n  \"publicNumber\": [\n    \"+15555555555\"\n  ],\n  \"ext\": \"1234\"\n}\n```"
+					},
+					"response": [
+						{
+							"id": "a5544029-9ecb-4039-a54d-202e092fc349",
+							"name": "Return a phone in a network and their contact assignment",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Cisco-Meraki-API-Key",
+										"value": "{{X-Cisco-Meraki-API-Key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://dashboard.meraki.com/api/v0/networks/{{networkId}}/phoneAssignments/{{serial}}",
+									"protocol": "https",
+									"host": [
+										"dashboard",
+										"meraki",
+										"com"
+									],
+									"path": [
+										"api",
+										"v0",
+										"networks",
+										"{{networkId}}",
+										"phoneAssignments",
+										"{{serial}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"name": "Content-Encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Oct 2017 14:13:49 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Expires",
+									"value": "Fri, 01 Jan 1990 00:00:00 GMT",
+									"name": "Expires",
+									"description": "Gives the date/time after which the response is considered stale"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache",
+									"name": "Pragma",
+									"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+								},
+								{
+									"key": "Public-Key-Pins-Report-Only",
+									"value": "max-age=1200; pin-sha256=\"2V5tfxXMLkn2kVg/Iv8FqL4JHcNVGEUFK27oSMYhHEU=\"; pin-sha256=\"8Rw90Ej3Ttt8RRkrg+WYDS9n7IS03bk5bjP/UXPtaY8=\"; pin-sha256=\"3YQf+D42t1/pQJhWTwYLRnFVnbBNXf9W5S6dmwq2+3g=\"; pin-sha256=\"klO23nT2ehFDXCfx3eHTDRESMz3asj1muO+4aIdjiuY=\"; pin-sha256=\"fake+hpkp+key+for+testing+report+only+QWERT=\"; includeSubDomains; report-uri=\"https://therealmerakidashboard.report-uri.io/r/default/hpkp/reportOnly\"",
+									"name": "Public-Key-Pins-Report-Only",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "nginx",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"name": "Strict-Transport-Security",
+									"description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "sameorigin",
+									"name": "X-Frame-Options",
+									"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+								},
+								{
+									"key": "X-Rack-Cache",
+									"value": "miss",
+									"name": "X-Rack-Cache",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "2e0365f6a10a6e32b74455ce106eb531",
+									"name": "X-Request-Id",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.161831",
+									"name": "X-Runtime",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge,chrome=1",
+									"name": "X-UA-Compatible",
+									"description": "Custom header"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"serial\": \"Q2AT-DEMO-XEEC\",\n    \"contactId\": null,\n    \"contactType\": \"unassigned\",\n    \"publicNumber\": [],\n    \"ext\": null\n}"
 						},
 						{
-							"id": "b96acf97-679a-419f-a9c4-69f85e959c4c",
+							"id": "b1d88808-a478-4890-ae0d-bf5376ec2c2c",
 							"name": "Assign a contact and number(s) to a phone",
 							"originalRequest": {
 								"method": "PUT",
@@ -8218,8 +8219,8 @@
 							"body": "{\n    \"serial\": \"Q2AT-85YQ-XEEC\",\n    \"contactId\": \"646829496481091096\",\n    \"contactType\": \"Dashboard\",\n    \"publicNumber\": [\"+11231231234\"],\n    \"ext\": \"1111\"\n}"
 						},
 						{
-							"id": "ca293202-8c2d-4617-a308-70278eb7da93",
-							"name": "Return a phone in a network and their contact assignment",
+							"id": "93f17898-6225-48c4-a39f-c152b6a018ce",
+							"name": "List all phones in a network and their contact assignment",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
@@ -8233,7 +8234,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "https://dashboard.meraki.com/api/v0/networks/{{networkId}}/phoneAssignments/{{serial}}",
+									"raw": "https://dashboard.meraki.com/api/v0/networks/{{networkId}}/phoneAssignments",
 									"protocol": "https",
 									"host": [
 										"dashboard",
@@ -8245,8 +8246,7 @@
 										"v0",
 										"networks",
 										"{{networkId}}",
-										"phoneAssignments",
-										"{{serial}}"
+										"phoneAssignments"
 									]
 								}
 							},
@@ -8258,107 +8258,107 @@
 									"key": "Cache-Control",
 									"value": "no-cache, no-store, max-age=0, must-revalidate",
 									"name": "Cache-Control",
-									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+									"description": ""
 								},
 								{
 									"key": "Connection",
 									"value": "keep-alive",
 									"name": "Connection",
-									"description": "Options that are desired for the connection"
+									"description": ""
 								},
 								{
 									"key": "Content-Encoding",
 									"value": "gzip",
 									"name": "Content-Encoding",
-									"description": "The type of encoding used on the data."
+									"description": ""
 								},
 								{
 									"key": "Content-Type",
 									"value": "application/json; charset=utf-8",
 									"name": "Content-Type",
-									"description": "The mime type of this content"
+									"description": ""
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 12 Oct 2017 14:13:49 GMT",
+									"value": "Thu, 12 Oct 2017 14:09:19 GMT",
 									"name": "Date",
-									"description": "The date and time that the message was sent"
+									"description": ""
 								},
 								{
 									"key": "Expires",
 									"value": "Fri, 01 Jan 1990 00:00:00 GMT",
 									"name": "Expires",
-									"description": "Gives the date/time after which the response is considered stale"
+									"description": ""
 								},
 								{
 									"key": "Pragma",
 									"value": "no-cache",
 									"name": "Pragma",
-									"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+									"description": ""
 								},
 								{
 									"key": "Public-Key-Pins-Report-Only",
 									"value": "max-age=1200; pin-sha256=\"2V5tfxXMLkn2kVg/Iv8FqL4JHcNVGEUFK27oSMYhHEU=\"; pin-sha256=\"8Rw90Ej3Ttt8RRkrg+WYDS9n7IS03bk5bjP/UXPtaY8=\"; pin-sha256=\"3YQf+D42t1/pQJhWTwYLRnFVnbBNXf9W5S6dmwq2+3g=\"; pin-sha256=\"klO23nT2ehFDXCfx3eHTDRESMz3asj1muO+4aIdjiuY=\"; pin-sha256=\"fake+hpkp+key+for+testing+report+only+QWERT=\"; includeSubDomains; report-uri=\"https://therealmerakidashboard.report-uri.io/r/default/hpkp/reportOnly\"",
 									"name": "Public-Key-Pins-Report-Only",
-									"description": "Custom header"
+									"description": ""
 								},
 								{
 									"key": "Server",
 									"value": "nginx",
 									"name": "Server",
-									"description": "A name for the server"
+									"description": ""
 								},
 								{
 									"key": "Strict-Transport-Security",
 									"value": "max-age=15552000; includeSubDomains",
 									"name": "Strict-Transport-Security",
-									"description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+									"description": ""
 								},
 								{
 									"key": "Transfer-Encoding",
 									"value": "chunked",
 									"name": "Transfer-Encoding",
-									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+									"description": ""
 								},
 								{
 									"key": "Vary",
 									"value": "Accept-Encoding",
 									"name": "Vary",
-									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+									"description": ""
 								},
 								{
 									"key": "X-Frame-Options",
 									"value": "sameorigin",
 									"name": "X-Frame-Options",
-									"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+									"description": ""
 								},
 								{
 									"key": "X-Rack-Cache",
 									"value": "miss",
 									"name": "X-Rack-Cache",
-									"description": "Custom header"
+									"description": ""
 								},
 								{
 									"key": "X-Request-Id",
-									"value": "2e0365f6a10a6e32b74455ce106eb531",
+									"value": "90eade44c04129aafe2caf278e8e5a94",
 									"name": "X-Request-Id",
-									"description": "Custom header"
+									"description": ""
 								},
 								{
 									"key": "X-Runtime",
-									"value": "0.161831",
+									"value": "0.296816",
 									"name": "X-Runtime",
-									"description": "Custom header"
+									"description": ""
 								},
 								{
 									"key": "X-UA-Compatible",
 									"value": "IE=Edge,chrome=1",
 									"name": "X-UA-Compatible",
-									"description": "Custom header"
+									"description": ""
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"serial\": \"Q2AT-DEMO-XEEC\",\n    \"contactId\": null,\n    \"contactType\": \"unassigned\",\n    \"publicNumber\": [],\n    \"ext\": null\n}"
+							"body": "[\n    {\n        \"serial\": \"Q2AT-DEMO-LFF2\",\n        \"contactId\": null,\n        \"contactType\": \"unassigned\",\n        \"publicNumber\": [],\n        \"ext\": null\n    },\n    {\n        \"serial\": \"Q2AT-DEMO-XEEC\",\n        \"contactId\": null,\n        \"contactType\": \"unassigned\",\n        \"publicNumber\": [],\n        \"ext\": null\n    }\n]"
 						}
 					]
 				},
@@ -8401,7 +8401,7 @@
 					},
 					"response": [
 						{
-							"id": "25dacf57-017b-4c36-9ba8-4afd176c9783",
+							"id": "b6d168ab-80bc-4084-ad3a-8d2bc35a450a",
 							"name": "Remove a phone assignment (unprovision a phone)",
 							"originalRequest": {
 								"method": "DELETE",
@@ -8529,7 +8529,7 @@
 		},
 		{
 			"name": "Phone numbers",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Phone numbers - List all the phone numbers in a network",
@@ -8604,7 +8604,7 @@
 		},
 		{
 			"name": "SAML roles",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "SAML roles - List the SAML roles for this organization",
@@ -8791,7 +8791,7 @@
 		},
 		{
 			"name": "SM",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "SM - List the devices enrolled in an SM network with various specified fields and filters",
@@ -9160,7 +9160,7 @@
 		},
 		{
 			"name": "SSIDs",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "SSIDs - List the SSIDs in a network",
@@ -9196,7 +9196,7 @@
 					},
 					"response": [
 						{
-							"id": "019d4512-d97b-42e4-9339-e01b02928a32",
+							"id": "3e7b4b3f-3d23-44f2-9036-1ff90888a3b3",
 							"name": "get SSIDs list - Meraki Dev Sandbox",
 							"originalRequest": {
 								"method": "GET",
@@ -9374,7 +9374,7 @@
 					},
 					"response": [
 						{
-							"id": "b32028a4-b6a5-4e0b-b9a5-902e87ee0cf0",
+							"id": "666f01cd-7a0c-4a72-9734-f3381cdc52e2",
 							"name": "get SSID - excap-DevNet - Meraki Dev Sandbox",
 							"originalRequest": {
 								"method": "GET",
@@ -9561,7 +9561,7 @@
 		},
 		{
 			"name": "Static routes",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Static routes - List the static routes for this network",
@@ -9752,7 +9752,7 @@
 		},
 		{
 			"name": "Switch ports",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Switch ports - List the switch ports for a switch",
@@ -10036,7 +10036,7 @@
 					},
 					"response": [
 						{
-							"id": "57dd5e04-ddea-4e78-810f-fa9d40b3b497",
+							"id": "cf6eeac5-3875-48ad-94e8-d6586e10e4f1",
 							"name": "VLANs - Add a VLAN",
 							"originalRequest": {
 								"method": "POST",
@@ -10067,7 +10067,6 @@
 										{
 											"key": "id",
 											"value": "110",
-											"description": "",
 											"type": "text"
 										}
 									]

@@ -1,2 +1,3 @@
-Flask
-requests
+Flask==0.12.2
+requests==2.18.4
+ngrok==0.0.1

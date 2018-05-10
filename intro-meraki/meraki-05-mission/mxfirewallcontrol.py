@@ -1,16 +1,22 @@
 """Set the Environment Information Needed to Access Your Lab!
+
 The provided sample code in this repository will reference this file to get the
 information needed to connect to your lab backend.  You provide this info here
 once and the scripts in this repository will access it as needed by the lab.
+
+
 Copyright (c) 2018 Cisco and/or its affiliates.
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
+
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
+
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,49 +27,14 @@ SOFTWARE.
 """
 
 
-# This is a script to manage firewall rulesets, by backing them up, inserting new rules or replacing the
-#  whole ruleset.
-#
-# To run the script, enter:
-#  python mxfirewallcontrol.py -k <key> -o <org> [-f <filter>] [-c <command>] [-m <mode>]
-#
-# Mandatory arguments:
-#  -k <key>     : Your Meraki Dashboard API key
-#  -o <org>     : The name of the Meraki dashboard organization you want to process. Enter "/all" for all
-#
-# Optional arguments:
-#  -f <filter>   : Define a subset of networks or templates to be processed. To use multiple filters,
-#                   separate them with commas. A network/template needs to satisfy all filters to be processed.
-#                   Valid options:
-#                  -f name:<name>               Network/template name must match <name>. Use * for wildcard.
-#                                                Wildcard character only allowed in beginning or end of string
-#                  -f tag:<tag>                 Network tags must include <tag>
-#                  -f type:network              Process only non-template networks
-#                  -f type:template             Process only configuration templates (default filter)
-#                  -f type:any                  Process both networks and config templates. Cannot be combined
-#                                                with tag filters
-# -c <command>   : Specify the operation to be carried out. When specifying rule numbers, a positive number
-#                                                indicates counting from top to bottom. First rule is "1".
-#                                                A negative number  indicates counting from bottom to top.
-#                                                Last rule is "-1". Valid options:
-#                  -c print                     Do not make changes, just print the ruleset to screen (default)
-#                  -c create-backup             Save rulesets in folder mxfirewallctl_backup_<timestamp> as
-#                                                filenames "<org name>__<net name>.txt"
-#
-# To make script chaining easier, all lines containing informational messages to the user
-#  start with the character @
-#
-# The full manual for this script can be found here:
-#   https://github.com/meraki/automation-scripts/blob/master/mxfirewallcontrol_manual.pdf
-
-
-import sys, getopt, requests, json, time, datetime, os, re
-
-import ciscosparkapi
+import sys
+import getopt
 import requests
-from requests_toolbelt.multipart.encoder import MultipartEncoder
-
-
+import time
+import datetime
+import os
+import re
+import ciscosparkapi
 
 # Get the absolute path for the directory where this file is located "here"
 here = os.path.abspath(os.path.dirname(__file__))
@@ -71,11 +42,14 @@ here = os.path.abspath(os.path.dirname(__file__))
 # Get the absolute path for the project / repository root
 project_root = os.path.abspath(os.path.join(here, "../.."))
 
-
 # Extend the system path to include the project root and import the env files
 sys.path.insert(0, project_root)
 import env_lab  # noqa
 import env_user  # noqa
+
+
+# Create a Cisco Spark object
+spark = ciscosparkapi.CiscoSparkAPI(access_token=env_user.SPARK_ACCESS_TOKEN)
 
 
 class c_organizationdata:
@@ -84,22 +58,13 @@ class c_organizationdata:
         self.name = ""
         self.id = ""
         self.nwdata = []
-
-
-# List of dictionaries as returned by cloud. Primary key is 'id'
-# end class
-
-
-class c_filter:
-
-    def __init__(self):
-        self.type = ""
-        self.value = ""
-
+        # List of dictionaries as returned by cloud. Primary key is 'id'
 
 # end class
 
-# Used for time.sleep(API_EXEC_DELAY). Delay added to avoid hitting dashboard API max request rate
+
+# Used for time.sleep(API_EXEC_DELAY). Delay added to avoid hitting dashboard
+# API max request rate
 API_EXEC_DELAY = 0.21
 
 
@@ -113,66 +78,28 @@ def printhelp():
     # prints help text
 
     printusertext(
-        "This is a script to manage firewall rulesets, by backing them up, inserting new rules"
+        "This is a script to manage firewall rulesets, by backing them up, \
+        inserting new rules"
     )
     printusertext("or replacing the whole ruleset.")
     printusertext("")
     printusertext("To run the script, enter:")
     printusertext(
-        "python mxfirewallcontrol.py -k <key> -o <org> [-f <filter>] [-c <command>] [-m <mode>]"
+        "python mxfirewallcontrol.py -k <key> -o <org> \
+    [-c <command>]"
     )
     printusertext("")
     printusertext("Mandatory arguments:")
     printusertext("  -k <key>     : Your Meraki Dashboard API key")
     printusertext(
-        "  -o <org>     : The name of the Meraki dashboard organization you want to process. Enter /all for all"
-    )
-    printusertext("")
-    printusertext("Optional arguments:")
-    printusertext(
-        "  -f <filter>  : Define a subset of networks or templates to be processed. Valid options:"
+        "  -o <org>     : The name of the Meraki dashboard \
+    organization you want to process. Enter /all for all"
     )
     printusertext(
-        "                  -f name:<name>               Network/template name must match <name>. Use * for wildcard."
+        "  -c create-backup  : Save rulesets in folder \
+    mxfirewallctl_backup_<timestamp> as"
     )
-    printusertext(
-        "                  -f tag:<tag>                 Network tags must include <tag>. Cannot be used with templates"
-    )
-    printusertext(
-        "                  -f type:network              Process only non-template networks"
-    )
-    printusertext(
-        "                  -f type:template             Process only configuration templates (default filter)"
-    )
-    printusertext(
-        "                  -f type:any                  Process both networks and config templates."
-    )
-    printusertext(
-        "                                                Cannot be combined with tag filters"
-    )
-    printusertext(
-        " -c <command>   : Specify the operation to be carried out. When specifying rule numbers, a positive number"
-    )
-    printusertext(
-        '                   indicates counting from top to bottom. First rule is "1". A negative number'
-    )
-    printusertext(
-        '                   indicates counting from bottom to top. Last rule is "-1". Valid options:'
-    )
-    printusertext(
-        "                  -c print                     Do not make changes, just print the ruleset to screen (default)"
-    )
-    printusertext(
-        "                  -c create-backup             Save rulesets in folder mxfirewallctl_backup_<timestamp> as"
-    )
-    printusertext(
-        '                                                filenames "<org name>__<net name>.txt"'
-    )
-
-    printusertext("")
-    printusertext(
-        'Use double quotes ("") in Windows to pass arguments containing spaces. Names are case-sensitive.'
-    )
+    printusertext(' filenames "<org name>__<net name>.txt"')
 
 
 def getorglist(p_apikey):
@@ -180,14 +107,16 @@ def getorglist(p_apikey):
 
     time.sleep(API_EXEC_DELAY)
     try:
+        # MISSION TODO
         r = requests.get(
-            "https://api.meraki.com/api/v0/organizations",
+            "MISSION: REPLACE WITH ORGANIZATIONS API CALL",
             headers={
                 "X-Cisco-Meraki-API-Key": p_apikey,
-                "Content-Type": "application/json",
-            },
+                "Content-Type": "application/json"
+            }
         )
-    except:
+    # END MISSION SECTION
+    except Exception as e:
         printusertext("ERROR 01: Unable to contact Meraki cloud")
         sys.exit(2)
 
@@ -208,14 +137,16 @@ def getorgid(p_apikey, p_orgname):
 
     time.sleep(API_EXEC_DELAY)
     try:
+        # MISSION TODO
         r = requests.get(
-            "https://api.meraki.com/api/v0/organizations",
+            "MISSION: REPLACE WITH ORGANIZATIONS API CALL",
             headers={
                 "X-Cisco-Meraki-API-Key": p_apikey,
-                "Content-Type": "application/json",
-            },
+                "Content-Type": "application/json"
+            }
         )
-    except:
+    # END MISSION SECTION
+    except Exception as e:
         printusertext("ERROR 02: Unable to contact Meraki cloud")
         sys.exit(2)
 
@@ -237,15 +168,18 @@ def getnwlist(p_apikey, p_orgid):
 
     time.sleep(API_EXEC_DELAY)
     try:
+        # MISSION TODO
         r = requests.get(
-            "https://api.meraki.com/api/v0/organizations/%s/networks"
+            "MISSION: REPLACE WITH NETWORKS API CALL (in place of \
+            Organization ID put %s)"
             % (p_orgid),
             headers={
                 "X-Cisco-Meraki-API-Key": p_apikey,
-                "Content-Type": "application/json",
-            },
+                "Content-Type": "application/json"
+            }
         )
-    except:
+    # END MISSION SECTION
+    except Exception as e:
         printusertext("ERROR 05: Unable to contact Meraki cloud")
         sys.exit(2)
 
@@ -263,15 +197,18 @@ def readmxfwruleset(p_apikey, p_nwid):
 
     time.sleep(API_EXEC_DELAY)
     try:
+        # MISSION TODO
         r = requests.get(
-            "https://api.meraki.com/api/v0/networks/%s/firewallrules"
+            "MISSION: REPLACE WITH firewallrules API CALL (in place of \
+            network ID put %s)"
             % (p_nwid),
             headers={
                 "X-Cisco-Meraki-API-Key": p_apikey,
-                "Content-Type": "application/json",
-            },
+                "Content-Type": "application/json"
+            }
         )
-    except:
+    # END MISSION SECTION
+    except Exception as e:
         printusertext("ERROR 06: Unable to contact Meraki cloud")
         sys.exit(2)
 
@@ -285,217 +222,6 @@ def readmxfwruleset(p_apikey, p_nwid):
     return (rjson)
 
 
-def filternetworks(p_apikey, p_orgid, p_filters):
-    # returns list of networks and/or templates within the scope of "p_filters"
-
-    # NOTE: THE DEFAULT FILTER SCOPE OF THIS SCRIPT SELECTS CONFIG TEMPLATES BUT NOT NETWORKS
-    #      IF NO TYPE FILTER IS APPLIED AT EXECUTION TIME. MODIFY THE LINES BELOW TO CHANGE THIS
-
-    # TODO: Evaluate if handling default filter needs to be rearchitected to a more change-friendly form
-
-    flag_getnetworks = True
-    rawnetlist = []
-    rawtemplist = []
-    filteredlist = []
-
-    # list of filters by type
-    count_namefilters = 0
-    filter_namebegins = []
-    filter_namecontains = []
-    filter_nameends = []
-    filter_nameequals = []
-    filter_tag = []
-
-    for item in p_filters:
-        if item.type == "type":
-            if item.value == "network":
-                flag_getnetworks = True
-        elif item.type == "name_begins":
-            filter_namebegins.append(item.value)
-            count_namefilters += 1
-        elif item.type == "name_contains":
-            filter_namecontains.append(item.value)
-            count_namefilters += 1
-        elif item.type == "name_ends":
-            filter_nameends.append(item.value)
-            count_namefilters += 1
-        elif item.type == "name_equals":
-            filter_nameequals.append(item.value)
-            count_namefilters += 1
-        elif item.type == "tag":
-            filter_tag.append(item.value)
-
-    if flag_getnetworks:
-        rawnetlist = getnwlist(p_apikey, p_orgid)
-        if len(rawnetlist) > 0:
-            if rawnetlist[0]["id"] == "null":
-                printusertext(
-                    "ERROR 08: Unable to get network list from Meraki cloud"
-                )
-                sys.exit(2)
-
-    # process tag filters now, since they are incompatible with config templates
-    # transfer networks to next level of processing only if they satisfy tag requirements
-    buffer1 = []
-    tagflags = []
-
-    if len(filter_tag) > 0:
-        # set all flags to do_transfer
-        for net in rawnetlist:
-            tagflags.append(True)
-            # examine tag incompliance and flag do_not_transfer accordingly
-            for filter in filter_tag:
-                if type(net["tags"]) is str:
-                    if net["tags"].find(filter) == -1:
-                        tagflags[len(tagflags) - 1] = False
-                else:
-                    tagflags[len(tagflags) - 1] = False
-
-        # copy flagged nets
-        for net, flag in zip(rawnetlist, tagflags):
-            if flag:
-                buffer1.append(net)
-
-    else:  # no tag filters given, just send everything to next processing stage
-        buffer1 += rawnetlist
-
-    # process name filters
-    nameflags = []
-    buffer2 = []
-    if count_namefilters > 0:
-        for net in buffer1:
-            # flag all as compliant
-            nameflags.append(True)
-            # loop through filter lists and flag as incompliant as needed
-            for fnb in filter_namebegins:
-                if not net["name"].startswith(fnb):
-                    nameflags[len(nameflags) - 1] = False
-            for fnc in filter_namecontains:
-                if net["name"].find(fnc) == -1:
-                    nameflags[len(nameflags) - 1] = False
-            for fnd in filter_nameends:
-                if not net["name"].endswith(fnd):
-                    nameflags[len(nameflags) - 1] = False
-            for fnq in filter_nameequals:
-                if not net["name"] == fnq:
-                    nameflags[len(nameflags) - 1] = False
-        for net, flag in zip(buffer1, nameflags):
-            if flag:
-                buffer2.append(net)
-    else:
-        buffer2 += buffer1
-
-    return (buffer2)
-
-
-def parsefilter(p_string):
-    # parses filter command line argument
-    processed = []
-    flag_gotname = False
-    flag_gottype = False
-    flag_gottag = False
-    flag_gotall = False
-    flag_gotnetwork = False
-    flag_gottemplate = False
-    flag_defaulttype = True
-
-    if len(p_string) == 0:
-        return ("")
-
-    inputfilters = p_string.split(",")
-
-    for item in inputfilters:
-        splititem = item.split(":")
-        if len(splititem) == 2 and not flag_gotall:
-            ftype = splititem[0].strip()
-            fvalue = splititem[1].strip()
-
-            # process wildcards
-            if ftype == "name":
-                if len(fvalue) > 0:
-                    if fvalue.endswith("*"):
-                        if fvalue.startswith("*"):
-                            # search for extra *
-                            ftype = "name_contains"
-                            fvalue = fvalue[1:-1]
-                        else:
-                            ftype = "name_begins"
-                            fvalue = fvalue[:-1]
-                    elif fvalue.startswith("*"):
-                        ftype = "name_ends"
-                        fvalue = fvalue[1:]
-                    else:
-                        ftype = "name_equals"
-                else:  # len(fvalue) <= 0
-                    printusertext('ERROR 10: Invalid filter "%s"' % item)
-                    sys.exit(2)
-            elif ftype == "tag":
-                if len(fvalue) == 0:
-                    printusertext('ERROR 11: Invalid filter "%s"' % item)
-                    sys.exit(2)
-                elif flag_gottemplate:
-                    printusertext(
-                        'ERROR 12: Filter "%s" cannot be combined with type:template or type:any'
-                        % item
-                    )
-                    sys.exit(2)
-                flag_gottag = True
-            elif ftype == "type":
-                if flag_gottype:
-                    printusertext(
-                        'ERROR 13: Filter "type" can only be used once: "%s"'
-                        % p_string
-                    )
-                    sys.exit(2)
-                if fvalue == "network":
-                    flag_gotnetwork = True
-                    flag_defaulttype = False
-                elif fvalue == "template":
-                    if flag_gottag:
-                        printusertext(
-                            'ERROR 14: Filter "tag" cannot be used with filter "type:template"'
-                        )
-                        sys.exit(2)
-                    flag_gottemplate = True
-                elif fvalue == "any":
-                    if flag_gottag:
-                        printusertext(
-                            'ERROR 15: Filter "tag" cannot be used with filter "type:any"'
-                        )
-                        sys.exit(2)
-                    flag_gottemplate = True
-                    flag_gotnetwork = True
-                else:
-                    printusertext('ERROR 16: Invalid filter "%s"' % item)
-                    sys.exit(2)
-                flag_gottype = True
-            else:
-                printusertext('ERROR 17: Invalid filter "%s"' % item)
-                sys.exit(2)
-            # check for invalid wildcards regardless of filter type
-            if "*" in fvalue:
-                printusertext(
-                    'ERROR 18: Invalid use of wildcard in filter "%s"' % item
-                )
-                sys.exit(2)
-
-            processed.append(c_filter())
-            processed[len(processed) - 1].type = ftype
-            processed[len(processed) - 1].value = fvalue
-        else:
-            printusertext('ERROR 19: Invalid filter string "%s"' % p_string)
-            sys.exit(2)
-
-    # check for filter incompatibilities with default type-filter, if it has not been changed
-    if flag_defaulttype and flag_gottag:
-        printusertext(
-            'ERROR 20: Default type filter is "template". Filter "tag" needs filter "type:network"'
-        )
-        sys.exit(2)
-
-    return (processed)
-
-
 def printruleset(p_orgname, p_netname, p_ruleset):
     # Prints a single ruleset to stdout
 
@@ -507,7 +233,8 @@ def printruleset(p_orgname, p_netname, p_ruleset):
     i = 1
     for line in p_ruleset:
         print(
-            "LINE:%d protocol:%s, srcPort:%s, srcCidr:%s, destPort:%s, destCidr:%s, policy:%s, syslogEnabled:%s, comment:%s"
+            "LINE:%d protocol:%s, srcPort:%s, srcCidr:%s, destPort:%s, \
+            destCidr:%s, policy:%s, syslogEnabled:%s, comment:%s"
             % (
                 i,
                 line["protocol"],
@@ -571,7 +298,7 @@ def cmdcreatebackup(p_apikey, p_orglist):
         flag_noerrors = True
         try:
             os.makedirs(directory)
-        except:
+        except Exception as e:
             flag_noerrors = False
         if flag_noerrors:
             flag_creationfailed = False
@@ -595,7 +322,8 @@ def cmdcreatebackup(p_apikey, p_orglist):
                 filepath = directory + "/" + filename
                 if os.path.exists(filepath):
                     printusertext(
-                        'ERROR 22: Cannot create backup file: name conflict "%s"'
+                        'ERROR 22: Cannot create backup file: name conflict \
+                        "%s"'
                         % filename
                     )
                     sys.exit(2)
@@ -603,16 +331,19 @@ def cmdcreatebackup(p_apikey, p_orglist):
                     buffer = readmxfwruleset(p_apikey, net["id"])
                     try:
                         f = open(filepath, "w")
-                    except:
+                    except Exception as e:
                         printusertext(
-                            'ERROR 23: Unable to open file path for writing: "%s"'
+                            'ERROR 23: Unable to open file path for writing: \
+                            "%s"'
                             % filepath
                         )
                         sys.exit(2)
 
                     for line in buffer:
                         f.write(
-                            '{"protocol":"%s", "srcPort":"%s", "srcCidr":"%s", "destPort":"%s", "destCidr":"%s", "policy":"%s", "syslogEnabled":%s, "comment":"%s"}\n'
+                            '{"protocol":"%s", "srcPort":"%s", "srcCidr":"%s", \
+                            "destPort":"%s", "destCidr":"%s", "policy":"%s",\
+                            "syslogEnabled":%s, "comment":"%s"}\n'
                             % (
                                 line["protocol"],
                                 line["srcPort"],
@@ -627,7 +358,7 @@ def cmdcreatebackup(p_apikey, p_orglist):
 
                     try:
                         f.close()
-                    except:
+                    except Exception as e:
                         printusertext(
                             'ERROR 24: Unable to close file path: "%s"'
                             % filepath
@@ -639,30 +370,12 @@ def cmdcreatebackup(p_apikey, p_orglist):
                         % (net["name"], filename)
                     )
 
-                    spark = ciscosparkapi.CiscoSparkAPI(
-                        access_token=env_user.SPARK_ACCESS_TOKEN
+                    spark.messages.create(
+                        env_user.SPARK_ROOM_ID,
+                        files=[filename],
+                        text="MISSION: L3 Rules BAckup - Meraki - I have \
+                        completed the mission!",
                     )
-
-                    m = MultipartEncoder(
-                        {
-                            "roomId": env_user.SPARK_ROOM_ID,
-                            "text": filename,
-                            "files": (
-                                filename, open(filepath, "rb"), "text/plain"
-                            ),
-                        }
-                    )
-
-                    r = requests.post(
-                        "https://api.ciscospark.com/v1/messages",
-                        data=m,
-                        headers={
-                            "Authorization": "Bearer " + env_user.SPARK_ACCESS_TOKEN,
-                            "Content-Type": m.content_type,
-                        },
-                    )
-
-                    print(r.text)
 
             else:
                 printusertext(
@@ -694,52 +407,6 @@ def stripdefaultrule(p_inputruleset):
             outputset = p_inputruleset
 
     return (outputset)
-
-
-def loadruleset(p_filepath):
-    # Load a ruleset from file to memory. Drop default allow rules
-    ruleset = []
-    jdump = "["
-
-    try:
-        f = open(p_filepath, "r")
-    except:
-        printusertext(
-            'ERROR 25: Unable to open file path for reading: "%s"' % p_filepath
-        )
-        sys.exit(2)
-
-    for line in f:
-        try:
-            buffer = line
-        except:
-            printusertext(
-                'ERROR 26: Unable to read from file: "%s"' % p_filepath
-            )
-            sys.exit(2)
-
-        if len(buffer.strip()) > 1:
-            if not jdump.endswith("["):
-                jdump += ","
-            jdump += buffer[:-1]
-
-    try:
-        f.close()
-    except:
-        printusertext('ERROR 27: Unable to close input file "%s"' % p_filepath)
-        sys.exit(2)
-
-    jdump += "]"
-
-    try:
-        ruleset = json.loads(jdump)
-    except:
-        printusertext('ERROR 28: Invalid input file format "%s"' % p_filepath)
-        sys.exit(2)
-
-    ruleset = stripdefaultrule(ruleset)
-
-    return (ruleset)
 
 
 def parsecommand(
@@ -775,18 +442,16 @@ def parsecommand(
 
 
 def main(argv):
-    # python mxfirewallcontrol -k <key> -o <org> [-f <filter>] [-c <command>] [-m <mode>]
+    # python mxfirewallcontrol -k <key> -o <org> [-c <command>]
 
     # set default values for command line arguments
     arg_apikey = ""
     arg_org = ""
-    arg_filter = ""
     arg_command = ""
-    arg_mode = "simulation"
 
     # get command line arguments
     try:
-        opts, args = getopt.getopt(argv, "hk:o:f:c:m:")
+        opts, args = getopt.getopt(argv, "hk:o:f:c:")
     except getopt.GetoptError:
         printhelp()
         sys.exit(2)
@@ -799,79 +464,34 @@ def main(argv):
             arg_apikey = arg
         elif opt == "-o":
             arg_org = arg
-        elif opt == "-f":
-            arg_filter = arg
         elif opt == "-c":
             arg_command = arg
-        elif opt == "-m":
-            arg_mode = arg
 
     # check if all parameters are required parameters have been given
     if arg_apikey == "" or arg_org == "":
         printhelp()
         sys.exit(2)
 
-    # set flags
-    flag_defaultscope = False
-    if arg_filter == "":
-        flag_defaultscope = True
-
-    flag_defaultcommand = False
-    if arg_command == "":
-        flag_defaultcommand = True
-
-    flag_invalidmode = True
-    flag_modecommit = False
-    flag_modebackup = True
-    if arg_mode == "":
-        flag_invalidmode = False
-    elif arg_mode == "simulation":
-        flag_invalidmode = False
-    elif arg_mode == "commit":
-        flag_modecommit = True
-        flag_invalidmode = False
-    elif arg_mode == "commit-no-backup":
-        flag_modecommit = True
-        flag_modebackup = False
-        flag_invalidmode = False
-
-    if flag_invalidmode:
-        printusertext("ERROR 45: Argument -m <mode> is invalid")
-        sys.exit(2)
-
     printusertext("INFO: Retrieving organization info")
 
     # compile list of organizations to be processed
     orglist = []
-    if arg_org == "/all":
-        orgjson = getorglist(arg_apikey)
+    orgjson = getorglist(arg_apikey)
 
-        i = 0
-        for record in orgjson:
-            orglist.append(c_organizationdata())
-            orglist[i].name = record["name"]
-            orglist[i].id = record["id"]
-            i += 1
-
-    else:
+    i = 0
+    for record in orgjson:
         orglist.append(c_organizationdata())
-        orglist[0].name = arg_org
-        orglist[0].id = getorgid(arg_apikey, arg_org)
-        if orglist[0].id == "null":
-            printusertext("ERROR 46: Fetching source organization ID failed")
-            sys.exit(2)
+        orglist[i].name = record["name"]
+        orglist[i].id = record["id"]
+        i += 1
 
-    # parse filter argument
-    filters = parsefilter(arg_filter)
-
-    # compile filtered networks' list
     for org in orglist:
-        filterednwlist = filternetworks(arg_apikey, org.id, filters)
-        org.nwdata = filterednwlist
+        netlist = getnwlist(arg_apikey,  org.id)
+        org.nwdata = netlist
 
     # parse and execute command
     parsecommand(
-        arg_apikey, orglist, arg_command, flag_modecommit, flag_modebackup
+        arg_apikey, orglist, arg_command
     )
 
     printusertext("INFO: End of script.")
