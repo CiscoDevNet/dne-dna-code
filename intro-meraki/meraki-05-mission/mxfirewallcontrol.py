@@ -372,8 +372,8 @@ def cmdcreatebackup(p_apikey, p_orglist):
 
                     spark.messages.create(
                         env_user.SPARK_ROOM_ID,
-                        files=[filename],
-                        text="MISSION: L3 Rules BAckup - Meraki - I have \
+                        files=[filepath],
+                        text="MISSION: L3 Rules Backup - Meraki - I have \
                         completed the mission!",
                     )
 
