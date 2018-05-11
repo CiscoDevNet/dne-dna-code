@@ -339,7 +339,7 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "{{url}}/api/config/v1/notifications",
+					"raw": "{{url}}/api/config/v1/notifications/{{initials}}LocationUpdate",
 					"host": [
 						"{{url}}"
 					],
@@ -347,7 +347,8 @@
 						"api",
 						"config",
 						"v1",
-						"notifications"
+						"notifications",
+						"{{initials}}LocationUpdate"
 					]
 				}
 			},
