@@ -38,3 +38,8 @@ sys.path.insert(0, project_root)
 import env_lab  # noqa
 
 # Learning Lab Code Starts here
+print("This lab uses DNA Center at address https://{}:{} with credentials {}/{}".format(
+    env_lab.DNA_CENTER["host"],
+    env_lab.DNA_CENTER["port"],
+    env_lab.DNA_CENTER["username"],
+    env_lab.DNA_CENTER["password"]))
