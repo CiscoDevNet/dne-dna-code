@@ -181,7 +181,7 @@ def generate_location_data():
                     "rssi": random.randint(25, 120),
                     "seenEpoch": epoch,
                     "seenTime": date_time_now.isoformat(
-                        sep="T", timespec="auto"
+                        sep="T"
                     ),
                     "ssid": ssid,
                 }
@@ -229,7 +229,7 @@ def update_location_data(ap):
         observation["rssi"] = random.randint(25, 120)
         observation["seenEpoch"] = epoch
         observation["seenTime"] = date_time_now.isoformat(
-            sep="T", timespec="auto"
+            sep="T"
         )
 
     ap_instance["data"]["observations"] = observations
