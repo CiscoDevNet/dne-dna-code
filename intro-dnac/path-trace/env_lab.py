@@ -36,18 +36,18 @@ SOFTWARE.
 ENVIRONMENT_IN_USE = "sandbox"
 
 # Custom Lab Backend
-DNA_CENTER = {
-    "host": "",
-    "username": "",
-    "password": ""
-}
+# apicem = {
+#     "host": "192.168.139.73",
+#     "username": "admin",
+#     "password": "Cisco123"
+# }
 
 # End User Input
 
 
 # Set the 'Environment Variables' based on the lab environment in use
 if ENVIRONMENT_IN_USE == "sandbox":
-    DNA_CENTER = {
+    apicem = {
         "host": "sandboxdnac.cisco.com",
         "port": 443,
         "username": "devnetuser",

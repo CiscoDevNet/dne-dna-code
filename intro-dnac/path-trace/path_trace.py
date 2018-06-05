@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-from device_info import apicem
+from env_lab import apicem
 from time import sleep
 import json
 import requests
