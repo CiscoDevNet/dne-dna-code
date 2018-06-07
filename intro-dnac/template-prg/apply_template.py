@@ -11,7 +11,7 @@ def deploy():
     url = create_url('/v1/template-programmer/template/deploy')
 
     body = {
-        "templateId": "1baa7cb1-43af-4e1e-a91b-942856d7e3ec",
+        "templateId": "967c8430-96cd-4445-8fc4-72543b624d9f",
         "targetInfo": [
             {
                 "id": "10.10.22.70",
