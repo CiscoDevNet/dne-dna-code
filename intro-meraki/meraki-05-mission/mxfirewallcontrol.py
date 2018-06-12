@@ -491,7 +491,7 @@ def main(argv):
 
     # parse and execute command
     parsecommand(
-        arg_apikey, orglist, arg_command
+        arg_apikey, orglist, arg_command, None, None
     )
 
     printusertext("INFO: End of script.")
