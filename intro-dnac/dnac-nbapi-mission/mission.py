@@ -218,7 +218,7 @@ with requests.Session() as dnac_session:
                 next_data['nodes'].append({'id ': i,
                                            'x': (i*20),
                                            'y': 20*(i-di+1),
-                                           'name': m['partNumber'],
+                                           'name': m['description'],
                                            'serial': d['serialNumber'],
                                            'icon': 'server'})
                 next_data['links'].append({'source': di, 'target': i})
