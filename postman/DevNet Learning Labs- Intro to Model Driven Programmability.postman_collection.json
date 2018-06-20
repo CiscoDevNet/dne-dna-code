@@ -251,23 +251,18 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/yang-data+json",
-								"disabled": true
+								"value": "application/yang-data+json"
 							},
 							{
 								"key": "Accept",
-								"value": "application/yang-data+json",
-								"disabled": true
+								"value": "application/yang-data+json"
 							},
 							{
 								"key": "Authorization",
 								"value": "Basic dmFncmFudDp2YWdyYW50"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"url": {
 							"raw": "https://{{host}}:{{port}}/restconf/data/ietf-yang-library:modules-state",
 							"protocol": "https",
@@ -500,7 +495,7 @@
 								}
 							]
 						},
-						"method": "PUT",
+						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
@@ -517,10 +512,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"ietf-interfaces:interface\": {\n        \"name\": \"GigabitEthernet2\",\n        \"description\": \"Configured by RESTCONF\",\n        \"type\": \"iana-if-type:ethernetCsmacd\",\n        \"enabled\": true,\n        \"ietf-ip:ipv4\": {\n            \"address\": [\n                {\n                    \"ip\": \"10.255.255.1\",\n                    \"netmask\": \"255.255.255.0\"\n                }\n            ]\n        }\n    }\n}"
+							"raw": "{\n    \"ietf-interfaces:interface\": {\n        \"name\": \"Loopback100\",\n        \"description\": \"Configured by RESTCONF\",\n        \"type\": \"iana-if-type:softwareLoopback\",\n        \"enabled\": true,\n        \"ietf-ip:ipv4\": {\n            \"address\": [\n                {\n                    \"ip\": \"172.16.100.1\",\n                    \"netmask\": \"255.255.255.0\"\n                }\n            ]\n        }\n    }\n}"
 						},
 						"url": {
-							"raw": "https://{{host}}:{{port}}/restconf/data/ietf-interfaces:interfaces/interface=GigabitEthernet2",
+							"raw": "https://{{host}}:{{port}}/restconf/data/ietf-interfaces:interfaces",
 							"protocol": "https",
 							"host": [
 								"{{host}}"
@@ -529,8 +524,7 @@
 							"path": [
 								"restconf",
 								"data",
-								"ietf-interfaces:interfaces",
-								"interface=GigabitEthernet2"
+								"ietf-interfaces:interfaces"
 							]
 						}
 					},
