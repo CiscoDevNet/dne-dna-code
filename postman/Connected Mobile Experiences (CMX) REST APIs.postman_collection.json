@@ -214,7 +214,7 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "{{url}}/api/location/v3/clients/active",
+					"raw": "{{url}}/api/location/v2/clients/active",
 					"host": [
 						"{{url}}"
 					],
