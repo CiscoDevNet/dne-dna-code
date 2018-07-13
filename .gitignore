@@ -23,3 +23,6 @@ __pycache__/
 # Flask Stuff
 instance/
 .webassets-cache
+
+# Ansible retry files
+*.retry

@@ -1,0 +1,32 @@
+ansible_connection: network_cli
+ansible_become: yes
+ansible_become_method: enable
+ansible_network_os: ios
+
+local_vrfs:
+  - name: red
+    description: "Red VRF"
+    rd: "1:400"
+    interfaces:
+      - Loopback11{{pod_number}}
+  - name: blue
+    description: "Blue VRF"
+    rd: "1:410"
+    interfaces:
+      - Loopback12{{pod_number}}
+  - name: green
+    description: "Green VRF"
+    rd: "1:420"
+    interfaces:
+      - Loopback13{{pod_number}}
+  - name: "{{user_pod}}"
+    description: "{{user_pod}} VRF"
+    rd: "1:{{pod_number}}"
+    interfaces:
+      - Loopback14{{pod_number}}
+
+loops:
+  - 11
+  - 12
+  - 13
+  - 14

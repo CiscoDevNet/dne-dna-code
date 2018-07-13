@@ -1,0 +1,5 @@
+ansible_user: "cisco"
+ansible_ssh_pass: "C1sco12345"
+ansible_port: 5000
+netconf_port: 5010
+

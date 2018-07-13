@@ -1,0 +1,35 @@
+#simple IOS config in ansible
+---
+- name: Sample IOS show version for Ansible 2.5
+  hosts: iosxe
+  gather_facts: no
+
+  tasks:
+
+  - name: GATHERING FACTS
+    ios_facts:
+      gather_subset: hardware
+
+  - name: display current IOS version
+    debug:
+      var: ansible_net_version
+
+  - name: run show ip int brie
+    ios_command:
+      commands: show ip interface brief
+    register: myint
+
+  - name: display value of "myint" variable
+    debug:
+      var: myint["stdout_lines"][0]
+
+## Lab 1
+  - name: run show users
+    ios_command:
+      commands: show users
+    register: shuser
+
+  - name: display value of "shuser" variable
+    debug:
+      var: shuser["stdout_lines"][0]
+
