@@ -37,7 +37,7 @@ def check_ip(device):
         <interface>
             <name>GigabitEthernet2</name>
         </interface>
-      </interface>
+      </interfaces>
     </MISSION>"""
     # END MISSION SECTION
 
