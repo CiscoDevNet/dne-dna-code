@@ -6,6 +6,14 @@
 
   tasks:
 
+###### This task will only execute if you are in a DevNet Express event ######
+  - name: Mission Checkpoint
+    fail:
+      msg: "Please review hosts file and set variables webex_token and webex_room_name"
+    when:
+      - webex_token ==  "mytokenabcdef" or webex_room_id == "roomIDabc123456defghi789jklmnopqr0"
+      - inventory_hostname != "ios-xe-mgmt.cisco.com"
+
   - name: GATHERING FACTS
     ios_facts:
 
@@ -22,17 +30,6 @@
     debug:
       var: myvrf1["stdout_lines"][0]
 
-###### This task will only execute if you are in a DevNet Express event ######
-  - name: Mission incomplete
-    fail:
-      msg: "Please review hosts file and set variables webex_token and webex_room_name"
-    when:
-      - webex_token ==  "mytokenabcdef" or webex_room_id == "roomIDabc123456defghi789jklmnopqr0"
-      - inventory_hostname != "ios-xe-mgmt.cisco.com"
-
-  - name: Mission incomplete
-    debug:
-      msg: "Please review 04-mission.yaml and add a task to create the required Loopbacks with unique numbers and IPs"
 
 ######### MISSION TODO #########
 # Uncomment and update this task to create 4 new Loopbacks numbered [loop_number][pod_number] such that if the loop number
@@ -45,7 +42,14 @@
       enabled: True
       description: Pod Number {{item}}{{pod_number}}
     with_items: "{{loops}}"
+    register: makeloop
 ######### END MISSION SECTION #########
+
+  - name: Mission Checkpoint
+    fail:
+      msg: "Please review 04-mission.yaml and add a task to create the required Loopbacks with unique numbers"
+    when: makeloop is undefined
+
 
 ######### MISSION TODO #########
 # Uncomment and update this task to assign unique IPs to each of the 4 new Loopbacks. You may use any method you like to
@@ -57,12 +61,14 @@
       name: Loopback{{item}}{{pod_number}}
       ipv4: 10.{{item}}.{{pod_number}}.1/32
     with_items: "{{loops}}"
+    register: addip
 ######### END MISSION SECTION #########
 
+  - name: Mission Checkpoint
+    fail:
+      msg: "Please review 04-mission.yaml and add a task to add IPs to your new loopbacks"
+    when: addip is undefined
 
-  - name: Mission incomplete
-    debug:
-      msg: "Please review 04-mission.yaml and add a task to create the required VRFs"
 
 ######### MISSION TODO #########
 # Uncomment and update this task to create new VRFs using the "local_vrfs" variable already defined in group_vars/iosxe.yml
@@ -70,7 +76,13 @@
     ios_vrf:
       vrfs: "{{ local_vrfs }}"
       state: present
+    register: addvrf
 ######### END MISSION SECTION #########
+
+  - name: Mission Checkpoint
+    fail:
+      msg: "Please review 04-mission.yaml and add a task to create the required VRFs"
+    when: addvrf is undefined
 
   - name: run show vrf
     ios_command:
