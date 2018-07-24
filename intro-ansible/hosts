@@ -7,8 +7,9 @@ user_pod = mypod
 # Fill in a pod number between 10 and 250
 pod_number = 10
 
-# The next two variables are only required if you are participating in a DevNet Express.
-# If you are using the sandbox lab, you may ignore them
+# The next two variables are only required for the DevNet Express Mission. When you get to the mission it will instruct
+# you to fill these in. If you are using the sandbox lab, you may ignore them.
+
 # Fill in your Webex Teams auth token from https://developer.webex.com/getting-started.html
 webex_token = mytokenabcdef
 # Fill in your Webex Teams room id you wish to post to
