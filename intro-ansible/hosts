@@ -6,9 +6,12 @@ ansible_python_interpreter="/usr/bin/env python"
 user_pod = mypod
 # Fill in a pod number between 10 and 250
 pod_number = 10
+
+# The next two variables are only required if you are participating in a DevNet Express.
+# If you are using the sandbox lab, you may ignore them
 # Fill in your Webex Teams auth token from https://developer.webex.com/getting-started.html
 webex_token = mytokenabcdef
-# Fill in your Webex Teams room name you wish to post to
+# Fill in your Webex Teams room id you wish to post to
 webex_room_id = roomIDabc123456defghi789jklmnopqr0
 
 
