@@ -1,13 +1,13 @@
 ---
 - name: NETCONF sample 1
   hosts: iosxe
-  connection: local
+  connection: netconf
   gather_facts: False
 
   tasks:
 
     - set_fact:
-        ansible_connection: netconf
+        ansible_connection: local
 
     - name: Delete a loopback with NETCONF
       netconf_config:

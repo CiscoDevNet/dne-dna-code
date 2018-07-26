@@ -1,12 +1,13 @@
 ---
 - name: NETCONF sample 1
   hosts: iosxe
+  connection: netconf
   gather_facts: False
 
   tasks:
 
     - set_fact:
-        ansible_connection: netconf
+        ansible_connection: local
 
     - name: Create a loopback Loopback1{{pod_number}} with NETCONF
       netconf_config:
