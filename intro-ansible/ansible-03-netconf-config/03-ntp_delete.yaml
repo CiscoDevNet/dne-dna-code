@@ -7,7 +7,7 @@
   tasks:
 
     - set_fact:
-        ansible_connection: local
+        ansible_connection: netconf
 
     - name: Remove NTP server 10.111.{{pod_number}}.66 with NETCONF
       netconf_config:

@@ -6,7 +6,7 @@
   tasks:
 
     - set_fact:
-        ansible_connection: local
+        ansible_connection: netconf
 
     - name: Create a loopback Loopback1{{pod_number}} with NETCONF
       netconf_config:

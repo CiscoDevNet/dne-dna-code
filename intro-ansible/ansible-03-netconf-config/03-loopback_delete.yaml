@@ -7,7 +7,7 @@
   tasks:
 
     - set_fact:
-        ansible_connection: local
+        ansible_connection: netconf
 
     - name: Delete a loopback with NETCONF
       netconf_config:
