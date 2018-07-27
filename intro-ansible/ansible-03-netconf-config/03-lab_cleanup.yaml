@@ -1,7 +1,7 @@
 ---
 - name: NETCONF delete NTP server
   hosts: iosxe
-  connection: netconf
+  connection: local
   gather_facts: False
 
   tasks:

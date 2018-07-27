@@ -1,7 +1,7 @@
 ---
 - name: NETCONF sample 1
   hosts: iosxe
-  connection: netconf
+  connection: local
   gather_facts: False
 
   tasks:
