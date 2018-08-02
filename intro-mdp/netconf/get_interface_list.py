@@ -46,7 +46,7 @@ netconf_filter = """
 <filter>
   <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
     <interface></interface>
-  </interface>
+  </interfaces>
 </filter>"""
 
 print("Opening NETCONF Connection to {}".format(env_lab.IOS_XE_1["host"]))
