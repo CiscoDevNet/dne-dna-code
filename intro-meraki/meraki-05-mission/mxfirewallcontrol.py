@@ -120,37 +120,6 @@ def getorglist(p_apikey):
     return (rjson)
 
 
-def getorgid(p_apikey, p_orgname):
-    # looks up org id for a specific org name
-    # on failure returns 'null'
-
-    time.sleep(API_EXEC_DELAY)
-    try:
-        # MISSION TODO
-        r = requests.get(
-            "https://api.meraki.com/api/v0/organizations",
-            headers={
-                "X-Cisco-Meraki-API-Key": p_apikey,
-                "Content-Type": "application/json"
-            }
-        )
-    # END MISSION SECTION
-    except Exception as e:
-        printusertext("ERROR 02: Unable to contact Meraki cloud")
-        sys.exit(2)
-
-    if r.status_code != requests.codes.ok:
-        return "null"
-
-    rjson = r.json()
-
-    for record in rjson:
-        if record["name"] == p_orgname:
-            return record["id"]
-
-    return ("null")
-
-
 def getnwlist(p_apikey, p_orgid):
     # returns a list of all networks in an organization
     # on failure returns a single record with 'null' name and id
