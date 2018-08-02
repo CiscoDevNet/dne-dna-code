@@ -24,6 +24,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 import requests
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 def verify() -> bool:
@@ -41,7 +43,7 @@ def verify() -> bool:
         print("Unable to access CMX Lab")
         return False
 
-
+    print("CMX Lab Accessible")
     return True
 
 
