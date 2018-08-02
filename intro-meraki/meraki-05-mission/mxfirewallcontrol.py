@@ -92,10 +92,6 @@ def printhelp():
     printusertext("Mandatory arguments:")
     printusertext("  -k <key>     : Your Meraki Dashboard API key")
     printusertext(
-        "  -o <org>     : The name of the Meraki dashboard \
-    organization you want to process. Enter /all for all"
-    )
-    printusertext(
         "  -c create-backup  : Save rulesets in folder \
     mxfirewallctl_backup_<timestamp> as"
     )
@@ -129,38 +125,6 @@ def getorglist(p_apikey):
     rjson = r.json()
 
     return (rjson)
-
-
-def getorgid(p_apikey, p_orgname):
-    # looks up org id for a specific org name
-    # on failure returns 'null'
-
-    time.sleep(API_EXEC_DELAY)
-    try:
-        # MISSION TODO
-        r = requests.get(
-            "MISSION: REPLACE WITH ORGANIZATIONS API CALL",
-            headers={
-                "X-Cisco-Meraki-API-Key": p_apikey,
-                "Content-Type": "application/json"
-            }
-        )
-    # END MISSION SECTION
-    except Exception as e:
-        printusertext("ERROR 02: Unable to contact Meraki cloud")
-        sys.exit(2)
-
-    if r.status_code != requests.codes.ok:
-        return "null"
-
-    rjson = r.json()
-
-    for record in rjson:
-        if record["name"] == p_orgname:
-            return record["id"]
-
-    return ("null")
-
 
 def getnwlist(p_apikey, p_orgid):
     # returns a list of all networks in an organization
@@ -446,12 +410,11 @@ def main(argv):
 
     # set default values for command line arguments
     arg_apikey = ""
-    arg_org = ""
     arg_command = ""
 
     # get command line arguments
     try:
-        opts, args = getopt.getopt(argv, "hk:o:f:c:")
+        opts, args = getopt.getopt(argv, "hk:f:c:")
     except getopt.GetoptError:
         printhelp()
         sys.exit(2)
@@ -462,13 +425,11 @@ def main(argv):
             sys.exit()
         elif opt == "-k":
             arg_apikey = arg
-        elif opt == "-o":
-            arg_org = arg
         elif opt == "-c":
             arg_command = arg
 
     # check if all parameters are required parameters have been given
-    if arg_apikey == "" or arg_org == "":
+    if arg_apikey == "":
         printhelp()
         sys.exit(2)
 
