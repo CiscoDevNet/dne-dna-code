@@ -13,10 +13,12 @@
       state: absent
     with_items: "{{loops}}"
     ignore_errors: True
+    failed_when: false
 
   - name: Create VRFs as defined by local_vrfs
     ios_vrf:
       vrfs: "{{ local_vrfs }}"
       state: absent
     ignore_errors: True
+    failed_when: false
 

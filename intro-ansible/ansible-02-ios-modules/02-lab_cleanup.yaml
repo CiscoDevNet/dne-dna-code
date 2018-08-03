@@ -12,12 +12,14 @@
         - no ntp server 10.{{item}}.{{pod_number}}.65
     with_items: "{{loops}}"
     ignore_errors: True
+    failed_when: false
 
   - name: Delete loopback {{pod_number}}
     ios_interface:
       name: Loopback{{pod_number}}
       state: absent
     ignore_errors: True
+    failed_when: false
 
 
 

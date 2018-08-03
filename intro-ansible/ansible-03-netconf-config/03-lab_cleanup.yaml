@@ -29,6 +29,7 @@
             </native>
           </config>
     ignore_errors: True
+    failed_when: false
 
 
   - name: Delete a loopback with NETCONF
@@ -47,4 +48,5 @@
             </interfaces>
           </config>
     ignore_errors: True
+    failed_when: false
 
