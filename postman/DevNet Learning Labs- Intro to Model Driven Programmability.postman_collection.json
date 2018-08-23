@@ -13,31 +13,6 @@
 				{
 					"name": "Read the top level REST resource",
 					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "username",
-									"value": "{{username}}",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "saveHelperData",
-									"value": true,
-									"type": "boolean"
-								},
-								{
-									"key": "showPassword",
-									"value": false,
-									"type": "boolean"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -50,7 +25,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Basic dmFncmFudDp2YWdyYW50"
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
 							}
 						],
 						"body": {
@@ -58,8 +33,8 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{host}}:{{port}}/.well-known/host-meta",
-							"protocol": "https",
+							"raw": "http://{{host}}:{{port}}/.well-known/host-meta",
+							"protocol": "http",
 							"host": [
 								"{{host}}"
 							],
@@ -76,31 +51,6 @@
 				{
 					"name": "Read Top Level RESTCONF",
 					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "username",
-									"value": "{{username}}",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "saveHelperData",
-									"value": true,
-									"type": "boolean"
-								},
-								{
-									"key": "showPassword",
-									"value": false,
-									"type": "boolean"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -113,13 +63,13 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Basic dmFncmFudDp2YWdyYW50"
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
 							}
 						],
 						"body": {},
 						"url": {
-							"raw": "https://{{host}}:{{port}}/restconf",
-							"protocol": "https",
+							"raw": "http://{{host}}:{{port}}/restconf",
+							"protocol": "http",
 							"host": [
 								"{{host}}"
 							],
@@ -146,31 +96,6 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "username",
-									"value": "{{username}}",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "saveHelperData",
-									"value": true,
-									"type": "boolean"
-								},
-								{
-									"key": "showPassword",
-									"value": false,
-									"type": "boolean"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -183,7 +108,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Basic dmFncmFudDp2YWdyYW50"
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
 							}
 						],
 						"body": {
@@ -191,8 +116,8 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{host}}:{{port}}/restconf/data/netconf-state/capabilities",
-							"protocol": "https",
+							"raw": "http://{{host}}:{{port}}/restconf/data/netconf-state/capabilities",
+							"protocol": "http",
 							"host": [
 								"{{host}}"
 							],
@@ -222,31 +147,6 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "username",
-									"value": "{{username}}",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "saveHelperData",
-									"value": true,
-									"type": "boolean"
-								},
-								{
-									"key": "showPassword",
-									"value": false,
-									"type": "boolean"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -259,13 +159,13 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Basic dmFncmFudDp2YWdyYW50"
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
 							}
 						],
 						"body": {},
 						"url": {
-							"raw": "https://{{host}}:{{port}}/restconf/data/ietf-yang-library:modules-state",
-							"protocol": "https",
+							"raw": "http://{{host}}:{{port}}/restconf/data/ietf-yang-library:modules-state",
+							"protocol": "http",
 							"host": [
 								"{{host}}"
 							],
@@ -283,31 +183,6 @@
 				{
 					"name": "Read ietf-interfaces list of interfaces",
 					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "username",
-									"value": "{{username}}",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "saveHelperData",
-									"value": true,
-									"type": "boolean"
-								},
-								{
-									"key": "showPassword",
-									"value": false,
-									"type": "boolean"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -320,13 +195,13 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Basic dmFncmFudDp2YWdyYW50"
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
 							}
 						],
 						"body": {},
 						"url": {
-							"raw": "https://{{host}}:{{port}}/restconf/data/ietf-interfaces:interfaces",
-							"protocol": "https",
+							"raw": "http://{{host}}:{{port}}/restconf/data/ietf-interfaces:interfaces",
+							"protocol": "http",
 							"host": [
 								"{{host}}"
 							],
@@ -344,31 +219,6 @@
 				{
 					"name": "Read ietf-interfaces single interface",
 					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "username",
-									"value": "{{username}}",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "saveHelperData",
-									"value": true,
-									"type": "boolean"
-								},
-								{
-									"key": "showPassword",
-									"value": false,
-									"type": "boolean"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -381,13 +231,13 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Basic dmFncmFudDp2YWdyYW50"
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
 							}
 						],
 						"body": {},
 						"url": {
-							"raw": "https://{{host}}:{{port}}/restconf/data/ietf-interfaces:interfaces/interface=GigabitEthernet2",
-							"protocol": "https",
+							"raw": "http://{{host}}:{{port}}/restconf/data/ietf-interfaces:interfaces/interface=GigabitEthernet2",
+							"protocol": "http",
 							"host": [
 								"{{host}}"
 							],
@@ -406,36 +256,11 @@
 				{
 					"name": "Configure ietf-interfaces single interface",
 					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "username",
-									"value": "{{username}}",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "saveHelperData",
-									"value": true,
-									"type": "boolean"
-								},
-								{
-									"key": "showPassword",
-									"value": false,
-									"type": "boolean"
-								}
-							]
-						},
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Basic cm9vdDpjaXNjbzEyMw=="
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
 							},
 							{
 								"key": "Accept",
@@ -451,8 +276,8 @@
 							"raw": "{\n    \"ietf-interfaces:interface\": {\n        \"name\": \"GigabitEthernet2\",\n        \"description\": \"Configured by RESTCONF\",\n        \"type\": \"iana-if-type:ethernetCsmacd\",\n        \"enabled\": true,\n        \"ietf-ip:ipv4\": {\n            \"address\": [\n                {\n                    \"ip\": \"10.255.255.1\",\n                    \"netmask\": \"255.255.255.0\"\n                }\n            ]\n        }\n    }\n}"
 						},
 						"url": {
-							"raw": "https://{{host}}:{{port}}/restconf/data/ietf-interfaces:interfaces/interface=GigabitEthernet2",
-							"protocol": "https",
+							"raw": "http://{{host}}:{{port}}/restconf/data/ietf-interfaces:interfaces/interface=GigabitEthernet2",
+							"protocol": "http",
 							"host": [
 								"{{host}}"
 							],
@@ -470,36 +295,11 @@
 				{
 					"name": "Add new loopback interface",
 					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "username",
-									"value": "{{username}}",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "saveHelperData",
-									"value": true,
-									"type": "boolean"
-								},
-								{
-									"key": "showPassword",
-									"value": false,
-									"type": "boolean"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Basic cm9vdDpjaXNjbzEyMw=="
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
 							},
 							{
 								"key": "Accept",
@@ -515,8 +315,8 @@
 							"raw": "{\n    \"ietf-interfaces:interface\": {\n        \"name\": \"Loopback100\",\n        \"description\": \"Configured by RESTCONF\",\n        \"type\": \"iana-if-type:softwareLoopback\",\n        \"enabled\": true,\n        \"ietf-ip:ipv4\": {\n            \"address\": [\n                {\n                    \"ip\": \"172.16.100.1\",\n                    \"netmask\": \"255.255.255.0\"\n                }\n            ]\n        }\n    }\n}"
 						},
 						"url": {
-							"raw": "https://{{host}}:{{port}}/restconf/data/ietf-interfaces:interfaces",
-							"protocol": "https",
+							"raw": "http://{{host}}:{{port}}/restconf/data/ietf-interfaces:interfaces",
+							"protocol": "http",
 							"host": [
 								"{{host}}"
 							],
@@ -533,31 +333,6 @@
 				{
 					"name": "Delete Loopback Interface",
 					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "username",
-									"value": "{{username}}",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "saveHelperData",
-									"value": true,
-									"type": "boolean"
-								},
-								{
-									"key": "showPassword",
-									"value": false,
-									"type": "boolean"
-								}
-							]
-						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -570,13 +345,13 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Basic dmFncmFudDp2YWdyYW50"
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
 							}
 						],
 						"body": {},
 						"url": {
-							"raw": "https://{{host}}:{{port}}/restconf/data/ietf-interfaces:interfaces/interface=Loopback100",
-							"protocol": "https",
+							"raw": "http://{{host}}:{{port}}/restconf/data/ietf-interfaces:interfaces/interface=Loopback100",
+							"protocol": "http",
 							"host": [
 								"{{host}}"
 							],
@@ -595,31 +370,6 @@
 				{
 					"name": "Read native device single interface",
 					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "username",
-									"value": "{{username}}",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "saveHelperData",
-									"value": true,
-									"type": "boolean"
-								},
-								{
-									"key": "showPassword",
-									"value": false,
-									"type": "boolean"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -632,13 +382,13 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Basic dmFncmFudDp2YWdyYW50"
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
 							}
 						],
 						"body": {},
 						"url": {
-							"raw": "https://{{host}}:{{port}}/restconf/data/Cisco-IOS-XE-native:native/interface/GigabitEthernet=2",
-							"protocol": "https",
+							"raw": "http://{{host}}:{{port}}/restconf/data/Cisco-IOS-XE-native:native/interface/GigabitEthernet=2",
+							"protocol": "http",
 							"host": [
 								"{{host}}"
 							],
@@ -658,31 +408,6 @@
 				{
 					"name": "Operational State interfaces",
 					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "username",
-									"value": "{{username}}",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "saveHelperData",
-									"value": true,
-									"type": "boolean"
-								},
-								{
-									"key": "showPassword",
-									"value": false,
-									"type": "boolean"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -695,7 +420,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Basic dmFncmFudDp2YWdyYW50"
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
 							}
 						],
 						"body": {
@@ -703,8 +428,8 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{host}}:{{port}}/restconf/data/ietf-interfaces:interfaces-state/",
-							"protocol": "https",
+							"raw": "http://{{host}}:{{port}}/restconf/data/ietf-interfaces:interfaces-state/",
+							"protocol": "http",
 							"host": [
 								"{{host}}"
 							],
@@ -722,36 +447,11 @@
 				{
 					"name": "Read native hostname",
 					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "username",
-									"value": "{{username}}",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "saveHelperData",
-									"value": true,
-									"type": "boolean"
-								},
-								{
-									"key": "showPassword",
-									"value": false,
-									"type": "boolean"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Basic cm9vdDpjaXNjbzEyMw=="
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
 							},
 							{
 								"key": "Content-Type",
@@ -767,8 +467,8 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{host}}:{{port}}/restconf/data/Cisco-IOS-XE-native:native/hostname",
-							"protocol": "https",
+							"raw": "http://{{host}}:{{port}}/restconf/data/Cisco-IOS-XE-native:native/hostname",
+							"protocol": "http",
 							"host": [
 								"{{host}}"
 							],
@@ -797,31 +497,6 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "username",
-									"value": "{{username}}",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "saveHelperData",
-									"value": true,
-									"type": "boolean"
-								},
-								{
-									"key": "showPassword",
-									"value": false,
-									"type": "boolean"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -834,13 +509,13 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Basic dmFncmFudDp2YWdyYW50"
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
 							}
 						],
 						"body": {},
 						"url": {
-							"raw": "https://{{host}}:{{port}}/restconf/data/ietf-yang-library:modules-state",
-							"protocol": "https",
+							"raw": "http://{{host}}:{{port}}/restconf/data/ietf-yang-library:modules-state",
+							"protocol": "http",
 							"host": [
 								"{{host}}"
 							],
@@ -869,31 +544,6 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "username",
-									"value": "{{username}}",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "saveHelperData",
-									"value": true,
-									"type": "boolean"
-								},
-								{
-									"key": "showPassword",
-									"value": false,
-									"type": "boolean"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -906,13 +556,13 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Basic dmFncmFudDp2YWdyYW50"
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
 							}
 						],
 						"body": {},
 						"url": {
-							"raw": "https://{{host}}:{{port}}/restconf/data/ietf-restconf-monitoring:restconf-state/capabilities",
-							"protocol": "https",
+							"raw": "http://{{host}}:{{port}}/restconf/data/ietf-restconf-monitoring:restconf-state/capabilities",
+							"protocol": "http",
 							"host": [
 								"{{host}}"
 							],
@@ -931,31 +581,6 @@
 				{
 					"name": "Filter Fields Returned in Response",
 					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "username",
-									"value": "{{username}}",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "saveHelperData",
-									"value": true,
-									"type": "boolean"
-								},
-								{
-									"key": "showPassword",
-									"value": false,
-									"type": "boolean"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -968,13 +593,13 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Basic dmFncmFudDp2YWdyYW50"
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
 							}
 						],
 						"body": {},
 						"url": {
-							"raw": "https://{{host}}:{{port}}/restconf/data/Cisco-IOS-XE-native:native/interface/GigabitEthernet=2?fields=Cisco-IOS-XE-native:GigabitEthernet(name;description;ip)&depth=unbounded",
-							"protocol": "https",
+							"raw": "http://{{host}}:{{port}}/restconf/data/Cisco-IOS-XE-native:native/interface/GigabitEthernet=2?fields=Cisco-IOS-XE-native:GigabitEthernet(name;description;ip)&depth=unbounded",
+							"protocol": "http",
 							"host": [
 								"{{host}}"
 							],
@@ -1017,31 +642,6 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "username",
-									"value": "{{username}}",
-									"type": "string"
-								},
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "saveHelperData",
-									"value": true,
-									"type": "boolean"
-								},
-								{
-									"key": "showPassword",
-									"value": false,
-									"type": "boolean"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [
 							{
@@ -1054,13 +654,13 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Basic dmFncmFudDp2YWdyYW50"
+								"value": "Basic cm9vdDpEX1ZheSFfMTAm"
 							}
 						],
 						"body": {},
 						"url": {
-							"raw": "https://{{host}}:{{port}}/restconf/operations/cisco-ia:save-config/",
-							"protocol": "https",
+							"raw": "http://{{host}}:{{port}}/restconf/operations/cisco-ia:save-config/",
+							"protocol": "http",
 							"host": [
 								"{{host}}"
 							],
