@@ -85,7 +85,7 @@ def printhelp():
     printusertext("")
     printusertext("To run the script, enter:")
     printusertext(
-        "python mxfirewallcontrol.py -k <key> -o <org> \
+        "python mxfirewallcontrol.py -k <key> \
     [-c <command>]"
     )
     printusertext("")
