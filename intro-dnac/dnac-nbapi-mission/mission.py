@@ -3,8 +3,8 @@
 
 This is your starting point for the DNAC Center North-Bound API Mission.
 Edit this file to
- - retrieve network devices and modules from DNA Cener,
- - put them into a ptyhon JSON object
+ - retrieve network devices and modules from DNA Center
+ - put them into a Python JSON object
  - write a JavaScript representation into a .js file which is formatted
    to be use with the NeXt UI Toolkit for visualization
 
@@ -12,7 +12,7 @@ There are a few places to edit (search for MISSION comments)
  1 Provide the HTTP method type to retrieve information
  2 Complete the URL to retrieve network devices
  3 Complete the URL to retrieve device modules
- 4 Complete the URL to retrive a count of modules
+ 4 Complete the URL to retrieve a count of modules
 
 Script Dependencies:
     requests
@@ -218,7 +218,7 @@ with requests.Session() as dnac_session:
                 next_data['nodes'].append({'id ': i,
                                            'x': (i*20),
                                            'y': 20*(i-di+1),
-                                           'name': m['partNumber'],
+                                           'name': m['description'],
                                            'serial': d['serialNumber'],
                                            'icon': 'server'})
                 next_data['links'].append({'source': di, 'target': i})
