@@ -1,0 +1,813 @@
+{
+	"info": {
+		"_postman_id": "b3be41d8-8b07-4747-9d58-e3393f466e3a",
+		"name": "Meraki Wireless Health",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "f938c350-f382-4beb-939a-2c424dc6094e",
+			"name": "Aggregated Connectivity Info For this network",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "72654290-22de-4489-bbae-3032fc21ef13",
+						"type": "text/javascript",
+						"exec": [
+							"var rightnowepoch = Math.floor((new Date).getTime()/1000);",
+							"var yesterdayepoch = rightnowepoch - 86400;",
+							"pm.environment.set(\"rightnowepoch\", rightnowepoch);",
+							"pm.environment.set(\"yesterdayepoch\", yesterdayepoch);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Cisco-Meraki-API-Key",
+						"value": "{{X-Cisco-Meraki-API-Key}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "order",
+							"value": "234234234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.meraki.com/api/v0/networks/{{networkId}}/connectionStats?t0={{yesterdayepoch}}&t1={{rightnowepoch}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"meraki",
+						"com"
+					],
+					"path": [
+						"api",
+						"v0",
+						"networks",
+						"{{networkId}}",
+						"connectionStats"
+					],
+					"query": [
+						{
+							"key": "t0",
+							"value": "{{yesterdayepoch}}"
+						},
+						{
+							"key": "t1",
+							"value": "{{rightnowepoch}}"
+						}
+					]
+				},
+				"description": "## HTTP REQUEST\n```\nGET /networks/[id]\n```\n## PARAMETERS\n**None**\n\n## SAMPLE REQUEST\n```\ncurl -L -H 'X-Cisco-Meraki-API-Key: <key>' -X GET -H 'Content-Type: application/json' 'https://api.meraki.com/api/v0/networks/[id]'\n```\n## SAMPLE RESPONSE\n```\nSuccessful HTTP Status: 200\n{\n  \"id\":\"N_1234\",\n  \"organizationId\":\"1234\",\n  \"type\": \"wireless\",\n  \"name\":\"My network\",\n  \"timeZone\": \"US/Pacific\",\n  \"tags\": null\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "14720200-92a0-4f56-96b5-5ccc150a4174",
+			"name": "Aggregated Connectivity Info For This Network, Grouped By Node",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "919055aa-a42b-4f19-8de7-e434a63bc02c",
+						"type": "text/javascript",
+						"exec": [
+							"var rightnowepoch = Math.floor((new Date).getTime()/1000);",
+							"var yesterdayepoch = rightnowepoch - 86400;",
+							"pm.environment.set(\"rightnowepoch\", rightnowepoch);",
+							"pm.environment.set(\"yesterdayepoch\", yesterdayepoch);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Cisco-Meraki-API-Key",
+						"value": "{{X-Cisco-Meraki-API-Key}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "order",
+							"value": "234234234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.meraki.com/api/v0/networks/{{networkId}}/devices/connectionStats?t0={{yesterdayepoch}}&t1={{rightnowepoch}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"meraki",
+						"com"
+					],
+					"path": [
+						"api",
+						"v0",
+						"networks",
+						"{{networkId}}",
+						"devices",
+						"connectionStats"
+					],
+					"query": [
+						{
+							"key": "t0",
+							"value": "{{yesterdayepoch}}"
+						},
+						{
+							"key": "t1",
+							"value": "{{rightnowepoch}}"
+						}
+					]
+				},
+				"description": "## HTTP REQUEST\n```\nGET /networks/[id]\n```\n## PARAMETERS\n**None**\n\n## SAMPLE REQUEST\n```\ncurl -L -H 'X-Cisco-Meraki-API-Key: <key>' -X GET -H 'Content-Type: application/json' 'https://api.meraki.com/api/v0/networks/[id]'\n```\n## SAMPLE RESPONSE\n```\nSuccessful HTTP Status: 200\n{\n  \"id\":\"N_1234\",\n  \"organizationId\":\"1234\",\n  \"type\": \"wireless\",\n  \"name\":\"My network\",\n  \"timeZone\": \"US/Pacific\",\n  \"tags\": null\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "617162da-3fca-4389-97e3-553f4adb4eff",
+			"name": "Aggregated Connectivity Info For This Network,  Individual AP",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ee23baa6-96df-49b6-8dd7-7a5c8b05dcc9",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							""
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "602e2046-f618-4c04-90b2-434078c75d01",
+						"type": "text/javascript",
+						"exec": [
+							"var rightnowepoch = Math.floor((new Date).getTime()/1000);",
+							"var yesterdayepoch = rightnowepoch - 86400;",
+							"pm.environment.set(\"rightnowepoch\", rightnowepoch);",
+							"pm.environment.set(\"yesterdayepoch\", yesterdayepoch);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Cisco-Meraki-API-Key",
+						"value": "{{X-Cisco-Meraki-API-Key}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "order",
+							"value": "234234234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.meraki.com/api/v0/networks/{{networkId}}/devices/{{serial}}/connectionStats?t0={{yesterdayepoch}}&t1={{rightnowepoch}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"meraki",
+						"com"
+					],
+					"path": [
+						"api",
+						"v0",
+						"networks",
+						"{{networkId}}",
+						"devices",
+						"{{serial}}",
+						"connectionStats"
+					],
+					"query": [
+						{
+							"key": "t0",
+							"value": "{{yesterdayepoch}}"
+						},
+						{
+							"key": "t1",
+							"value": "{{rightnowepoch}}"
+						}
+					]
+				},
+				"description": "## HTTP REQUEST\n```\nGET /networks/[id]\n```\n## PARAMETERS\n**None**\n\n## SAMPLE REQUEST\n```\ncurl -L -H 'X-Cisco-Meraki-API-Key: <key>' -X GET -H 'Content-Type: application/json' 'https://api.meraki.com/api/v0/networks/[id]'\n```\n## SAMPLE RESPONSE\n```\nSuccessful HTTP Status: 200\n{\n  \"id\":\"N_1234\",\n  \"organizationId\":\"1234\",\n  \"type\": \"wireless\",\n  \"name\":\"My network\",\n  \"timeZone\": \"US/Pacific\",\n  \"tags\": null\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "02d1e18d-2951-4cbc-b9c6-e799582e4b80",
+			"name": "Aggregated Connectivity Info For This Network, Grouped by Clients",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ee23baa6-96df-49b6-8dd7-7a5c8b05dcc9",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							""
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "602e2046-f618-4c04-90b2-434078c75d01",
+						"type": "text/javascript",
+						"exec": [
+							"var rightnowepoch = Math.floor((new Date).getTime()/1000);",
+							"var yesterdayepoch = rightnowepoch - 86400;",
+							"pm.environment.set(\"rightnowepoch\", rightnowepoch);",
+							"pm.environment.set(\"yesterdayepoch\", yesterdayepoch);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Cisco-Meraki-API-Key",
+						"value": "{{X-Cisco-Meraki-API-Key}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "order",
+							"value": "234234234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.meraki.com/api/v0/networks/{{networkId}}/clients/connectionStats?t0={{yesterdayepoch}}&t1={{rightnowepoch}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"meraki",
+						"com"
+					],
+					"path": [
+						"api",
+						"v0",
+						"networks",
+						"{{networkId}}",
+						"clients",
+						"connectionStats"
+					],
+					"query": [
+						{
+							"key": "t0",
+							"value": "{{yesterdayepoch}}"
+						},
+						{
+							"key": "t1",
+							"value": "{{rightnowepoch}}"
+						}
+					]
+				},
+				"description": "## HTTP REQUEST\n```\nGET /networks/[id]\n```\n## PARAMETERS\n**None**\n\n## SAMPLE REQUEST\n```\ncurl -L -H 'X-Cisco-Meraki-API-Key: <key>' -X GET -H 'Content-Type: application/json' 'https://api.meraki.com/api/v0/networks/[id]'\n```\n## SAMPLE RESPONSE\n```\nSuccessful HTTP Status: 200\n{\n  \"id\":\"N_1234\",\n  \"organizationId\":\"1234\",\n  \"type\": \"wireless\",\n  \"name\":\"My network\",\n  \"timeZone\": \"US/Pacific\",\n  \"tags\": null\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "108cba97-d4d1-4083-a32f-24bf0416947d",
+			"name": "Aggregated Connectivity Info For This Network, Individual Client",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ee23baa6-96df-49b6-8dd7-7a5c8b05dcc9",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							""
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "602e2046-f618-4c04-90b2-434078c75d01",
+						"type": "text/javascript",
+						"exec": [
+							"var rightnowepoch = Math.floor((new Date).getTime()/1000);",
+							"var yesterdayepoch = rightnowepoch - 86400;",
+							"pm.environment.set(\"rightnowepoch\", rightnowepoch);",
+							"pm.environment.set(\"yesterdayepoch\", yesterdayepoch);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Cisco-Meraki-API-Key",
+						"value": "{{X-Cisco-Meraki-API-Key}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "order",
+							"value": "234234234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.meraki.com/api/v0/networks/{{networkId}}/clients/{{clientMac}}/connectionStats?t0={{yesterdayepoch}}&t1={{rightnowepoch}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"meraki",
+						"com"
+					],
+					"path": [
+						"api",
+						"v0",
+						"networks",
+						"{{networkId}}",
+						"clients",
+						"{{clientMac}}",
+						"connectionStats"
+					],
+					"query": [
+						{
+							"key": "t0",
+							"value": "{{yesterdayepoch}}"
+						},
+						{
+							"key": "t1",
+							"value": "{{rightnowepoch}}"
+						}
+					]
+				},
+				"description": "## HTTP REQUEST\n```\nGET /networks/[id]\n```\n## PARAMETERS\n**None**\n\n## SAMPLE REQUEST\n```\ncurl -L -H 'X-Cisco-Meraki-API-Key: <key>' -X GET -H 'Content-Type: application/json' 'https://api.meraki.com/api/v0/networks/[id]'\n```\n## SAMPLE RESPONSE\n```\nSuccessful HTTP Status: 200\n{\n  \"id\":\"N_1234\",\n  \"organizationId\":\"1234\",\n  \"type\": \"wireless\",\n  \"name\":\"My network\",\n  \"timeZone\": \"US/Pacific\",\n  \"tags\": null\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "881c4f87-280b-47f7-aaba-c2ebc38566ff",
+			"name": "Aggregated Latency Info For this network",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "72654290-22de-4489-bbae-3032fc21ef13",
+						"type": "text/javascript",
+						"exec": [
+							"var rightnowepoch = Math.floor((new Date).getTime()/1000);",
+							"var yesterdayepoch = rightnowepoch - 86400;",
+							"pm.environment.set(\"rightnowepoch\", rightnowepoch);",
+							"pm.environment.set(\"yesterdayepoch\", yesterdayepoch);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Cisco-Meraki-API-Key",
+						"value": "{{X-Cisco-Meraki-API-Key}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "order",
+							"value": "234234234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.meraki.com/api/v0/networks/{{networkId}}/latencyStats?t0={{yesterdayepoch}}&t1={{rightnowepoch}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"meraki",
+						"com"
+					],
+					"path": [
+						"api",
+						"v0",
+						"networks",
+						"{{networkId}}",
+						"latencyStats"
+					],
+					"query": [
+						{
+							"key": "t0",
+							"value": "{{yesterdayepoch}}"
+						},
+						{
+							"key": "t1",
+							"value": "{{rightnowepoch}}"
+						}
+					]
+				},
+				"description": "## HTTP REQUEST\n```\nGET /networks/[id]\n```\n## PARAMETERS\n**None**\n\n## SAMPLE REQUEST\n```\ncurl -L -H 'X-Cisco-Meraki-API-Key: <key>' -X GET -H 'Content-Type: application/json' 'https://api.meraki.com/api/v0/networks/[id]'\n```\n## SAMPLE RESPONSE\n```\nSuccessful HTTP Status: 200\n{\n  \"id\":\"N_1234\",\n  \"organizationId\":\"1234\",\n  \"type\": \"wireless\",\n  \"name\":\"My network\",\n  \"timeZone\": \"US/Pacific\",\n  \"tags\": null\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "e98f3625-7403-4cae-a2cf-f2ecb7de82d1",
+			"name": "Aggregated Latency Info For This Network, Grouped By Node",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "919055aa-a42b-4f19-8de7-e434a63bc02c",
+						"type": "text/javascript",
+						"exec": [
+							"var rightnowepoch = Math.floor((new Date).getTime()/1000);",
+							"var yesterdayepoch = rightnowepoch - 86400;",
+							"pm.environment.set(\"rightnowepoch\", rightnowepoch);",
+							"pm.environment.set(\"yesterdayepoch\", yesterdayepoch);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Cisco-Meraki-API-Key",
+						"value": "{{X-Cisco-Meraki-API-Key}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "order",
+							"value": "234234234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.meraki.com/api/v0/networks/{{networkId}}/devices/latencyStats?t0={{yesterdayepoch}}&t1={{rightnowepoch}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"meraki",
+						"com"
+					],
+					"path": [
+						"api",
+						"v0",
+						"networks",
+						"{{networkId}}",
+						"devices",
+						"latencyStats"
+					],
+					"query": [
+						{
+							"key": "t0",
+							"value": "{{yesterdayepoch}}"
+						},
+						{
+							"key": "t1",
+							"value": "{{rightnowepoch}}"
+						}
+					]
+				},
+				"description": "## HTTP REQUEST\n```\nGET /networks/[id]\n```\n## PARAMETERS\n**None**\n\n## SAMPLE REQUEST\n```\ncurl -L -H 'X-Cisco-Meraki-API-Key: <key>' -X GET -H 'Content-Type: application/json' 'https://api.meraki.com/api/v0/networks/[id]'\n```\n## SAMPLE RESPONSE\n```\nSuccessful HTTP Status: 200\n{\n  \"id\":\"N_1234\",\n  \"organizationId\":\"1234\",\n  \"type\": \"wireless\",\n  \"name\":\"My network\",\n  \"timeZone\": \"US/Pacific\",\n  \"tags\": null\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "5a70403e-b651-4615-ad45-791ad884ce3b",
+			"name": "Aggregated Latency Info For This Network,  Individual AP",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ee23baa6-96df-49b6-8dd7-7a5c8b05dcc9",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							""
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "602e2046-f618-4c04-90b2-434078c75d01",
+						"type": "text/javascript",
+						"exec": [
+							"var rightnowepoch = Math.floor((new Date).getTime()/1000);",
+							"var yesterdayepoch = rightnowepoch - 86400;",
+							"pm.environment.set(\"rightnowepoch\", rightnowepoch);",
+							"pm.environment.set(\"yesterdayepoch\", yesterdayepoch);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Cisco-Meraki-API-Key",
+						"value": "{{X-Cisco-Meraki-API-Key}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "order",
+							"value": "234234234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.meraki.com/api/v0/networks/{{networkId}}/devices/{{serial}}/latencyStats?t0={{yesterdayepoch}}&t1={{rightnowepoch}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"meraki",
+						"com"
+					],
+					"path": [
+						"api",
+						"v0",
+						"networks",
+						"{{networkId}}",
+						"devices",
+						"{{serial}}",
+						"latencyStats"
+					],
+					"query": [
+						{
+							"key": "t0",
+							"value": "{{yesterdayepoch}}"
+						},
+						{
+							"key": "t1",
+							"value": "{{rightnowepoch}}"
+						}
+					]
+				},
+				"description": "## HTTP REQUEST\n```\nGET /networks/[id]\n```\n## PARAMETERS\n**None**\n\n## SAMPLE REQUEST\n```\ncurl -L -H 'X-Cisco-Meraki-API-Key: <key>' -X GET -H 'Content-Type: application/json' 'https://api.meraki.com/api/v0/networks/[id]'\n```\n## SAMPLE RESPONSE\n```\nSuccessful HTTP Status: 200\n{\n  \"id\":\"N_1234\",\n  \"organizationId\":\"1234\",\n  \"type\": \"wireless\",\n  \"name\":\"My network\",\n  \"timeZone\": \"US/Pacific\",\n  \"tags\": null\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "04918d85-1fa2-415d-8173-6395de7298fb",
+			"name": "Aggregated Latency Info For This Network, Grouped by Clients",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ee23baa6-96df-49b6-8dd7-7a5c8b05dcc9",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							""
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "602e2046-f618-4c04-90b2-434078c75d01",
+						"type": "text/javascript",
+						"exec": [
+							"var rightnowepoch = Math.floor((new Date).getTime()/1000);",
+							"var yesterdayepoch = rightnowepoch - 86400;",
+							"pm.environment.set(\"rightnowepoch\", rightnowepoch);",
+							"pm.environment.set(\"yesterdayepoch\", yesterdayepoch);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Cisco-Meraki-API-Key",
+						"value": "{{X-Cisco-Meraki-API-Key}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "order",
+							"value": "234234234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.meraki.com/api/v0/networks/{{networkId}}/clients/latencyStats?t0={{yesterdayepoch}}&t1={{rightnowepoch}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"meraki",
+						"com"
+					],
+					"path": [
+						"api",
+						"v0",
+						"networks",
+						"{{networkId}}",
+						"clients",
+						"latencyStats"
+					],
+					"query": [
+						{
+							"key": "t0",
+							"value": "{{yesterdayepoch}}"
+						},
+						{
+							"key": "t1",
+							"value": "{{rightnowepoch}}"
+						}
+					]
+				},
+				"description": "## HTTP REQUEST\n```\nGET /networks/[id]\n```\n## PARAMETERS\n**None**\n\n## SAMPLE REQUEST\n```\ncurl -L -H 'X-Cisco-Meraki-API-Key: <key>' -X GET -H 'Content-Type: application/json' 'https://api.meraki.com/api/v0/networks/[id]'\n```\n## SAMPLE RESPONSE\n```\nSuccessful HTTP Status: 200\n{\n  \"id\":\"N_1234\",\n  \"organizationId\":\"1234\",\n  \"type\": \"wireless\",\n  \"name\":\"My network\",\n  \"timeZone\": \"US/Pacific\",\n  \"tags\": null\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "d82162ec-db99-4f5d-ac80-fd96f7919838",
+			"name": "Aggregated Latency Info For This Network, Individual Client",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ee23baa6-96df-49b6-8dd7-7a5c8b05dcc9",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							""
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "602e2046-f618-4c04-90b2-434078c75d01",
+						"type": "text/javascript",
+						"exec": [
+							"var rightnowepoch = Math.floor((new Date).getTime()/1000);",
+							"var yesterdayepoch = rightnowepoch - 86400;",
+							"pm.environment.set(\"rightnowepoch\", rightnowepoch);",
+							"pm.environment.set(\"yesterdayepoch\", yesterdayepoch);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Cisco-Meraki-API-Key",
+						"value": "{{X-Cisco-Meraki-API-Key}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "order",
+							"value": "234234234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.meraki.com/api/v0/networks/{{networkId}}/clients/{{clientMac}}/latencyStats?t0={{yesterdayepoch}}&t1={{rightnowepoch}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"meraki",
+						"com"
+					],
+					"path": [
+						"api",
+						"v0",
+						"networks",
+						"{{networkId}}",
+						"clients",
+						"{{clientMac}}",
+						"latencyStats"
+					],
+					"query": [
+						{
+							"key": "t0",
+							"value": "{{yesterdayepoch}}"
+						},
+						{
+							"key": "t1",
+							"value": "{{rightnowepoch}}"
+						}
+					]
+				},
+				"description": "## HTTP REQUEST\n```\nGET /networks/[id]\n```\n## PARAMETERS\n**None**\n\n## SAMPLE REQUEST\n```\ncurl -L -H 'X-Cisco-Meraki-API-Key: <key>' -X GET -H 'Content-Type: application/json' 'https://api.meraki.com/api/v0/networks/[id]'\n```\n## SAMPLE RESPONSE\n```\nSuccessful HTTP Status: 200\n{\n  \"id\":\"N_1234\",\n  \"organizationId\":\"1234\",\n  \"type\": \"wireless\",\n  \"name\":\"My network\",\n  \"timeZone\": \"US/Pacific\",\n  \"tags\": null\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "ee07649e-822c-44cf-9897-cba291cff193",
+			"name": "Failed Connection Client Events For this network",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "72654290-22de-4489-bbae-3032fc21ef13",
+						"type": "text/javascript",
+						"exec": [
+							"var rightnowepoch = Math.floor((new Date).getTime()/1000);",
+							"var yesterdayepoch = rightnowepoch - 86400;",
+							"pm.environment.set(\"rightnowepoch\", rightnowepoch);",
+							"pm.environment.set(\"yesterdayepoch\", yesterdayepoch);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Cisco-Meraki-API-Key",
+						"value": "{{X-Cisco-Meraki-API-Key}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "order",
+							"value": "234234234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.meraki.com/api/v0/networks/{{networkId}}/failedConnections?t0={{yesterdayepoch}}&t1={{rightnowepoch}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"meraki",
+						"com"
+					],
+					"path": [
+						"api",
+						"v0",
+						"networks",
+						"{{networkId}}",
+						"failedConnections"
+					],
+					"query": [
+						{
+							"key": "t0",
+							"value": "{{yesterdayepoch}}"
+						},
+						{
+							"key": "t1",
+							"value": "{{rightnowepoch}}"
+						}
+					]
+				},
+				"description": "## HTTP REQUEST\n```\nGET /networks/[id]\n```\n## PARAMETERS\n**None**\n\n## SAMPLE REQUEST\n```\ncurl -L -H 'X-Cisco-Meraki-API-Key: <key>' -X GET -H 'Content-Type: application/json' 'https://api.meraki.com/api/v0/networks/[id]'\n```\n## SAMPLE RESPONSE\n```\nSuccessful HTTP Status: 200\n{\n  \"id\":\"N_1234\",\n  \"organizationId\":\"1234\",\n  \"type\": \"wireless\",\n  \"name\":\"My network\",\n  \"timeZone\": \"US/Pacific\",\n  \"tags\": null\n}\n```"
+			},
+			"response": []
+		}
+	]
+}
