@@ -1,0 +1,15 @@
+#simple IOS config in ansible
+---
+- name: Sample IOS NTP config for Ansible 2.5
+  hosts: iosxe
+  gather_facts: no
+
+  tasks:
+
+  - name: delete ntp server 10.{{item}}.{{pod_number}}.65 via CLI
+    ios_config:
+      lines:
+        - no ntp server 10.{{item}}.{{pod_number}}.65
+    with_items: "{{loops}}"
+
+

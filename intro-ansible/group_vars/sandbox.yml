@@ -1,0 +1,5 @@
+ansible_user: 'root'
+ansible_ssh_pass: 'D_Vay!_10&'
+ansible_port: 8181
+netconf_port: 10000
+

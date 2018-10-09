@@ -1,0 +1,37 @@
+---
+- name: NETCONF sample 1
+  hosts: iosxe
+  connection: local
+  gather_facts: False
+
+  tasks:
+
+    - set_fact:
+        ansible_connection: local
+
+    - name: Create a loopback Loopback1{{pod_number}} with NETCONF
+      netconf_config:
+        host: "{{inventory_hostname}}"
+        port: "{{netconf_port}}"
+        username: "{{ansible_user}}"
+        password: "{{ansible_password}}"
+        hostkey_verify: False
+        xml: |
+            <config>
+              <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
+                <interface>
+                  <name>Loopback1{{pod_number}}</name>
+                  <description>Pod Number {{pod_number}}</description>
+                  <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">
+                    ianaift:softwareLoopback
+                  </type>
+                  <enabled>true</enabled>
+                  <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
+                    <address>
+                      <ip>10.111.{{pod_number}}.2</ip>
+                      <netmask>255.255.255.255</netmask>
+                    </address>
+                  </ipv4>
+                </interface>
+              </interfaces>
+            </config>

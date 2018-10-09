@@ -1,0 +1,26 @@
+---
+- name: NETCONF sample 1
+  hosts: iosxe
+  connection: local
+  gather_facts: False
+
+  tasks:
+
+    - set_fact:
+        ansible_connection: local
+
+    - name: Delete a loopback with NETCONF
+      netconf_config:
+        host: "{{inventory_hostname}}"
+        port: "{{netconf_port}}"
+        username: "{{ansible_user}}"
+        password: "{{ansible_password}}"
+        hostkey_verify: False
+        xml: |
+            <config>
+              <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
+                <interface operation="delete">
+                  <name>Loopback1{{pod_number}}</name>
+                </interface>
+              </interfaces>
+            </config>

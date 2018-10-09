@@ -1,0 +1,30 @@
+---
+- name: NETCONF delete NTP server
+  hosts: iosxe
+  connection: local
+  gather_facts: False
+
+  tasks:
+
+    - set_fact:
+        ansible_connection: local
+
+    - name: Remove NTP server 10.111.{{pod_number}}.66 with NETCONF
+      netconf_config:
+        host: "{{inventory_hostname}}"
+        port: "{{netconf_port}}"
+        username: "{{ansible_user}}"
+        password: "{{ansible_password}}"
+        hostkey_verify: False
+        xml: |
+            <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+              <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
+                <ntp>
+                  <server xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ntp">
+                    <server-list operation="delete">
+                      <ip-address>10.111.{{pod_number}}.66</ip-address>
+                    </server-list>
+                  </server>
+                </ntp>
+              </native>
+            </config>

@@ -1,0 +1,19 @@
+#simple IOS config in ansible
+---
+- name: Sample IOS config for Ansible 2.5
+  hosts: iosxe
+  gather_facts: no
+
+  tasks:
+
+  - name: Create loopback {{pod_number}}
+    ios_interface:
+      name: Loopback{{pod_number}}
+      enabled: True
+      description: Pod Number {{pod_number}}
+  - name: Assign IP to loopback
+    ios_l3_interface:
+      name: Loopback{{pod_number}}
+      ipv4: 10.111.{{pod_number}}.1/32
+
+

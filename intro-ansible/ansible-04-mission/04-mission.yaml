@@ -1,0 +1,103 @@
+#simple IOS config in ansible
+---
+- name: Intro to Ansible Mission
+  hosts: iosxe
+  gather_facts: no
+
+  tasks:
+
+###### This task will only execute if you are in a DevNet Express event ######
+  - name: Mission Checkpoint
+    fail:
+      msg: "Please review hosts file and set variables webex_token and webex_room_name"
+    when:
+      - webex_token ==  "mytokenabcdef" or webex_room_id == "roomIDabc123456defghi789jklmnopqr0"
+      - inventory_hostname != "ios-xe-mgmt.cisco.com"
+
+  - name: GATHERING FACTS
+    ios_facts:
+
+  - name: display current IOS version
+    debug:
+      var: ansible_net_version
+
+  - name: run show vrf
+    ios_command:
+      commands: show vrf
+    register: myvrf1
+
+  - name: display value of "myvrf1" variable
+    debug:
+      var: myvrf1["stdout_lines"][0]
+
+
+######### MISSION TODO #########
+# Uncomment and update this task to create 4 new Loopbacks numbered [loop_number][pod_number] such that if the loop number
+# is 50 and your pod number is 40, it would be loopback5040. Variable "loops" is already defined in group_vars/iosxe.yml
+#
+#  - name: Create loopback from "loops"
+#    ios_interface:
+#      name: MISSION
+#      enabled: True
+#      description: Pod Number {{item}}{{pod_number}}
+#    with_items: "{{loops}}"
+#    register: makeloop
+######### END MISSION SECTION #########
+
+  - name: Mission Checkpoint
+    fail:
+      msg: "Please review 04-mission.yaml and add a task to create the required Loopbacks with unique numbers"
+    when: makeloop is undefined
+
+
+######### MISSION TODO #########
+# Uncomment and update this task to assign unique IPs to each of the 4 new Loopbacks. You may use any method you like to
+# ensure uniqueness, but are encouraged to use the loop number and pod_number
+#  - name: Create and assign IP to loopback
+#    ios_l3_interface:
+#      name: MISSION
+#      ipv4: MISSION
+#    with_items: "{{loops}}"
+#    register: addip
+######### END MISSION SECTION #########
+
+  - name: Mission Checkpoint
+    fail:
+      msg: "Please review 04-mission.yaml and add a task to add IPs to your new loopbacks"
+    when: addip is undefined
+
+
+######### MISSION TODO #########
+# Uncomment and update this task to create new VRFs using the "local_vrfs" variable already defined in group_vars/iosxe.yml
+#  - name: Create VRFs as defined by local_vrfs
+#    ios_vrf:
+#      vrfs: MISSION
+#      state: present
+#    register: addvrf
+######### END MISSION SECTION #########
+
+  - name: Mission Checkpoint
+    fail:
+      msg: "Please review 04-mission.yaml and add a task to create the required VRFs"
+    when: addvrf is undefined
+
+  - name: run show vrf
+    ios_command:
+      commands: show vrf
+    register: myvrf2
+
+  - name: display value of "myvrf2" variable
+    debug:
+      var: myvrf2['stdout_lines'][0]
+
+###### This task will only execute if you are in a DevNet Express event ######
+  - name: Send info to Webex Teams room
+    cisco_spark:
+      message: "Congrats! You finished the mission for Intro to Ansible! Current vrf table: \n{{myvrf2['stdout'][0]}}"
+      message_type: text
+      personal_token: "{{webex_token}}"
+      recipient_id: "{{webex_room_id}}"
+      recipient_type: roomId
+    when: inventory_hostname != "ios-xe-mgmt.cisco.com"
+
+
