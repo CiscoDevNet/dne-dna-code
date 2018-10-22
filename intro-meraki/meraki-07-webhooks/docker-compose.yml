@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+
+  merakireceiver:
+    build: ./webhookreceiver
+    restart: on-failure
+    container_name: merakireceiver
+    ports:
+     - "5005:5005"
+    volumes:
+     - .:/webhookreceiver
