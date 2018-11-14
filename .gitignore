@@ -26,3 +26,6 @@ instance/
 
 # Ansible retry files
 *.retry
+
+verify/iosxe_tests.txt
+verify/nfvis_tests.txt
