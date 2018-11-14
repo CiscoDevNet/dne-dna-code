@@ -7,7 +7,9 @@ A simple example demonstrating how to interact with the CMX API.
 
 Default port: 5004
 
-Cisco Meraki CMX Documentation
+Cisco CMX Documentation
+https://www.cisco.com/c/en/us/td/docs/wireless/mse/10-2/api/b_cmx_102_api_reference.html
+See also:
 https://documentation.meraki.com/MR/Monitoring_and_Reporting/CMX_Analytics#CMX_Location_API
 
 Written by: Matthew DeNapoli
