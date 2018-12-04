@@ -235,7 +235,7 @@ if __name__ == '__main__':
     time.sleep(10)
 
     tunnels = requests.request("GET", \
-     "http://ngrok:4040/api/tunnels", \
+     "http://127.0.0.1:4040/api/tunnels", \
      verify=False)
 
     tunnels = json.loads(tunnels.text)
