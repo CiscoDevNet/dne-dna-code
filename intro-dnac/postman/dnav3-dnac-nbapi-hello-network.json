@@ -8,7 +8,7 @@
 			"name": "1.Ticket",
 			"description": "",
 			"item": [{
-				"name": "https://{{dnac}}/api/system/v1/auth/token",
+				"name": "https://{{dnac}}:{{port}}/dna/system/api/v1/auth/token",
 				"event": [{
 					"listen": "test",
 					"script": {
@@ -60,7 +60,7 @@
 						"raw": ""
 					},
 					"url": {
-						"raw": "https://{{dnac}}:{{port}}/api/system/v1/auth/token",
+						"raw": "https://{{dnac}}:{{port}}/dna/system/api/v1/auth/token",
 						"protocol": "https",
 						"host": [
 							"{{dnac}}"
@@ -92,7 +92,7 @@
 					}],
 					"body": {},
 					"url": {
-						"raw": "https://{{dnac}}:{{port}}/api/v1/network-device/1/14",
+						"raw": "https://{{dnac}}:{{port}}/dna/intent/api/v1/network-device/1/14",
 						"protocol": "https",
 						"host": [
 							"{{dnac}}"

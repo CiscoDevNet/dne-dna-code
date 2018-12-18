@@ -21,7 +21,7 @@ def apic_login(host, username, password):
     """
     Use the REST API to Log into an DNA_CENTER and retrieve token
     """
-    url = "https://{}/api/system/v1/auth/token".format(host)
+    url = "https://{}/dna/system/api/v1/auth/token".format(host)
     # payload = {"username": username, "password": password}
 
     # Make Login request and return the response body
@@ -124,7 +124,7 @@ def network_device_list(apic, ticket, id=None):
     Use the REST API to retrieve the list of network devices.
     If a device id is provided, return only that device
     """
-    url = "https://{}/api/v1/network-device".format(apic)
+    url = "https://{}/dna/intent/api/v1/network-device".format(apic)
     headers["x-auth-token"] = ticket
 
     # Change URL to single device given an id
@@ -145,7 +145,7 @@ def interface_details(apic, ticket, id):
     """
     Use the REST API to retrieve details about an interface based on id.
     """
-    url = "https://{}/api/v1/interface/{}".format(apic, id)
+    url = "https://{}/dna/intent/api/v1/interface/{}".format(apic, id)
     headers["x-auth-token"] = ticket
 
     response = requests.request("GET", url, headers=headers, verify=False)
@@ -230,7 +230,7 @@ def run_flow_analysis(apic, ticket, source_ip, destination_ip):
     source_ip to destination_ip.  Function will wait for analysis to complete,
     and return the results.
     """
-    base_url = "https://{}/api/v1/flow-analysis".format(apic)
+    base_url = "https://{}/dna/intent/api/v1/flow-analysis".format(apic)
     headers["x-auth-token"] = ticket
 
     # initiate flow analysis

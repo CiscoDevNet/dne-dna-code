@@ -95,7 +95,7 @@ def dnac_open_session(dnac_session,
                       dnac_password):
     """DNA Center login and adding cookie to session"""
     print('DNAC Login to ' + dnac_host + ' as ' + dnac_username + ' ...')
-    dnac_auth_api = 'https://%s/api/system/v1/auth/login' % dnac_host
+    dnac_auth_api = 'https://%s/dna/system/api/v1/auth/token' % dnac_host
     r = dnac_session.get(dnac_auth_api,
                          verify=False,
                          headers=dnac_headers,
@@ -116,7 +116,7 @@ def dnac_open_session(dnac_session,
 #                 from DNA Center Platform?
 def dnac_get_device_count(dnac_session, dnac_host, dnac_headers):
     """DNAC Network Device Count"""
-    tmp_url = 'https://%s/api/v1/network-device/count' % dnac_host
+    tmp_url = 'https://%s/dna/intent/api/v1/network-device/count' % dnac_host
     r = dnac_session.MISSION(tmp_url, verify=False, headers=dnac_headers)
     r.raise_for_status()
     # print('DNAC Response Body: ' + r.text)
@@ -127,7 +127,7 @@ def dnac_get_device_count(dnac_session, dnac_host, dnac_headers):
 # MISSION TODO 2: Complete the URL to retrieve the Network Devices
 def dnac_get_devices(dnac_session, dnac_host, dnac_headers):
     """DNAC Network Devices"""
-    tmp_url = 'https://%s/api/v1/MISSION' % dnac_host
+    tmp_url = 'https://%s/dna/intent/api/v1/MISSION' % dnac_host
     r = dnac_session.get(tmp_url, verify=False, headers=dnac_headers)
     r.raise_for_status()
     # print('DNAC Response Body: ' + r.text)
@@ -147,7 +147,7 @@ def dnac_get_host_count(dnac_session, dnac_host, dnac_headers):
 # MISSION TODO 3: Complete the URL to retrieve the Modules about a device
 def dnac_get_modules(dnac_session, dnac_host, dnac_headers, device_id):
     """DNAC Modules of a Network Device"""
-    tmp_url = 'https://%s/api/v1/' % dnac_host
+    tmp_url = 'https://%s/dna/intent/api/v1' % dnac_host
     tmp_url = tmp_url + 'network-device/MISSION?MISSION=%s' % device_id
 
     r = dnac_session.get(tmp_url,
@@ -164,7 +164,7 @@ def dnac_get_modules(dnac_session, dnac_host, dnac_headers, device_id):
 #                 modules for a device
 def dnac_get_module_count(dnac_session, dnac_host, dnac_headers, device_id):
     """DNAC Module Count of a Network Device"""
-    tmp_url = 'https://%s/api/v1/network-device/module/MISSION' % dnac_host
+    tmp_url = 'https://%s/dna/intent/api/v1/network-device/module/MISSION' % dnac_host
     tmp_params = {'deviceId': device_id}
 
     r = dnac_session.get(tmp_url,

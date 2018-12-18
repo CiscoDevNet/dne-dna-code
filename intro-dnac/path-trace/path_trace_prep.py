@@ -20,7 +20,7 @@ def apic_login(host, username, password):
     """
     Use the REST API to Log into an DNA_CENTER and retrieve token
     """
-    url = "https://{}/api/system/v1/auth/token".format(host)
+    url = "https://{}/dna/system/api/v1/auth/token".format(host)
 
     # Make Login request and return the response body
     response = requests.request("POST", url, auth=HTTPBasicAuth(username, password),

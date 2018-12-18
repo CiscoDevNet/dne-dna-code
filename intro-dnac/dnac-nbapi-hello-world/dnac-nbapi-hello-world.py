@@ -58,7 +58,7 @@ def get_auth_token(controller_ip=DNAC, username=DNAC_USER, password=DNAC_PASSWOR
     """ Authenticates with controller and returns a token to be used in subsequent API invocations
     """
 
-    login_url = "https://{0}:{1}/api/system/v1/auth/token".format(controller_ip, DNAC_PORT)
+    login_url = "https://{0}:{1}/dna/system/api/v1/auth/token".format(controller_ip, DNAC_PORT)
     result = requests.post(url=login_url, auth=HTTPBasicAuth(DNAC_USER, DNAC_PASSWORD), verify=False)
     result.raise_for_status()
 
@@ -72,7 +72,7 @@ def create_url(path, controller_ip=DNAC):
     """ Helper function to create a DNAC API endpoint URL
     """
 
-    return "https://%s:%s/api/v1/%s" % (controller_ip, DNAC_PORT, path)
+    return "https://%s:%s/dna/intent/api/v1/%s" % (controller_ip, DNAC_PORT, path)
 
 def get_url(url):
 
