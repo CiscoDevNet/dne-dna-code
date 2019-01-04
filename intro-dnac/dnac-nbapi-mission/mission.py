@@ -95,7 +95,7 @@ def dnac_open_session(dnac_session,
                       dnac_password):
     """DNA Center login and adding cookie to session"""
     print('DNAC Login to ' + dnac_host + ' as ' + dnac_username + ' ...')
-    dnac_auth_api = 'https://%s/dna/system/api/v1/auth/token' % dnac_host
+    dnac_auth_api = 'https://%s/api/system/v1/auth/login' % dnac_host
     r = dnac_session.get(dnac_auth_api,
                          verify=False,
                          headers=dnac_headers,
