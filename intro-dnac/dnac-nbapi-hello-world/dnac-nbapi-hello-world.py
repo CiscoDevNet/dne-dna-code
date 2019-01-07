@@ -54,11 +54,12 @@ DNAC_PORT = env_lab.DNA_CENTER['port']
 # -------------------------------------------------------------------
 # Helper functions
 # -------------------------------------------------------------------
+
+
 def get_auth_token(controller_ip=DNAC, username=DNAC_USER, password=DNAC_PASSWORD):
     """ Authenticates with controller and returns a token to be used in subsequent API invocations
     """
-
-    login_url = "https://{0}:{1}/dna/system/api/v1/auth/token".format(controller_ip, DNAC_PORT)
+    login_url = "https://{0}/dna/system/api/v1/auth/token".format(controller_ip, DNAC_PORT)
     result = requests.post(url=login_url, auth=HTTPBasicAuth(DNAC_USER, DNAC_PASSWORD), verify=False)
     result.raise_for_status()
 
@@ -68,14 +69,14 @@ def get_auth_token(controller_ip=DNAC, username=DNAC_USER, password=DNAC_PASSWOR
         "token": token
     }
 
+
 def create_url(path, controller_ip=DNAC):
     """ Helper function to create a DNAC API endpoint URL
     """
+    return "https://%s/dna/intent/api/v1/%s" % (controller_ip, path)
 
-    return "https://%s:%s/dna/intent/api/v1/%s" % (controller_ip, DNAC_PORT, path)
 
 def get_url(url):
-
     url = create_url(path=url)
     print(url)
     token = get_auth_token()
@@ -88,8 +89,10 @@ def get_url(url):
 
     return response.json()
 
+
 def list_network_devices():
     return get_url("network-device")
+
 
 if __name__ == "__main__":
     response = list_network_devices()
