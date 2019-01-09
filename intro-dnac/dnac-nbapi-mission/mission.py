@@ -142,7 +142,7 @@ def dnac_get_host_count(dnac_session, dnac_host, dnac_headers):
 # MISSION TODO 3: Complete the URL to retrieve the Modules about a device
 def dnac_get_modules(dnac_session, dnac_host, dnac_headers, device_id):
     """DNAC Modules of a Network Device"""
-    tmp_url = 'https://%s/dna/intent/api/v1' % dnac_host
+    tmp_url = 'https://%s/dna/intent/api/v1/' % dnac_host
     tmp_url = tmp_url + 'network-device/MISSION?MISSION=%s' % device_id
 
     r = dnac_session.get(tmp_url,
