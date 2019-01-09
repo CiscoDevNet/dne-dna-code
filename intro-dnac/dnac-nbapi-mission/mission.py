@@ -3,8 +3,8 @@
 
 This is your starting point for the DNAC Center North-Bound API Mission.
 Edit this file to
- - retrieve network devices and modules from DNA Cener,
- - put them into a ptyhon JSON object
+ - retrieve network devices and modules from DNA Center
+ - put them into a Python JSON object
  - write a JavaScript representation into a .js file which is formatted
    to be use with the NeXt UI Toolkit for visualization
 
@@ -12,7 +12,7 @@ There are a few places to edit (search for MISSION comments)
  1 Provide the HTTP method type to retrieve information
  2 Complete the URL to retrieve network devices
  3 Complete the URL to retrieve device modules
- 4 Complete the URL to retrive a count of modules
+ 4 Complete the URL to retrieve a count of modules
 
 Script Dependencies:
     requests
@@ -95,17 +95,13 @@ def dnac_open_session(dnac_session,
                       dnac_password):
     """DNA Center login and adding cookie to session"""
     print('DNAC Login to ' + dnac_host + ' as ' + dnac_username + ' ...')
-    dnac_auth_api = 'https://%s/api/system/v1/auth/login' % dnac_host
-    r = dnac_session.get(dnac_auth_api,
-                         verify=False,
-                         headers=dnac_headers,
-                         auth=HTTPBasicAuth(dnac_username, dnac_password))
+    login_url = "https://{0}/dna/system/api/v1/auth/token".format(dnac_host)
+    r = requests.post(url=login_url, auth=HTTPBasicAuth(dnac_user, dnac_pass), verify=False)
     r.raise_for_status()
     # print('DNAC Login: Response Headers: ' + str(r.headers))
     # print('DNAC Login: Response Body: ' + r.text)
 
-    session_token_val = ((r.headers['Set-Cookie']).split('=')[1]).split(';')[0]
-    # session_token_val = r.json()["Token"]
+    session_token_val = r.json()["Token"]
     cookies = {'X-JWT-ACCESS-TOKEN': session_token_val}
     dnac_session.cookies.update(cookies)
     print('DNAC Login: Session Cookie: ' + str(cookies))
@@ -116,7 +112,7 @@ def dnac_open_session(dnac_session,
 #                 from DNA Center Platform?
 def dnac_get_device_count(dnac_session, dnac_host, dnac_headers):
     """DNAC Network Device Count"""
-    tmp_url = 'https://%s/api/v1/network-device/count' % dnac_host
+    tmp_url = 'https://%s/dna/intent/api/v1/network-device/count' % dnac_host
     r = dnac_session.get(tmp_url, verify=False, headers=dnac_headers)
     r.raise_for_status()
     # print('DNAC Response Body: ' + r.text)
@@ -127,7 +123,7 @@ def dnac_get_device_count(dnac_session, dnac_host, dnac_headers):
 # MISSION TODO 2: Complete the URL to retrieve the Network Devices
 def dnac_get_devices(dnac_session, dnac_host, dnac_headers):
     """DNAC Network Devices"""
-    tmp_url = 'https://%s/api/v1/network-device' % dnac_host
+    tmp_url = 'https://%s/dna/intent/api/v1/network-device' % dnac_host
     r = dnac_session.get(tmp_url, verify=False, headers=dnac_headers)
     r.raise_for_status()
     # print('DNAC Response Body: ' + r.text)
@@ -147,7 +143,7 @@ def dnac_get_host_count(dnac_session, dnac_host, dnac_headers):
 # MISSION TODO 3: Complete the URL to retrieve the Modules about a device
 def dnac_get_modules(dnac_session, dnac_host, dnac_headers, device_id):
     """DNAC Modules of a Network Device"""
-    tmp_url = 'https://%s/api/v1/' % dnac_host
+    tmp_url = 'https://%s/dna/intent/api/v1/' % dnac_host
     tmp_url = tmp_url + 'network-device/module?deviceId=%s' % device_id
 
     r = dnac_session.get(tmp_url,
@@ -164,7 +160,7 @@ def dnac_get_modules(dnac_session, dnac_host, dnac_headers, device_id):
 #                 modules for a device
 def dnac_get_module_count(dnac_session, dnac_host, dnac_headers, device_id):
     """DNAC Module Count of a Network Device"""
-    tmp_url = 'https://%s/api/v1/network-device/module/count' % dnac_host
+    tmp_url = 'https://%s/dna/intent/api/v1/network-device/module/count' % dnac_host
     tmp_params = {'deviceId': device_id}
 
     r = dnac_session.get(tmp_url,
@@ -218,7 +214,7 @@ with requests.Session() as dnac_session:
                 next_data['nodes'].append({'id ': i,
                                            'x': (i*20),
                                            'y': 20*(i-di+1),
-                                           'name': m['partNumber'],
+                                           'name': m['description'],
                                            'serial': d['serialNumber'],
                                            'icon': 'server'})
                 next_data['links'].append({'source': di, 'target': i})
