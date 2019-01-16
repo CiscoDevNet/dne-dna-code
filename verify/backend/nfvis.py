@@ -68,9 +68,14 @@ def verify() -> bool:
     s.verify = False
 
     # Test: Is device pingable
-    response = os.system(
-        "ping -c 2 {} >> nfvis_tests.txt".format(nip)
-    )
+    if os.name == 'nt':
+        response = os.system(
+            "ping -n 2 {} >> nfvis_tests.txt".format(nip)
+        )     
+    else:
+        response = os.system(
+            "ping -c 2 {} >> nfvis_tests.txt".format(nip)
+        )
     # and then check the response...
     if response == 0:
         pingstatus = "Ping Success"
