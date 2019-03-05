@@ -14,6 +14,7 @@ For DevNet Express events, use these three issue tracker repos based on the cont
 * https://github.com/CiscoDevNet/devnet-express-dna-issues
 * https://github.com/CiscoDevNet/devnet-express-cc-issues
 * https://github.com/CiscoDevNet/devnet-express-dci-issues
+* https://github.com/CiscoDevNet/devnet-express-security-issues
 
 Use the issue tracker to suggest additions, report bugs, and ask questions.
 This is also a great way to connect with the developers of the project and find others interested in this solution.
@@ -24,6 +25,4 @@ that effort, then follow the _Changing the samples_ guidance below.
 
 ## Changing the examples
 
-Generally speaking, you should fork the repository, make changes in
-your fork, and then submit a pull request (PR). We expect you have validated that all code samples work as expected. Plus, the code should follow pep8 guidelines for Python.
-
+Generally speaking, you should clone the repository, make changes locally, and then submit a pull request (PR). We expect you have validated that all code samples work as expected. Plus, the code should follow pep8 guidelines for Python.

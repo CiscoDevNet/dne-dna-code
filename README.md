@@ -1,6 +1,6 @@
 ## Cisco DevNet Learning Labs: DNAv3 Sample Code
 
-This repository contains the sample code to go along with [Cisco DevNet Learning Labs](https://learninglabs.cisco.com) covering network programmability topics.  During the setup steps of the labs, you'll be asked to clone this repository down to your workstation to get started.  
+This repository contains the sample code to go along with [Cisco DevNet Learning Labs](https://developer.cisco.com/learning) covering network programmability topics.  During the setup steps of the labs, you'll be asked to clone this repository down to your workstation to get started.  
 
 Contributions are welcome, and we are glad to review changes through pull requests. See [contributing.md](contributing.md) for details.
 
@@ -25,7 +25,7 @@ Within this repository are several files and folders covering different topics a
 |  [`intro-python/`](intro-python/)  |  Sample code and exercises for the [Python Fundamentals Learning Labs]() <br> (_Publishing Soon_) | 
 |  [`rest-api/`](rest-api/)  |  Sample code and exercises for the [REST API Fundamentals Learning Labs]() <br> (_Publishing Soon_) | 
 |  [`intro-dnac/`](intro-dnac/)  |  Sample code and exercises for the [Introduction to DNA Center Programmability Learning Labs]() <br> (_Publishing Soon_) | 
-|  [`intro-mdp/`](intro-mdp/)  |  Sample code and exercises for the [Introduction to Model Drive Programmability (NETCONF/RESTCONF/YANG) Learning Labs](https://learninglabs.cisco.com/modules/intro-device-level-interfaces)  | 
+|  [`intro-mdp/`](intro-mdp/)  |  Sample code and exercises for the [Introduction to Model Drive Programmability (NETCONF/RESTCONF/YANG) Learning Labs](https://developer.cisco.com/learning/modules/intro-device-level-interfaces)  | 
 |  [`intro-guestshell/`](intro-guestshell/)  |  Sample code and exercises for the [Introduction to Guest Shell on IOS XE Learning Labs]() <br> (_Publishing Soon_) | 
 |  [`intro-meraki/`](intro-meraki/)  |  Sample code and exercises for the [Introduction to Meraki Programmability Learning Labs]() <br> (_Publishing Soon_) | 
 |  [`intro-nfvis/`](intro-nfvis/)  |  Sample code and exercises for the [Introduction to Network Function Virtualization with NFVIS APIs Learning Labs]() <br> (_Publishing Soon_) | 
