@@ -10,7 +10,7 @@ For sample code, you can help in these primary ways:
 
 ## Using the issue tracker
 
-For DevNet Express events, use these three issue tracker repos based on the content track:
+For DevNet Express events, use these issue tracker repos based on the content track:
 * https://github.com/CiscoDevNet/devnet-express-dna-issues
 * https://github.com/CiscoDevNet/devnet-express-cc-issues
 * https://github.com/CiscoDevNet/devnet-express-dci-issues
