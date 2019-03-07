@@ -33,8 +33,8 @@ SOFTWARE.
 #     sandbox - Cisco DevNet Always-On / Reserved Sandboxes
 #     express - Cisco DevNet Express Lab Backend
 #     custom  - Your Own "Custom" Lab Backend
-#ENVIRONMENT_IN_USE = "sandbox"
-ENVIRONMENT_IN_USE = "custom"
+ENVIRONMENT_IN_USE = "sandbox"
+#ENVIRONMENT_IN_USE = "custom"
 
 # Custom Lab Backend
 DNA_CENTER = {

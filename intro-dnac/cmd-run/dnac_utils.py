@@ -62,7 +62,7 @@ def dnac_token(host=env_lab.DNA_CENTER['host'],
     """
     Use the REST API to Log into an DNA_CENTER and retrieve token
     """
-    url = "https://{}:{}/api/system/v1/auth/token".format(host,port)
+    url = "https://{}:{}/dna/system/api/v1/auth/token".format(host,port)
     # Make Login request and return the response body
     response = requests.request("POST", url, auth=HTTPBasicAuth(username, password), verify=False)
 
