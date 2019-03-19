@@ -21,7 +21,7 @@ if __name__ == '__main__':
 
     # now print the templates
     for project in response.json():
-        if project['templates'] <> []:
+        if project['templates'] >= []:
             print('Project:{}'.format(project['name']))
             for template in project['templates']:
                 print ('\t{}:{}'.format(template['name'], template['id']))
