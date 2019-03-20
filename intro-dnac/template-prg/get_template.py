@@ -12,9 +12,10 @@ if __name__ == '__main__':
     # get an authentication token.  The username and password is obtained from an environment file
     token = dnac_token()
     headers = {'x-auth-token' : token}
-
+    # Input this value with a valid template id for your environment
+    templateid = raw_input("Please enter a valid template ID, which can be obtained with the get_templates.py script: ")
     # create a url for this API call
-    url =  create_url('/v1/template-programmer/template/version/{}'.format('2f6ad7a2-8eb2-4a9f-a4ec-444ddecca122'))
+    url =  create_url('/v1/template-programmer/template/version/{}'.format(templateid))
 
     # make the REST request
     response = requests.get(url, headers=headers, verify=False)
