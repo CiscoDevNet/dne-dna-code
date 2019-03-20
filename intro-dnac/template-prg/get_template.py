@@ -13,7 +13,7 @@ if __name__ == '__main__':
     token = dnac_token()
     headers = {'x-auth-token' : token}
     # Input this value with a valid template id for your environment
-    templateid = raw_input("Please enter a valid template ID, which can be obtained with the get_templates.py script: ")
+    templateid = input("Please enter a valid template ID, which can be obtained with the get_templates.py script: ")
     # create a url for this API call
     url =  create_url('/v1/template-programmer/template/version/{}'.format(templateid))
 
