@@ -28,6 +28,8 @@ global captive_portal_url
 captive_portal_url = ""
 global user_continue_url
 user_continue_url = ""
+global window
+window = ""
 
 
 @app.route("/go", methods=["GET"])
@@ -53,7 +55,7 @@ def connect_to_wifi():
     "&node_mac=" + node_mac + \
     "&client_ip=" + client_ip + \
     "&client_mac=" + client_mac
-    webview.load_url(full_url,uid='master')
+    window.load_url(full_url)
 
     return render_template("connected.html", full_url=full_url)
 
@@ -85,7 +87,8 @@ if __name__ == "__main__":
     t.dameon = True
     t.start()
 
-    webview.create_window("Captive Portal", "http://localhost:5003/setupserver",
+    window = webview.create_window("Captive Portal", "http://localhost:5003/setupserver",
     js_api=None, width=800, height=600, resizable=True, fullscreen=False,
-    min_size=(200, 100), strings={}, confirm_quit=False,
-    background_color='#FFF', debug=False, text_select=True)
+    min_size=(200, 100), confirm_close=False,
+    background_color='#FFF', text_select=True)
+    webview.start()
