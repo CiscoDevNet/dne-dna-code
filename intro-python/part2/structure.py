@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# """Module docstring."""
+"""Module docstring."""
 
 
 # Imports
