@@ -1,115 +1,507 @@
 {
 	"info": {
+		"_postman_id": "c3f93635-b605-4a24-97f0-eb7c17ee1ecb",
 		"name": "dnav3-dnac-nbapi-hello-network",
-		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
-	"item": [{
-			"name": "1.Ticket",
-			"description": "",
-			"item": [{
-				"name": "https://{{dnac}}/api/system/v1/auth/token",
-				"event": [{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"var data = JSON.parse(responseBody);",
-							"postman.setEnvironmentVariable(\"token\", data.Token);"
-						]
-					}
-				}],
-				"request": {
-					"auth": {
-						"type": "basic",
-						"basic": [{
-								"key": "username",
-								"value": "{{username}}",
-								"type": "string"
-							},
-							{
-								"key": "password",
-								"value": "{{password}}",
-								"type": "string"
-							},
-							{
-								"key": "saveHelperData",
-								"value": true,
-								"type": "boolean"
-							},
-							{
-								"key": "showPassword",
-								"value": false,
-								"type": "boolean"
-							}
-						]
-					},
-					"method": "POST",
-					"header": [{
-							"key": "content-type",
-							"value": "application/json",
-							"disabled": true
-						},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Authenticate",
+					"event": [
 						{
-							"key": "Authorization",
-							"value": "Basic YWRtaW46R3JhcGV2aW5lMQ=="
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"token\", data.Token);"
+								]
+							}
 						}
 					],
-					"body": {
-						"mode": "raw",
-						"raw": ""
-					},
-					"url": {
-						"raw": "https://{{dnac}}:{{port}}/api/system/v1/auth/token",
-						"protocol": "https",
-						"host": [
-							"{{dnac}}"
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46R3JhcGV2aW5lMQ=="
+							}
 						],
-						"port": "{{port}}",
-						"path": [
-							"api",
-							"system",
-							"v1",
-							"auth",
-							"token"
-						]
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{dnac}}:{{port}}/api/system/v1/auth/token",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"system",
+								"v1",
+								"auth",
+								"token"
+							]
+						}
 					},
-					"description": ""
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f4d72021-98ef-4252-8494-db982979c5de",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				},
-				"response": []
-			}]
+				{
+					"listen": "test",
+					"script": {
+						"id": "58d81a12-c661-4202-a4bf-f7b0221f3ed4",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Devices",
+			"item": [
+				{
+					"name": "https://{{dnac}}:{{port}}/dna/intent/api/v1/network-device/1/14",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{dnac}}:{{port}}/api/v1/network-device/1/14",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"network-device",
+								"1",
+								"14"
+							]
+						},
+						"description": "This request uses the \"token\" variable generated from the POST request to get first 14 network-devices"
+					},
+					"response": []
+				},
+				{
+					"name": "Network Device by IP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a0e96661-7cef-43ae-a765-afe6bb8e6766",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"console.log(\"here\");",
+									"console.log(data.response.id);",
+									"if (data.response.id) {",
+									"  tests[\"Body has id\"] = true;",
+									"  postman.setEnvironmentVariable(\"deviceId\", data.response.id);",
+									"}",
+									"else {",
+									"  tests[\"Body has id\"] = false;",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{dnac}}:{{port}}/dna/intent/api/v1/network-device/ip-address/10.10.22.70",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"dna",
+								"intent",
+								"api",
+								"v1",
+								"network-device",
+								"ip-address",
+								"10.10.22.70"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Command Runner",
+			"item": [
+				{
+					"name": "Execute remote command",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"console.log(\"here\");",
+									"console.log(data.response.taskId);",
+									"if (data.response.taskId) {",
+									"  tests[\"Body has taskid\"] = true;",
+									"  postman.setEnvironmentVariable(\"taskId\", data.response.taskId);",
+									"}",
+									"else {",
+									"  tests[\"Body has taskId\"] = false;",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n \"name\" : \"show ver\",\n \"commands\" : [\"show ver | inc RELEASE\"],\n \"deviceUuids\" : [ \"{{deviceId}}\"]\n}\n"
+						},
+						"url": {
+							"raw": "https://{{dnac}}:{{port}}/api/v1/network-device-poller/cli/read-request",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"network-device-poller",
+								"cli",
+								"read-request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtain list of valid commands ( 'legit-reads')",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{dnac}}:{{port}}/dna/intent/api/v1/network-device-poller/cli/legit-reads",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"dna",
+								"intent",
+								"api",
+								"v1",
+								"network-device-poller",
+								"cli",
+								"legit-reads"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "Check command completion",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"if (data.response.progress) {",
+									"  ",
+									"  var prog = JSON.parse(data.response.progress)",
+									"  postman.setEnvironmentVariable(\"fileId\", prog.fileId);",
+									"  ",
+									"}",
+									"else {",
+									"  tests[\"Body has no fileId\"] = false;",
+									"}",
+									"",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{dnac}}:{{port}}/api/v1/task/{{taskId}}",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"task",
+								"{{taskId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "File",
+			"item": [
+				{
+					"name": "Obtain command results",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{dnac}}:{{port}}/api/v1/file/{{fileId}}",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"file",
+								"{{fileId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "1.Ticket",
+			"item": [
+				{
+					"name": "https://{{dnac}}:{{port}}/dna/system/api/v1/auth/token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"token\", data.Token);"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46R3JhcGV2aW5lMQ=="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{dnac}}:{{port}}/api/system/v1/auth/token",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"system",
+								"v1",
+								"auth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "2.Network Device",
-			"description": "",
-			"item": [{
-				"name": "https://{{dnac}}:{{port}}/api/v1/network-device/1/14",
-				"request": {
-					"method": "GET",
-					"header": [{
-						"key": "x-auth-token",
-						"value": "{{token}}"
-					}],
-					"body": {},
-					"url": {
-						"raw": "https://{{dnac}}:{{port}}/api/v1/network-device/1/14",
-						"protocol": "https",
-						"host": [
-							"{{dnac}}"
+			"item": [
+				{
+					"name": "https://{{dnac}}:{{port}}/api/v1/network-device/1/14",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}"
+							}
 						],
-						"port": "{{port}}",
-						"path": [
-							"api",
-							"v1",
-							"network-device",
-							"1",
-							"14"
-						]
+						"url": {
+							"raw": "https://{{dnac}}:{{port}}/api/v1/network-device/1/14",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"network-device",
+								"1",
+								"14"
+							]
+						},
+						"description": "This request uses the \"token\" variable generated from the POST request to get first 14 network-devices"
 					},
-					"description": "This request uses the \"token\" variable generated from the POST request to get first 14 network-devices"
-				},
-				"response": []
-			}]
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
