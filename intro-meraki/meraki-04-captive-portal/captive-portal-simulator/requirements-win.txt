@@ -1,4 +1,0 @@
-flask
-netifaces
-pywebview[winforms]
-requests

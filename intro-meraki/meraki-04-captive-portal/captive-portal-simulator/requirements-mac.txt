@@ -1,4 +1,0 @@
-flask
-requests
-pywebview[cocoa]
-netifaces

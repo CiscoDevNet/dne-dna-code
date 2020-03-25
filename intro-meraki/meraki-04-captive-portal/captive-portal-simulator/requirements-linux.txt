@@ -1,4 +1,0 @@
-flask
-requests
-pywebview[gtk3]
-netifaces
