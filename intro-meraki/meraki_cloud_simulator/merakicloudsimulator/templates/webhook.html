@@ -1,0 +1,53 @@
+{% block body %}
+<html>
+  <head>
+    <title>Meraki WebHook Alerts Simulator</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='sample.css')}}">
+    <script>TypekitConfig={kitId:"hum1oye",scriptTimeout:1.5e3},function(){var a=document.getElementsByTagName("html")[0];a.className+=" wf-loading";var b=setTimeout(function(){a.className=a.className.replace(/(\s|^)wf-loading(\s|$)/g,""),a.className+=" wf-inactive"},TypekitConfig.scriptTimeout),c=document.createElement("script");c.src="//use.typekit.com/"+TypekitConfig.kitId+".js",c.type="text/javascript",c.async="true",c.onload=c.onreadystatechange=function(){var a=this.readyState;if(!a||a=="complete"||a=="loaded"){clearTimeout(b);try{Typekit.load(TypekitConfig)}catch(c){}}};var d=document.getElementsByTagName("script")[0];d.parentNode.insertBefore(c,d)}()</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
+  </head>
+  <body>
+    <div id="masthead">
+      <div id="masthead-content">
+        <img src="https://meraki.cisco.com/img/cisco-meraki.png"/>
+      </div>
+    </div>
+    <div id="content">
+      <h1>Meraki Webhook Simulator</h1>
+      <form method="POST" action="/webhook">
+        <p>Network-wide</p>
+        
+        <input type="checkbox" name="checked_settings" value="settingsChanged" {% if 'settingsChanged' in checked_settings %} checked="checked" {% else %}""{% endif %}>Configuration settings are changed</br>
+        <input type="checkbox" name="checked_settings" value="vpnConnectivityChanged" {% if 'vpnConnectivityChanged' in checked_settings %} checked="checked" {% else %}""{% endif %}>A VPN connection comes up or goes down</br>
+        <input type="checkbox" name="checked_settings" value="rogueAp" {% if 'rogueAp' in checked_settings %} checked="checked" {% else %}""{% endif %}>A rogue AP is detected</br>
+
+        <p>Wireless</p>
+        <input type="checkbox" name="checked_settings"value="gatewayToRepeater" {% if 'gatewayToRepeater' in checked_settings %} checked="checked" {% else %}""{% endif %}>A gateway becomes a repeater</br>
+        
+        <p>Security appliance</p>
+        <input type="checkbox" name="checked_settings"value="failoverEvent" {% if 'failoverEvent' in checked_settings %} checked="checked" {% else %}""{% endif %}>The primary uplink status changes</br>
+        <input type="checkbox" name="checked_settings" value="dhcpNoLeases" {% if 'dhcpNoLeases' in checked_settings %} checked="checked" {% else %}""{% endif %}>The DHCP lease pool is exhausted</br>
+        <input type="checkbox" name="checked_settings" value="ipConflict" {% if 'ipConflict' in checked_settings %} checked="checked" {% else %}""{% endif %}>An IP conflict is detected</br>
+        <input type="checkbox" name="checked_settings" value="cellularUpDown" {% if 'cellularUpDown' in checked_settings %} checked="checked" {% else %}""{% endif %}>Cellular connection state changes</br>
+        <input type="checkbox" name="checked_settings" value="rogueDhcp" {% if 'rogueDhcp' in checked_settings %} checked="checked" {% else %}""{% endif %}>A rogue DHCP server is detected</br>
+        <input type="checkbox" name="checked_settings" value="vrrp" {% if 'vrrp' in checked_settings %} checked="checked" {% else %}""{% endif %}>A warm spare failover occurs</br>
+        <input type="checkbox" name="checked_settings" value="ampMalwareBlocked" {% if 'ampMalwareBlocked' in checked_settings %} checked="checked" {% else %}""{% endif %}>Malware is blocked</br>
+        <input type="checkbox" name="checked_settings" value="ampMalwareDetected" {% if 'ampMalwareDetected' in checked_settings %} checked="checked" {% else %}""{% endif %}>Malware is downloaded</br>
+
+        <p>Switch</p>
+        <input type="checkbox" name="checked_settings" value="newDhcpServer" {% if 'newDhcpServer' in checked_settings %} checked="checked" {% else %}""{% endif %}>A new DHCP server is detected on the network</br>
+        <input type="checkbox" name="checked_settings" value="powerSupplyDown" {% if 'powerSupplyDown' in checked_settings %} checked="checked" {% else %}""{% endif %}>A power supply goes down</br>
+        <input type="checkbox" name="checked_settings" value="rpsBackup" {% if 'rpsBackup' in checked_settings %} checked="checked" {% else %}""{% endif %}>A redundant power supply is powering a switch</br>
+        <input type="checkbox" name="checked_settings" value="udldError" {% if 'udldError' in checked_settings %} checked="checked" {% else %}""{% endif %}>Unidirectional link detection (UDLD) errors exist on a port</br>
+
+        <p>HTTPS Receiver</p>
+        Name: <input type="text" name="server_name" value="{{ server_name }}">  URL: <input type="text" name="server_url" value="{{ server_url }}">  Shared Secret: <input type="text" name="shared_secret" value="{{ shared_secret }}">  Make default destination: <input type="checkbox" name="default_destination" value="default_destination" {% if 'default_destination' in default_destination %} checked="checked" {% else %}""{% endif %}></br></br>
+        <input type="submit" value="Save">
+      </form>
+    </div>
+  </body>
+</html>
+{% endblock %}

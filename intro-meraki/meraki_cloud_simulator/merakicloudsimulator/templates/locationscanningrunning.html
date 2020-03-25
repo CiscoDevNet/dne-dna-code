@@ -1,0 +1,29 @@
+{% block body %}
+<html>
+  <head>
+    <title>Meraki Location Scanning Data Simulator Running</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='sample.css')}}">
+    <script>TypekitConfig={kitId:"hum1oye",scriptTimeout:1.5e3},function(){var a=document.getElementsByTagName("html")[0];a.className+=" wf-loading";var b=setTimeout(function(){a.className=a.className.replace(/(\s|^)wf-loading(\s|$)/g,""),a.className+=" wf-inactive"},TypekitConfig.scriptTimeout),c=document.createElement("script");c.src="//use.typekit.com/"+TypekitConfig.kitId+".js",c.type="text/javascript",c.async="true",c.onload=c.onreadystatechange=function(){var a=this.readyState;if(!a||a=="complete"||a=="loaded"){clearTimeout(b);try{Typekit.load(TypekitConfig)}catch(c){}}};var d=document.getElementsByTagName("script")[0];d.parentNode.insertBefore(c,d)}()</script>
+
+  </head>
+  <body>
+    <div id="masthead">
+      <div id="masthead-content">
+        <img src="https://meraki.cisco.com/img/cisco-meraki.png"/>
+      </div>
+    </div>
+    <div id="content">
+      <h1>Meraki Location Scanning Data Simulator Running</h1>
+      <form method="POST" action="/locationscanning/reset">
+        <input type="submit" value="Reset Simulator">
+      </form>
+      <p>Server: {{ server_url }}</br>
+        # APs: {{ num_aps }}</br>
+        # Clients {{ num_clients }}</br>
+      </p>
+      <p>Location Data: {{ datavar }}</p>
+  </body>
+</html>
+{% endblock %}

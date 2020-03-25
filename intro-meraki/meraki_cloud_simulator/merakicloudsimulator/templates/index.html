@@ -1,0 +1,26 @@
+{% block body %}
+<html>
+  <head>
+    <title>Meraki Cloud Simulations</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='sample.css')}}">
+    <script>TypekitConfig={kitId:"hum1oye",scriptTimeout:1.5e3},function(){var a=document.getElementsByTagName("html")[0];a.className+=" wf-loading";var b=setTimeout(function(){a.className=a.className.replace(/(\s|^)wf-loading(\s|$)/g,""),a.className+=" wf-inactive"},TypekitConfig.scriptTimeout),c=document.createElement("script");c.src="//use.typekit.com/"+TypekitConfig.kitId+".js",c.type="text/javascript",c.async="true",c.onload=c.onreadystatechange=function(){var a=this.readyState;if(!a||a=="complete"||a=="loaded"){clearTimeout(b);try{Typekit.load(TypekitConfig)}catch(c){}}};var d=document.getElementsByTagName("script")[0];d.parentNode.insertBefore(c,d)}()</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
+  </head>
+  <body>
+    <div id="masthead">
+      <div id="masthead-content">
+        <img src="https://meraki.cisco.com/img/cisco-meraki.png"/>
+      </div>
+    </div>
+    <div id="content">
+      <h1>Meraki Cloud Simulations</h1>
+        <a href="/locationscanning/set" target="_blank">Location Scanning Simulator</a></br>
+        <a href="/excap" target="_blank">External Captive Portal (Splash Page) Simulator</a></br>
+        <a href="/webhook" target="_blank">WebHook Alerts Simulator</a></br>
+    </div>
+  </body>
+</html>
+{% endblock %}
