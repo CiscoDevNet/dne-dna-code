@@ -1,0 +1,600 @@
+{
+	"info": {
+		"_postman_id": "8f5e60e3-7698-4bc4-9adb-e19f2a57a4c6",
+		"name": ".DNAv4-DNA-Center",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "01.Authorization",
+			"item": [
+				{
+					"name": "Get Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eabc3abd-f28e-458f-8bb2-bab7e187e0ea",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"token\", data.Token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46R3JhcGV2aW5lMQ=="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{dnac}}/api/system/v1/auth/token",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"v1",
+								"auth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "02.Network Device",
+			"item": [
+				{
+					"name": "Get Network List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{dnac}}/api/v1/network-device/",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"network-device",
+								""
+							]
+						},
+						"description": "This request uses the \"token\" variable generated from the POST request to get first 14 network-devices"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "03.Path Trace",
+			"item": [
+				{
+					"name": "Initiate Path Trace",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "10ed1a8a-f56f-4c38-8e02-5c126bac76b3",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"console.log(\"here\");",
+									"console.log(data.response.taskId);",
+									"if (data.response.taskId) {",
+									"  tests[\"Body has taskid\"] = true;",
+									"  postman.setEnvironmentVariable(\"taskId\", data.response.taskId);",
+									"}",
+									"else {",
+									"  tests[\"Body has taskId\"] = false;",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"sourceIP\" : \"{{sourceIP}}\", \"destIP\" : \"{{destIP}}\"}"
+						},
+						"url": {
+							"raw": "https://{{dnac}}/api/v1/flow-analysis",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-analysis"
+							]
+						},
+						"description": "Creates a flow analysis.  sourceIP and destIP are specified.\n\nsrc/dst port can also be provided"
+					},
+					"response": []
+				},
+				{
+					"name": "Check Task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d6f7a335-bb12-4efd-b0e3-8bb7b3424e20",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"",
+									"if (data.response.progress) {",
+									"  tests[\"Body has progress\"] = true;",
+									"  postman.setEnvironmentVariable(\"pathId\", data.response.progress);",
+									"}",
+									"else {",
+									"  tests[\"Body has progress\"] = false;",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{dnac}}/api/v1/task/{{taskId}}",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"task",
+								"{{taskId}}"
+							]
+						},
+						"description": "Gets a task status.\nuses environment variable for the taskId\n\nAlso parses the result of the task to find the ID of the path.\n\nThis is stored in the pathId environment variable"
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Path Trace Results",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{dnac}}/api/v1/flow-analysis/{{pathId}}",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flow-analysis",
+								"{{pathId}}"
+							]
+						},
+						"description": "Gets a flow-analyis\nuses environment variable for the pathId"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "04.Command Runner",
+			"item": [
+				{
+					"name": "Initiate Command Runner",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"console.log(\"here\");",
+									"console.log(data.response.taskId);",
+									"if (data.response.taskId) {",
+									"  tests[\"Body has taskid\"] = true;",
+									"  postman.setEnvironmentVariable(\"taskId\", data.response.taskId);",
+									"}",
+									"else {",
+									"  tests[\"Body has taskId\"] = false;",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n \"name\" : \"show ver\",\n \"commands\" : [\"show ver | inc RELEASE\"],\n \"deviceUuids\" : [ \"{{deviceId}}\"]\n}\n"
+						},
+						"url": {
+							"raw": "https://{{dnac}}:{{port}}/api/v1/network-device-poller/cli/read-request",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"network-device-poller",
+								"cli",
+								"read-request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Device Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{dnac}}/api/v1/network-device/",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"network-device",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Task Info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"var data = JSON.parse(responseBody);",
+									"",
+									"if (data.response.progress) {",
+									"  ",
+									"  var prog = JSON.parse(data.response.progress)",
+									"  postman.setEnvironmentVariable(\"fileId\", prog.fileId);",
+									"  ",
+									"}",
+									"else {",
+									"  tests[\"Body has no fileId\"] = false;",
+									"}",
+									"",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{dnac}}:{{port}}/api/v1/task/{{taskId}}",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"task",
+								"{{taskId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Command Runner output",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{dnac}}/api/v1/file/{{fileId}}",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"file",
+								"{{fileId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "05.Template",
+			"item": [
+				{
+					"name": "Get Projects",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://{{dnac}}:{{port}}/api/v1/template-programmer/project",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"template-programmer",
+								"project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Template Versions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{dnac}}:{{port}}/api/v1/template-programmer/template/3f7c91b4-4b17-4545-af58-290d51f1de55",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"template-programmer",
+								"template",
+								"3f7c91b4-4b17-4545-af58-290d51f1de55"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deploy Template",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"",
+									"console.log(data);",
+									"if (data.deploymentId) {",
+									"  tests[\"Body has deploymentId\"] = true;",
+									"  postman.setEnvironmentVariable(\"deploymentId\", data.deploymentId);",
+									"}",
+									"else {",
+									"  tests[\"Body has deploymentId\"] = false;",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"templateId\": \"3f7c91b4-4b17-4545-af58-290d51f1de55\",\n   \"targetInfo\": [\n     {\n   \n      \"id\": \"10.10.22.70\",\n      \"type\": \"MANAGED_DEVICE_IP\",\n      \"params\": {\"description\": \"changed by DNAC -nnow\", \"interface\":\"TenGigabitEthernet1/0/24\"}\n     }\n\t]\n}\n"
+						},
+						"url": {
+							"raw": "https://{{dnac}}:{{port}}/api/v1/template-programmer/template/deploy",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"template-programmer",
+								"template",
+								"deploy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Deployment Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{dnac}}:{{port}}/api/v1/template-programmer/template/deploy/status/{{deploymentId}}",
+							"protocol": "https",
+							"host": [
+								"{{dnac}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1",
+								"template-programmer",
+								"template",
+								"deploy",
+								"status",
+								"{{deploymentId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "5167555f-bb47-4a95-aafe-c57524903fbd",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "133ab19f-d6b1-4b0d-9e70-55aacc30b38b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
