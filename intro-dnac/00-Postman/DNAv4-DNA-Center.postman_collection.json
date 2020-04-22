@@ -295,12 +295,11 @@
 							"raw": "{ \n \"name\" : \"show ver\",\n \"commands\" : [\"show ver | inc RELEASE\"],\n \"deviceUuids\" : [ \"{{deviceId}}\"]\n}\n"
 						},
 						"url": {
-							"raw": "https://{{dnac}}:{{port}}/api/v1/network-device-poller/cli/read-request",
+							"raw": "https://{{dnac}}/api/v1/network-device-poller/cli/read-request",
 							"protocol": "https",
 							"host": [
 								"{{dnac}}"
 							],
-							"port": "{{port}}",
 							"path": [
 								"api",
 								"v1",
@@ -374,12 +373,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://{{dnac}}:{{port}}/api/v1/task/{{taskId}}",
+							"raw": "https://{{dnac}}/api/v1/task/{{taskId}}",
 							"protocol": "https",
 							"host": [
 								"{{dnac}}"
 							],
-							"port": "{{port}}",
 							"path": [
 								"api",
 								"v1",
@@ -441,12 +439,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://{{dnac}}:{{port}}/api/v1/template-programmer/project",
+							"raw": "https://{{dnac}}/api/v1/template-programmer/project",
 							"protocol": "https",
 							"host": [
 								"{{dnac}}"
 							],
-							"port": "{{port}}",
 							"path": [
 								"api",
 								"v1",
@@ -468,12 +465,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://{{dnac}}:{{port}}/api/v1/template-programmer/template/3f7c91b4-4b17-4545-af58-290d51f1de55",
+							"raw": "https://{{dnac}}/api/v1/template-programmer/template/3f7c91b4-4b17-4545-af58-290d51f1de55",
 							"protocol": "https",
 							"host": [
 								"{{dnac}}"
 							],
-							"port": "{{port}}",
 							"path": [
 								"api",
 								"v1",
@@ -524,12 +520,11 @@
 							"raw": "{\n  \"templateId\": \"3f7c91b4-4b17-4545-af58-290d51f1de55\",\n   \"targetInfo\": [\n     {\n   \n      \"id\": \"10.10.22.70\",\n      \"type\": \"MANAGED_DEVICE_IP\",\n      \"params\": {\"description\": \"changed by DNAC -nnow\", \"interface\":\"TenGigabitEthernet1/0/24\"}\n     }\n\t]\n}\n"
 						},
 						"url": {
-							"raw": "https://{{dnac}}:{{port}}/api/v1/template-programmer/template/deploy",
+							"raw": "https://{{dnac}}/api/v1/template-programmer/template/deploy",
 							"protocol": "https",
 							"host": [
 								"{{dnac}}"
 							],
-							"port": "{{port}}",
 							"path": [
 								"api",
 								"v1",
@@ -552,12 +547,11 @@
 							}
 						],
 						"url": {
-							"raw": "https://{{dnac}}:{{port}}/api/v1/template-programmer/template/deploy/status/{{deploymentId}}",
+							"raw": "https://{{dnac}}/api/v1/template-programmer/template/deploy/status/{{deploymentId}}",
 							"protocol": "https",
 							"host": [
 								"{{dnac}}"
 							],
-							"port": "{{port}}",
 							"path": [
 								"api",
 								"v1",

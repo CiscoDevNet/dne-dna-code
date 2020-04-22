@@ -37,17 +37,18 @@ ENVIRONMENT_IN_USE = "sandbox"
 
 # Custom Lab Backend
 DNA_CENTER = {
-    "host": "",
-    "username": "",
-    "password": ""
+    "host": "sandboxdnac2.cisco.com",
+    "username": "dnacdev",
+    "password": "D3v93T@wK!"
 }
+
 # End User Input
 
 
 # Set the 'Environment Variables' based on the lab environment in use
 if ENVIRONMENT_IN_USE == "sandbox":
     DNA_CENTER = {
-        "host": "sandboxdnac.cisco.com",
+        "host": "sandboxdnac2.cisco.com",
         "username": "dnacdev",
         "password": "D3v93T@wK!"
     }
@@ -85,7 +86,8 @@ if ENVIRONMENT_IN_USE == "sandbox":
 
 elif ENVIRONMENT_IN_USE == "express":
     DNA_CENTER = {
-        "host": "sandboxdnac.cisco.com",
+        "host": "sandboxdnac2.cisco.com",
+        "port": 443,
         "username": "dnacdev",
         "password": "D3v93T@wK!"
     }
