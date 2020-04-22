@@ -48,10 +48,9 @@ DNA_CENTER = {
 # Set the 'Environment Variables' based on the lab environment in use
 if ENVIRONMENT_IN_USE == "sandbox":
     DNA_CENTER = {
-        "host": "sandboxdnac.cisco.com",
-        "port": 443,
-        "username": "devnetuser",
-        "password": "Cisco123!"
+        "host": "sandboxdnac2.cisco.com",
+        "username": "dnacdev",
+        "password": "D3v93T@wK!"
     }
 
     # Values for the Always On IOS XE Sandbox
@@ -87,10 +86,10 @@ if ENVIRONMENT_IN_USE == "sandbox":
 
 elif ENVIRONMENT_IN_USE == "express":
     DNA_CENTER = {
-        "host": "sandboxdnac.cisco.com",
+        "host": "sandboxdnac2.cisco.com",
         "port": 443,
-        "username": "devnetuser",
-        "password": "Cisco123!"
+        "username": "dnacdev",
+        "password": "D3v93T@wK!"
     }
 
     NFVIS_SERVER = {

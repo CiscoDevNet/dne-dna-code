@@ -13,7 +13,7 @@ def get_device_list():
     Building out function to retrieve list of devices. Using requests.get to make a call to the network device Endpoint
     """
     token = get_auth_token() # Get Token
-    url = "https://{}/api/v1/network-device".format(DNAC_URL)
+    url = "https://{}/api/v1/network-device/1/14".format(DNAC_URL)
     hdr = {'x-auth-token': token, 'content-type' : 'application/json'}
     resp = requests.get(url, headers=hdr)  # Make the Get Request
     device_list = resp.json()

@@ -11,12 +11,12 @@ def deploy():
     url = create_url('/v1/template-programmer/template/deploy')
 
     body = {
-        "templateId": "d1b4c4b4-31b9-4419-b7ed-a5ce2bf7eb83",
+        "templateId": "af2c57dc-769f-47af-9f36-96a12746286a",
         "targetInfo": [
             {
-                "id": "10.10.22.70",
+                "id": "10.10.20.82",
                 "type": "MANAGED_DEVICE_IP",
-                "params": {"description": "changed by DNA Center", "interface": "TenGigabitEthernet1/1/1"}
+                "params": {"description": "changed by DNA Center  2", "interface": "TenGigabitEthernet1/1/1"}
             }
         ]
     }
@@ -29,6 +29,7 @@ def deploy():
     # clean response to grab DeploymentID
     deploymentId = deploymentId.split(':')
     deploymentId = deploymentId[-1]
+    deploymentId = deploymentId.replace(" ", "")
     print("deploymentID -->", deploymentId)
 
     # now look for the status

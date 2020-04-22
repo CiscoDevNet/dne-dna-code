@@ -76,8 +76,9 @@ def get_task_info(task):
         file_id = file_id.split(':')
         file_id = file_id[1]
         print("Task completed! Here's the FileID {}".format(file_id))
-    else:  # keep checking for task completion
+    else:  # recursive call to this function as the Task is not complete yet. keep checking
         get_task_info(task['task_id'])
+        return task
     task['file_id'] = file_id
     print("Task completed! Here's the FileID {} for command ran on {}".format(task['file_id'], task['hostname']))
     return task
@@ -127,10 +128,13 @@ if __name__ == '__main__':
     command_output = []
     get_auth_token()
     device_list = get_device_list()
+    # print("Device List: ", device_list)
     for device in device_list:
         task_id_list.append(initiate_cmd_runner(device['id']))
+    # print("Task List: ", task_id_list)
     for task in task_id_list:
         file_id_list.append(get_task_info(task))
+    # print("File List: ", file_id_list)
     for file in file_id_list:
         command_output = get_cmd_output(file)
         save_config(command_output)
