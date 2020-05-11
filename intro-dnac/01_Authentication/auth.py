@@ -1,6 +1,17 @@
 import requests
 from requests.auth import HTTPBasicAuth
 import env_lab
+import os
+import sys
+
+# Get the absolute path for the directory where this file is located "here"
+here = os.path.abspath(os.path.dirname(__file__))
+
+# Get the absolute path for the project / repository root
+project_root = os.path.abspath(os.path.join(here, "../.."))
+
+# Extend the system path to include the project root and import the env files
+sys.path.insert(0, project_root)
 
 DNAC_URL = env_lab.DNA_CENTER["host"]
 DNAC_USER = env_lab.DNA_CENTER["username"]

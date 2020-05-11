@@ -1,6 +1,18 @@
 import requests
 import prettytable
 from requests.auth import HTTPBasicAuth
+import os
+import sys
+
+# Get the absolute path for the directory where this file is located "here"
+here = os.path.abspath(os.path.dirname(__file__))
+
+# Get the absolute path for the project / repository root
+project_root = os.path.abspath(os.path.join(here, "../.."))
+
+# Extend the system path to include the project root and import the env files
+sys.path.insert(0, project_root)
+
 import env_lab
 
 DNAC_URL = env_lab.DNA_CENTER["host"]
@@ -13,7 +25,7 @@ def get_device_list():
     Building out function to retrieve list of devices. Using requests.get to make a call to the network device Endpoint
     """
     token = get_auth_token() # Get Token
-    url = "https://{}/api/v1/network-device/1/14".format(DNAC_URL)
+    url = "https://{}/api/v1/network-device/1/10".format(DNAC_URL)
     hdr = {'x-auth-token': token, 'content-type' : 'application/json'}
     resp = requests.get(url, headers=hdr)  # Make the Get Request
     device_list = resp.json()
