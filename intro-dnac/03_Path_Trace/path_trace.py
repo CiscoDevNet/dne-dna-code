@@ -1,8 +1,19 @@
 import requests
 import json
 from requests.auth import HTTPBasicAuth
+import os
+import sys
+
+# Get the absolute path for the directory where this file is located "here"
+here = os.path.abspath(os.path.dirname(__file__))
+
+# Get the absolute path for the project / repository root
+project_root = os.path.abspath(os.path.join(here, "../.."))
+
+# Extend the system path to include the project root and import the env files
+sys.path.insert(0, project_root)
+
 import env_lab
-import time
 
 DNAC_URL = env_lab.DNA_CENTER["host"]
 DNAC_USER = env_lab.DNA_CENTER["username"]
@@ -30,13 +41,13 @@ def get_device_list():
     Building out function to retrieve list of devices. Using requests.get to make a call to the network device Endpoint
     """
     token = get_auth_token() # Get Token
-    url = "https://{}/api/v1/network-device/1/4".format(DNAC_URL)
+    url = "https://{}/api/v1/network-device/1/10".format(DNAC_URL)
     hdr = {'x-auth-token': token, 'content-type' : 'application/json'}
     resp = requests.get(url, headers=hdr)  # Make the Get Request
     device_list = resp.json()
-    print("{0:25}{1:25}{2:25}".format("hostname", "mgmt IP", "type"))
+    print("{0:25}{1:25}{2:30}".format("hostname", "mgmt IP", "Type"))
     for device in device_list['response']:
-        print("{0:25}{1:25}{2:25}".format(device['hostname'], device['managementIpAddress'], device['type']))
+        print("{0:25}{1:25}{2:30}".format(device['hostname'], device['managementIpAddress'], device['type']))
     initiate_path_trace(token) # initiate path trace
 
 
@@ -44,8 +55,8 @@ def initiate_path_trace(token):
     """
     This function will take 2 inputs from the user and initiate the specified trace
     """
-    src_ip = str(input("Enter Source IP (Cat9k):"))
-    dest_ip = str(input("Enter Destination IP (Cat9k):"))
+    src_ip = str(input("Enter Source IP (cat9k switch):"))
+    dest_ip = str(input("Enter Destination IP (asr router):"))
     param = {
         'destIP': dest_ip,
         'periodicRefresh': False,
@@ -57,8 +68,6 @@ def initiate_path_trace(token):
     path_json = path_response.json()
     flow_id = path_json['response']['flowAnalysisId']
     print("Path Trace Initiated! Path ID --> ", flow_id)
-    print("Waiting for Task to complete...")
-    time.sleep(5)
     print("Retrieving Path Trace Results.... ")
     retrieve_pt_results(flow_id, token)
 

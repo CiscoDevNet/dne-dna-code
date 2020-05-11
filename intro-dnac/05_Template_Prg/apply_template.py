@@ -3,6 +3,7 @@ from __future__ import print_function
 from dnac_utils import dnac_token, create_url
 import requests
 import json
+import time
 
 def deploy():
     headers = {'x-auth-token': token, 'content-type': 'application/json'}
@@ -16,7 +17,7 @@ def deploy():
             {
                 "id": "10.10.20.82",
                 "type": "MANAGED_DEVICE_IP",
-                "params": {"description": "changed by DNA Center  2", "interface": "TenGigabitEthernet1/1/1"}
+                "params": {"description": "changed by DNA Center {}".format(time.time()), "interface": "TenGigabitEthernet1/1/1"}
             }
         ]
     }
@@ -31,6 +32,7 @@ def deploy():
     deploymentId = deploymentId[-1]
     deploymentId = deploymentId.replace(" ", "")
     print("deploymentID -->", deploymentId)
+    time.sleep(5)
 
     # now look for the status
     url = create_url('/v1/template-programmer/template/deploy/status/{}'.format(deploymentId))
