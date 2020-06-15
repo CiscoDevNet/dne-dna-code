@@ -23,7 +23,7 @@ echo "Pod configuration needs updates."
 # Step 2. Run Updates
 # Example Update
     # Download updated Python requirements
-    curl https://raw.githubusercontent.com/CiscoDevNet/dnav3-code/master/requirements.txt -o sync_requirements.txt
+    curl https://raw.githubusercontent.com/CiscoDevNet/dne-dna-code/master/requirements.txt -o sync_requirements.txt
     # Create a Virtual Environment
     python3.6 -m venv sync_venv
     source sync_venv/bin/activate
