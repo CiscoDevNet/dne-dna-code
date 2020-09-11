@@ -183,7 +183,7 @@ def clear_ip(device):
                     <subinterface>
                         <index>0</index>
                         <ipv4 xmlns="http://openconfig.net/yang/interfaces/ip"
-                            operation="MISSION" />
+                            operation="MISSION" >
                         </ipv4>
                     </subinterface>
                 </subinterfaces>
