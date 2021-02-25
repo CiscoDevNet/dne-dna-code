@@ -1,11 +1,12 @@
 #!/usr/bin/env python
-"""Verify the Cisco Spark APIs are accessible and responding.
+"""Verify the Cisco Webex APIs are accessible and responding.
 
 Verify that user's provide SPARK_ACCESS_TOKEN is valid and that calls to the
-Cisco Spark APIs complete successfully.
+Cisco Webex (formerly Spark) APIs complete successfully. Uses SPARK_
+for variable names; the product name is Cisco Webex.
 
 
-Copyright (c) 2018 Cisco and/or its affiliates.
+Copyright (c) 2018-21 Cisco and/or its affiliates.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -48,10 +49,10 @@ import env_user  # noqa
 
 
 def verify() -> bool:
-    """Verify access to the Cisco Spark APIs."""
-    print("==> Verifying access to the Cisco Spark APIs")
+    """Verify access to the Cisco Webex APIs."""
+    print("==> Verifying access to the Cisco Webex APIs")
 
-    # Check to ensure the user has provided their Spark Access Token
+    # Check to ensure the user has provided their Webex Access Token
     if not env_user.SPARK_ACCESS_TOKEN:
         print(
             "\nFAILED: You must provide your SPARK_ACCESS_TOKEN in the "
@@ -63,22 +64,22 @@ def verify() -> bool:
         access_token=env_user.SPARK_ACCESS_TOKEN
     )
 
-    # Verify the Cisco Spark APIs are accessible and responding
+    # Verify the Cisco Webex APIs are accessible and responding
     try:
         me = spark.people.me()
     except ciscosparkapi.SparkApiError as e:
         print(
-            "\nFAILED: The API call to Cisco Spark returned the following "
+            "\nFAILED: The API call to Cisco Webex returned the following "
             "error:\n{}\n".format(e)
         )
         return False
 
     else:
         print(
-            "\nYou are connected to Cisco Spark as: {}\n".format(me.emails[0])
+            "\nYou are connected to Cisco Webex (formerly Cisco Spark) as: {}\n".format(me.emails[0])
         )
 
-    # Check to ensure the user has provided a Spark Room ID
+    # Check to ensure the user has provided a Webex Room ID
     if not env_user.SPARK_ROOM_ID:
         print(
             "\nFAILED: You must provide the SPARK_ROOM_ID of the room you "
@@ -86,12 +87,12 @@ def verify() -> bool:
         )
         return False
 
-    # Verify the Spark Room exists and is accessible via the access token
+    # Verify the Webex Room exists and is accessible via the access token
     try:
         room = spark.rooms.get(env_user.SPARK_ROOM_ID)
     except ciscosparkapi.SparkApiError as e:
         print(
-            "\nFAILED: There was an error accessing the Spark Room using the "
+            "\nFAILED: There was an error accessing the Webex Room using the "
             "SPARK_ROOM_ID you provided; error details:\n{}\n".format(e)
         )
         return False

@@ -6,7 +6,7 @@ and that they import successfully, and then verify that the backend lab
 environments are accessible and responding to API calls.
 
 
-Copyright (c) 2018 Cisco and/or its affiliates.
+Copyright (c) 2018-21 Cisco and/or its affiliates.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -100,7 +100,7 @@ for python_file in glob(os.path.join(backend, "*.py")):
         fail_bit = 1
         break
     except AttributeError:
-        print("\nFAILED: Error due to invalid ENVIRONMENT_IN_USE input in the env_lab.py file")
+        print("\nFAILED: Error due to invalid ENVIRONMENT_IN_USE input in the env_lab.py file. \n\tCheck to see if the environment requires VPN access.")
         fail_bit = 1
         break
 
