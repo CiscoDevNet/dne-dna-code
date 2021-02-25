@@ -6,7 +6,7 @@ and that they import successfully, and then verify that the backend lab
 environments are accessible and responding to API calls.
 
 
-Copyright (c) 2018 Cisco and/or its affiliates.
+Copyright (c) 2018-21 Cisco and/or its affiliates.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -71,6 +71,20 @@ except Exception as e:
     sys.exit(1)
 
 
+fail_bit = 0
+
+
+if env_lab.ENVIRONMENT_IN_USE == "sandbox" or env_lab.ENVIRONMENT_IN_USE == "express" or env_lab.ENVIRONMENT_IN_USE =="custom":
+    print(f"env_lab.py - ENVIRONMENT_IN_USE: {env_lab.ENVIRONMENT_IN_USE}")
+else:
+    print("\nImproper value inputted. go to env_lab.py and select either sandbox, express, or custom.")
+    print(f"ERROR: env_lab.py - Invalid ENVIRONMENT_IN_USE: {env_lab.ENVIRONMENT_IN_USE}")
+    fail_bit = 1
+
+print(f"env_user.py - SPARK_ACCESS_TOKEN: {env_user.SPARK_ACCESS_TOKEN}")
+print(f"env_user.py - SPARK_ROOM_ID: {env_user.SPARK_ROOM_ID}")
+print(f"env_user.py - MERAKI_API_KEY: {env_user.MERAKI_API_KEY}\n")
+
 # Verify backend lab environments
 backend = os.path.abspath(os.path.join(here, "backend"))
 verified = []
@@ -78,13 +92,24 @@ for python_file in glob(os.path.join(backend, "*.py")):
     name = os.path.splitext(os.path.basename(python_file))[0]
     spec = spec_from_file_location(name, python_file)
     module = module_from_spec(spec)
-    spec.loader.exec_module(module)
-    verified.append(module.verify())
+    try:
+        spec.loader.exec_module(module)
+        verified.append(module.verify())
+    except ModuleNotFoundError:
+        print("\nFAILED: Error importing module. You need to install lab requirements.  \n\tEnter Command: pip install -r requirements.txt")
+        fail_bit = 1
+        break
+    except AttributeError:
+        print("\nFAILED: Error due to invalid ENVIRONMENT_IN_USE input in the env_lab.py file. \n\tCheck to see if the environment requires VPN access.")
+        fail_bit = 1
+        break
 
-if all(verified):
-    print("\nAll lab backend systems are responding.  You're good to go!")
+if fail_bit == 1:
+    print("\nCorrect Errors and rerun.\n")
+elif all(verified):
+    print("\nAll lab backend systems are responding.  You're good to go!\n")
 else:
     print(
         "\nSome of the backend systems didn't respond or reported errors; "
-        "please check the above output for details."
+        "please check the above output for details.\n"
     )
