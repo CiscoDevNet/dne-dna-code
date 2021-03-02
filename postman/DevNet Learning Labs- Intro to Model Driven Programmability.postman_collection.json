@@ -636,7 +636,7 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"tests[\"Body matches string\"] = responseBody.has(\"interface\");"
+									"tests[\"Body matches string\"] = responseBody.has(\"successful\");"
 								]
 							}
 						}
