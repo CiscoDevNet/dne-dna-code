@@ -21,7 +21,7 @@ def generate_fortune() -> str:
 def generate_lucky_numbers(how_many: int) -> list:
     """Returns a list of (random) 'lucky' numbers."""
     lucky_numbers = []
-    for _ in range(how_many):
+    for _ in range(int(how_many)):
         lucky_numbers.append(random.randint(0, 99))
     return lucky_numbers
 
