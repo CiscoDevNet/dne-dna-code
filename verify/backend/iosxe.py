@@ -67,9 +67,14 @@ def verify() -> bool:
     for device in devices:
         print("Testing Device {}".format(device["host"]))
         # Test: Is device pingable
-        response = os.system(
-            "ping -c 2 {} >> iosxe_tests.txt".format(device["host"])
-        )
+        if os.name == 'nt':
+            response = os.system(
+                "ping {} >> iosxe_tests.txt".format(device["host"])
+            )
+        else:
+            response = os.system(
+                "ping -c 2 {} >> iosxe_tests.txt".format(device["host"])
+            )
         # and then check the response...
         if response == 0:
             pingstatus = "Ping Success"
