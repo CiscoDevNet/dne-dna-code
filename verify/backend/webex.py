@@ -31,7 +31,7 @@ SOFTWARE.
 import os
 import sys
 
-import ciscosparkapi
+import webexteamssdk
 
 
 # Get the absolute path for the directory where this file is located "here"
@@ -60,14 +60,14 @@ def verify() -> bool:
         )
         return False
 
-    spark = ciscosparkapi.CiscoSparkAPI(
+    webexapi = webexteamssdk.WebexTeamsAPI(
         access_token=env_user.WEBEX_ACCESS_TOKEN
     )
 
     # Verify the Cisco Webex APIs are accessible and responding
     try:
-        me = spark.people.me()
-    except ciscosparkapi.SparkApiError as e:
+        me = webexapi.people.me()
+    except webexapi.WebexApiError as e:
         print(
             "\nFAILED: The API call to Cisco Webex returned the following "
             "error:\n{}\n".format(e)
@@ -89,8 +89,8 @@ def verify() -> bool:
 
     # Verify the Webex Room exists and is accessible via the access token
     try:
-        room = spark.rooms.get(env_user.WEBEX_ROOM_ID)
-    except ciscosparkapi.SparkApiError as e:
+        room = webexapi.rooms.get(env_user.WEBEX_ROOM_ID)
+    except webexapi.WebexApiError as e:
         print(
             "\nFAILED: There was an error accessing the Webex Room using the "
             "WEBEX_ROOM_ID you provided; error details:\n{}\n".format(e)

@@ -3,7 +3,7 @@
 
 
 
-Copyright (c) 2018 Cisco and/or its affiliates.
+Copyright (c) 2018-2021 Cisco and/or its affiliates.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,7 @@ def verify() -> bool:
 
 
 
-    # Verify the Spark Room exists and is accessible via the access token
+    # Verify the Webex Room exists and is accessible via the access token
     try:
         r = requests.get(
             "https://cmxlocationsandbox.cisco.com/api/location/v2/clients",
