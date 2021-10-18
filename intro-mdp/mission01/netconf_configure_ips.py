@@ -27,7 +27,7 @@ import os
 import sys
 from netconf_functions import check_ip, set_ip
 
-import ciscosparkapi
+from webexteamssdk import WebexTeamsAPI
 
 # Get the absolute path for the directory where this file is located "here"
 here = os.path.abspath(os.path.dirname(__file__))
@@ -42,7 +42,7 @@ import env_lab  # noqa
 import env_user  # noqa
 
 # Create a Webex object
-spark = ciscosparkapi.CiscoSparkAPI(access_token=env_user.WEBEX_ACCESS_TOKEN)
+webex = WebexTeamsAPI(access_token=env_user.WEBEX_ACCESS_TOKEN)
 
 # Create message list
 messages = [
@@ -79,4 +79,4 @@ for device in devices:
     messages.append("Device {} IP set to {}".format(result[0], result[1]))
 
 # Post message to Spark
-spark.messages.create(roomId=env_user.WEBEX_ROOM_ID, text="\n".join(messages))
+webex.messages.create(roomId=env_user.WEBEX_ROOM_ID, text="\n".join(messages))
