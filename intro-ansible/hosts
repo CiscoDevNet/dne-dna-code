@@ -1,5 +1,5 @@
 [all:vars]
-ansible_python_interpreter="/usr/bin/python"
+ansible_python_interpreter="/usr/bin/env python"
 
 [iosxe:vars]
 # Fill in a unique pod name with no spaces
@@ -23,7 +23,6 @@ sandbox
 #express
 
 [sandbox]
-sandbox-iosxe-recomm-1.cisco.com
-[express]
+ios-xe-mgmt.cisco.com ansible_port=8181[express]
 198.18.134.11  # dcloud pod router #1
 198.18.134.12  # dcloud pod router #2
