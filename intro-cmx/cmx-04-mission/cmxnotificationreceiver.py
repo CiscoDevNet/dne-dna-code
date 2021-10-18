@@ -54,8 +54,8 @@ import env_lab  # noqa
 import env_user  # noqa
 
 
-# Create a Cisco Spark object
-spark = ciscosparkapi.CiscoSparkAPI(access_token=env_user.SPARK_ACCESS_TOKEN)
+# Create a Webex object
+spark = ciscosparkapi.CiscoSparkAPI(access_token=env_user.WEBEX_ACCESS_TOKEN)
 
 requests.packages.urllib3.disable_warnings()
 app = Flask(__name__)
@@ -120,7 +120,7 @@ def notification_handler():
     deviceId = r_json["notifications"][0]["deviceId"]
     location = r_json["notifications"][0]["locationMapHierarchy"]
     spark.messages.create(
-        env_user.SPARK_ROOM_ID,
+        env_user.WEBEX_ROOM_ID,
         text="CMX Mission Accomplished!  Device " \
         + deviceId + " found at location: " + location,
     )

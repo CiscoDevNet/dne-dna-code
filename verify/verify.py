@@ -81,8 +81,8 @@ else:
     print(f"ERROR: env_lab.py - Invalid ENVIRONMENT_IN_USE: {env_lab.ENVIRONMENT_IN_USE}")
     fail_bit = 1
 
-print(f"env_user.py - SPARK_ACCESS_TOKEN: {env_user.SPARK_ACCESS_TOKEN}")
-print(f"env_user.py - SPARK_ROOM_ID: {env_user.SPARK_ROOM_ID}")
+print(f"env_user.py - WEBEX_ACCESS_TOKEN: {env_user.WEBEX_ACCESS_TOKEN}")
+print(f"env_user.py - WEBEX_ROOM_ID: {env_user.WEBEX_ROOM_ID}")
 print(f"env_user.py - MERAKI_API_KEY: {env_user.MERAKI_API_KEY}\n")
 
 # Verify backend lab environments

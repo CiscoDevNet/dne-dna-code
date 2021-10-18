@@ -46,7 +46,7 @@ import env_lab  # noqa
 import env_user  # noqa
 
 
-spark = ciscosparkapi.CiscoSparkAPI(access_token=env_user.SPARK_ACCESS_TOKEN)
+spark = ciscosparkapi.CiscoSparkAPI(access_token=env_user.WEBEX_ACCESS_TOKEN)
 
 
 print(
@@ -63,8 +63,8 @@ My Lab Environment:
 )
 
 
-print("Oh yeah... I'm also connected to Cisco Spark as:")
+print("Oh yeah... I'm also connected to Webex as:")
 print(spark.people.me())
 
 print("...and I'm posting things to the following Spark Room:")
-print(spark.rooms.get(env_user.SPARK_ROOM_ID))
+print(spark.rooms.get(env_user.WEBEX_ROOM_ID))

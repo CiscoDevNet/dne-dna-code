@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """Verify the Cisco Webex APIs are accessible and responding.
 
-Verify that user's provide SPARK_ACCESS_TOKEN is valid and that calls to the
+Verify that user's provide WEBEX_ACCESS_TOKEN is valid and that calls to the
 Cisco Webex (formerly Spark) APIs complete successfully. Uses SPARK_
 for variable names; the product name is Cisco Webex.
 
@@ -53,15 +53,15 @@ def verify() -> bool:
     print("==> Verifying access to the Cisco Webex APIs")
 
     # Check to ensure the user has provided their Webex Access Token
-    if not env_user.SPARK_ACCESS_TOKEN:
+    if not env_user.WEBEX_ACCESS_TOKEN:
         print(
-            "\nFAILED: You must provide your SPARK_ACCESS_TOKEN in the "
+            "\nFAILED: You must provide your WEBEX_ACCESS_TOKEN in the "
             "env_user.py file.\n"
         )
         return False
 
     spark = ciscosparkapi.CiscoSparkAPI(
-        access_token=env_user.SPARK_ACCESS_TOKEN
+        access_token=env_user.WEBEX_ACCESS_TOKEN
     )
 
     # Verify the Cisco Webex APIs are accessible and responding
@@ -76,24 +76,24 @@ def verify() -> bool:
 
     else:
         print(
-            "\nYou are connected to Cisco Webex (formerly Cisco Spark) as: {}\n".format(me.emails[0])
+            "\nYou are connected to Cisco Webex (formerly Webex) as: {}\n".format(me.emails[0])
         )
 
     # Check to ensure the user has provided a Webex Room ID
-    if not env_user.SPARK_ROOM_ID:
+    if not env_user.WEBEX_ROOM_ID:
         print(
-            "\nFAILED: You must provide the SPARK_ROOM_ID of the room you "
+            "\nFAILED: You must provide the WEBEX_ROOM_ID of the room you "
             "want to work with in the env_user.py file.\n"
         )
         return False
 
     # Verify the Webex Room exists and is accessible via the access token
     try:
-        room = spark.rooms.get(env_user.SPARK_ROOM_ID)
+        room = spark.rooms.get(env_user.WEBEX_ROOM_ID)
     except ciscosparkapi.SparkApiError as e:
         print(
             "\nFAILED: There was an error accessing the Webex Room using the "
-            "SPARK_ROOM_ID you provided; error details:\n{}\n".format(e)
+            "WEBEX_ROOM_ID you provided; error details:\n{}\n".format(e)
         )
         return False
     else:
