@@ -1,7 +1,7 @@
 ---
-- name: NETCONF delete NTP server
-  hosts: iosxe
-  connection: local
+- hosts: iosxe
+  name: Clean up Lab
+  connection: network_cli
   gather_facts: False
 
   tasks:
@@ -11,12 +11,7 @@
 
   - name: Remove NTP server 10.111.{{pod_number}}.66 with NETCONF
     netconf_config:
-      host: "{{inventory_hostname}}"
-      port: "{{netconf_port}}"
-      username: "{{ansible_user}}"
-      password: "{{ansible_password}}"
-      hostkey_verify: False
-      xml: |
+      content: |
           <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
             <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
               <ntp>
@@ -34,12 +29,7 @@
 
   - name: Delete a loopback with NETCONF
     netconf_config:
-      host: "{{inventory_hostname}}"
-      port: "{{netconf_port}}"
-      username: "{{ansible_user}}"
-      password: "{{ansible_password}}"
-      hostkey_verify: False
-      xml: |
+      content: |
           <config>
             <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
               <interface operation="delete">

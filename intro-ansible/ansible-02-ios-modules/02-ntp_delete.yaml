@@ -1,6 +1,6 @@
 #simple IOS config in ansible
 ---
-- name: Sample IOS NTP config for Ansible 2.5
+- name: Sample IOS NTP config for Ansible
   hosts: iosxe
   gather_facts: no
 
