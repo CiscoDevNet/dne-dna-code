@@ -1,5 +1,5 @@
 [all:vars]
-ansible_python_interpreter="/mnt/c/Users/Lenovo/Documents/PROJEKTI/nil/dne-dna-code/intro-ansible/venv/bin/python"
+ansible_python_interpreter="/usr/bin/env python"
 
 [iosxe:vars]
 # Fill in a unique Pod name with no spaces
