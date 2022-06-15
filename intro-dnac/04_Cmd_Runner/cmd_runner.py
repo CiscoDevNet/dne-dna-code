@@ -1,5 +1,6 @@
 import requests
 import json
+import logging
 from requests.auth import HTTPBasicAuth
 import os
 import sys
@@ -31,7 +32,11 @@ def get_auth_token():
     """
     url = 'https://{}/dna/system/api/v1/auth/token'.format(DNAC_URL)                      # Endpoint URL
     hdr = {'content-type' : 'application/json'}                                           # Define request header
-    resp = requests.post(url, auth=HTTPBasicAuth(DNAC_USER, DNAC_PASS), headers=hdr)      # Make the POST Request
+    try:
+        logging.captureWarnings(True)
+        resp = requests.post(url, auth=HTTPBasicAuth(DNAC_USER, DNAC_PASS), headers=hdr, verify=False)      # Make the POST Request
+    except Exception as e:
+        print("Error: ", e)
     token = resp.json()['Token']                                                          # Retrieve the Token
     return token    # Create a return statement to send the token back for later use
 
@@ -43,7 +48,8 @@ def get_device_list():
     token = get_auth_token() # Get Token
     url = "https://{}/api/v1/network-device/1/4".format(DNAC_URL)
     hdr = {'x-auth-token': token, 'content-type' : 'application/json'}
-    resp = requests.get(url, headers=hdr)  # Make the Get Request
+    logging.captureWarnings(True)
+    resp = requests.get(url, headers=hdr, verify=False)  # Make the Get Request
     device_list = resp.json()
     print("{0:25}{1:25}".format("hostname", "id"))
     for device in device_list['response']:
@@ -62,7 +68,8 @@ def initiate_cmd_runner(token):
     }
     url = "https://{}/api/v1/network-device-poller/cli/read-request".format(DNAC_URL)
     header = {'content-type': 'application/json', 'x-auth-token': token}
-    response = requests.post(url, data=json.dumps(param), headers=header)
+    logging.captureWarnings(True)
+    response = requests.post(url, data=json.dumps(param), headers=header, verify=False)
     task_id = response.json()['response']['taskId']
     print("Command runner Initiated! Task ID --> ", task_id)
     print("Retrieving Path Trace Results.... ")
@@ -72,7 +79,8 @@ def initiate_cmd_runner(token):
 def get_task_info(task_id, token):
     url = "https://{}/api/v1/task/{}".format(DNAC_URL, task_id)
     hdr = {'x-auth-token': token, 'content-type' : 'application/json'}
-    task_result = requests.get(url, headers=hdr)
+    logging.captureWarnings(True)
+    task_result = requests.get(url, headers=hdr, verify=False)
     file_id = task_result.json()['response']['progress']
     if "fileId" in file_id:
         unwanted_chars = '{"}'
@@ -89,7 +97,8 @@ def get_task_info(task_id, token):
 def get_cmd_output(token,file_id):
     url = "https://{}/api/v1/file/{}".format(DNAC_URL, file_id)
     hdr = {'x-auth-token': token, 'content-type': 'application/json'}
-    cmd_result = requests.get(url, headers=hdr)
+    logging.captureWarnings(True)
+    cmd_result = requests.get(url, headers=hdr, verify=False)
     print(json.dumps(cmd_result.json(), indent=4, sort_keys=True))
 
 
