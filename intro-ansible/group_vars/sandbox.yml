@@ -1,5 +1,5 @@
 ansible_user: 'developer'
 ansible_ssh_pass: 'C1sco12345'
-ansible_port: 8181
-netconf_port: 10000
+ansible_port: 22
+netconf_port: 830
 
