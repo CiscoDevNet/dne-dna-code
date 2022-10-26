@@ -43,7 +43,7 @@ import env_lab  # noqa
 
 # Create an XML filter for targeted NETCONF queries
 netconf_filter = """
-<filter>
+<filter xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
   <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
     <interface></interface>
   </interfaces>

@@ -23,7 +23,7 @@ sandbox
 #express
 
 [sandbox]
-ios-xe-mgmt.cisco.com ansible_port=8181
+sandbox-iosxe-recomm-1.cisco.com ansible_port=22
 
 [express]
 198.18.134.11  # dcloud pod router #1
