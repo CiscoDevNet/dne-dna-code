@@ -1,23 +1,15 @@
 ---
-- name: NETCONF sample 1
-  hosts: iosxe
-  connection: local
+- hosts: iosxe
+  name: Sample IOS Interface config for Ansible
+  connection: network_cli
   gather_facts: False
-
   tasks:
-
     - set_fact:
-        ansible_connection: local
-
+        ansible_connection: netconf
     - name: Create a loopback Loopback1{{pod_number}} with NETCONF
       netconf_config:
-        host: "{{inventory_hostname}}"
-        port: "{{netconf_port}}"
-        username: "{{ansible_user}}"
-        password: "{{ansible_password}}"
-        hostkey_verify: False
-        xml: |
-            <config>
+        content: |
+            <config xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
               <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
                 <interface>
                   <name>Loopback1{{pod_number}}</name>

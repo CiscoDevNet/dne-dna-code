@@ -2,15 +2,15 @@
 ansible_python_interpreter="/usr/bin/env python"
 
 [iosxe:vars]
-# Fill in a unique pod name with no spaces
+# Fill in a unique Pod name with no spaces
 user_pod = mypod
-# Fill in a pod number between 10 and 250
+# Fill in a Pod number between 10 and 250
 pod_number = 10
 
 # The next two variables are only required for the DevNet Express Mission. When you get to the mission it will instruct
-# you to fill these in. If you are using the sandbox lab, you may ignore them.
+# you to fill these in. If you are using the Sandbox Lab, you may ignore them.
 
-# Fill in your Webex Teams auth token from https://developer.webex.com/getting-started.html
+# Fill in your Webex Teams Auth token from https://developer.webex.com/docs/api/getting-started
 webex_token = mytokenabcdef
 # Fill in your Webex Teams room id you wish to post to
 webex_room_id = roomIDabc123456defghi789jklmnopqr0
@@ -19,12 +19,12 @@ webex_room_id = roomIDabc123456defghi789jklmnopqr0
 [iosxe:children]
 # FYI - If you are in a DevNet Express please add a #
 # in front of sandbox and remove the # in front of express.
-sandbox
+#sandbox
 #express
 
-[sandbox]
-sandbox-iosxe-recomm-1.cisco.com ansible_port=22
+[iosxe]
+sandbox-iosxe-latest-1.cisco.com ansible_user=developer ansible_ssh_pass=C1sco12345 ansible_network_os=cisco.ios.ios
 
-[express]
-198.18.134.11  # dcloud pod router #1
-198.18.134.12  # dcloud pod router #2
+#[express]
+#198.18.134.11  # dcloud pod router #1
+#198.18.134.12  # dcloud pod router #2

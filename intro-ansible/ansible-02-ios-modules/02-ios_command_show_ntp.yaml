@@ -1,11 +1,9 @@
 #simple IOS config in ansible
 ---
-- name: Sample IOS show ntp for Ansible 2.5
-  hosts: iosxe
-  gather_facts: no
-
+- hosts: iosxe
+  name: Sample IOS show ntp for Ansible
+  connection: network_cli
   tasks:
-
   - name: run show ntp associations
     ios_command:
       commands: show ntp associations

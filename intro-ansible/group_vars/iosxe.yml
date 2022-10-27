@@ -1,7 +1,4 @@
-ansible_connection: network_cli
-ansible_become: yes
-ansible_become_method: enable
-ansible_network_os: ios
+host_key_checking: False
 
 local_vrfs:
   - name: red

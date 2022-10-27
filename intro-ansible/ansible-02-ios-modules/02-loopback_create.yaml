@@ -1,9 +1,9 @@
 #simple IOS config in ansible
----
-- name: Sample IOS config for Ansible 2.5
-  hosts: iosxe
-  gather_facts: no
 
+---
+- hosts: iosxe
+  name: Sample IOS Interface config for Ansible
+  connection: network_cli
   tasks:
 
   - name: Create loopback {{pod_number}}
