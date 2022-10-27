@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Sends configuration difference to Webex Teams, formerly Spark.
+"""Sends configuration difference to Webex Teams.
 
 Compares the current running configuration and the saved running
 configuration, creates diff and sends it to a Webex Teams room.
@@ -31,7 +31,7 @@ import os
 import re
 
 from cli import cli, clip
-from ciscosparkapi import CiscoSparkAPI
+from webexteamssdk import WebexTeamsAPI
 
 
 BACKUP_CONFIG_IOS_PATH = 'flash:/running-config.bak'
@@ -127,15 +127,15 @@ def get_config_diff(backup_config_ios_path):
         return config_diff_lines
 
 
-def form_spark_message(config_diff_lines):
-    """Creates a Spark message formatted in markdown based on config diff
+def form_webex_message(config_diff_lines):
+    """Creates a Webex message formatted in markdown based on config diff
 
     Args:
         config_diff_lines (list): list of lines containing config
             difference
 
     Returns:
-        str: markdown Spark message as a string
+        str: markdown Webex message as a string
     """
     message = (
         'Configuration differences between '
@@ -150,7 +150,7 @@ def form_spark_message(config_diff_lines):
 
 
 def main():
-    spark_api = CiscoSparkAPI()
+    api = WebexTeamsAPI()
 
     # MISSION TODO 4: use the function that converts IOS path to
     # linux, which is defined in this file
@@ -177,12 +177,12 @@ def main():
         # END MISSION SECTION 6
         if config_diff_lines is not None:
             print('Changes have been found')
-            message = form_spark_message(config_diff_lines)
-            spark_api.messages.create(
-                roomId=os.environ.get('SPARK_ROOM_ID'),
+            message = form_webex_message(config_diff_lines)
+            api.messages.create(
+                roomId=os.environ.get('WEBEX_ROOM_ID'),
                 markdown=message,
             )
-            message = 'Spark message has been sent'
+            message = 'Webex message has been sent'
             print(message)
             send_syslog(message)
         else:

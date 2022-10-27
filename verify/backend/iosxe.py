@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 """Verify the IOS XE Devices are accessible and responding.
 
-Verify that user's provide SPARK_ACCESS_TOKEN is valid and that calls to the
-Cisco Spark APIs complete successfully.
+Verify that user's provide WEBEX_ACCESS_TOKEN is valid and that calls to the
+Webex APIs complete successfully.
 
 
 Copyright (c) 2018 Cisco and/or its affiliates.

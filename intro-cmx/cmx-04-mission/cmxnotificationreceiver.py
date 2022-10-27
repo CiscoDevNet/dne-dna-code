@@ -34,7 +34,7 @@ import time
 import datetime
 import os
 import re
-import ciscosparkapi
+import webexteamsapi
 from pprint import pprint
 from flask import Flask
 from flask import json
@@ -54,8 +54,8 @@ import env_lab  # noqa
 import env_user  # noqa
 
 
-# Create a Cisco Spark object
-spark = ciscosparkapi.CiscoSparkAPI(access_token=env_user.SPARK_ACCESS_TOKEN)
+# Create a Webex object
+spark = ciscosparkapi.CiscoSparkAPI(access_token=env_user.WEBEX_ACCESS_TOKEN)
 
 requests.packages.urllib3.disable_warnings()
 app = Flask(__name__)
@@ -66,8 +66,7 @@ def create_notification(msg):
     global username
     global password
 
-    # MISSION TODO
-    endpoint = "https://" + url + "CMX API ENDPOINT TO CREATE NOTIFICATIONS"
+    endpoint = "https://" + url + "/api/config/v1/notification"
 
     payload = \
     {
@@ -77,7 +76,7 @@ def create_notification(msg):
             {
                 "conditions":[
                     {
-                        "condition": "locationupdate.macAddressList == MAC ADDRESS TO BE FOUND;"
+                        "condition": "locationupdate.macAddressList == 00:00:2a:01:00:4e;"
                     }
                 ]
             }
@@ -102,7 +101,7 @@ def create_notification(msg):
         "macScramblingSalt": "learning",
         "notificationType": "LocationUpdate"
     }
-    # END MISSION TODO
+
     headers = {"Content-Type": "application/json"}
 
     print(json.dumps(payload))
@@ -120,7 +119,7 @@ def notification_handler():
     deviceId = r_json["notifications"][0]["deviceId"]
     location = r_json["notifications"][0]["locationMapHierarchy"]
     spark.messages.create(
-        env_user.SPARK_ROOM_ID,
+        env_user.WEBEX_ROOM_ID,
         text="CMX Mission Accomplished!  Device " \
         + deviceId + " found at location: " + location,
     )

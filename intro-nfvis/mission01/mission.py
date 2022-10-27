@@ -57,7 +57,7 @@ new_network = "svc-net"
 
 requests.packages.urllib3.disable_warnings()
 
-spark = ciscosparkapi.CiscoSparkAPI(access_token=env_user.SPARK_ACCESS_TOKEN)
+spark = ciscosparkapi.CiscoSparkAPI(access_token=env_user.WEBEX_ACCESS_TOKEN)
 
 def nvfis_getgcred():
     login = NFVIS_USERNAME
@@ -202,6 +202,6 @@ if __name__ == '__main__':
     print (json.dumps(r_vm_device_deployment, indent=4, sort_keys=True))
 
     print ("STEP 6 - Send Spark message")
-    message = spark.messages.create(env_user.SPARK_ROOM_ID,
+    message = spark.messages.create(env_user.WEBEX_ROOM_ID,
             text='NFVIS mission completed')
     print (message)
