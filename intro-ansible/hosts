@@ -25,6 +25,6 @@ webex_room_id = roomIDabc123456defghi789jklmnopqr0
 [iosxe]
 sandbox-iosxe-latest-1.cisco.com ansible_user=developer ansible_ssh_pass=C1sco12345 ansible_network_os=cisco.ios.ios
 
-[express]
-198.18.134.11  # dcloud pod router #1
-198.18.134.12  # dcloud pod router #2
+#[express]
+#198.18.134.11  # dcloud pod router #1
+#198.18.134.12  # dcloud pod router #2
