@@ -57,7 +57,7 @@ if ENVIRONMENT_IN_USE == "sandbox":
     IOS_XE_1 = {
         "host": "sandbox-iosxe-recomm-1.cisco.com",
         "username": "developer",
-        "password": "C1sco12345",
+        "password": "lastorangerestoreball8876",
         "netconf_port": 830,
         "restconf_port": 443,
         "ssh_port": 22
@@ -81,15 +81,15 @@ if ENVIRONMENT_IN_USE == "sandbox":
         "netconf_port": 10000,
         "restconf_port": 443,
         "nxapi_port": 80,
-        "ssh_port": 8181
+        "ssh_port": 22
     }
 
 elif ENVIRONMENT_IN_USE == "express":
     DNA_CENTER = {
         "host": "sandboxdnac2.cisco.com",
         "port": 443,
-        "username": "dnacdev",
-        "password": "D3v93T@wK!"
+        "username": "devnetuser",
+        "password": "Cisco123!"
     }
 
     NFVIS_SERVER = {
@@ -127,5 +127,5 @@ elif ENVIRONMENT_IN_USE == "express":
         "netconf_port": 10000,
         "restconf_port": 443,
         "nxapi_port": 80,
-        "ssh_port": 8181
+        "ssh_port": 22
     }
